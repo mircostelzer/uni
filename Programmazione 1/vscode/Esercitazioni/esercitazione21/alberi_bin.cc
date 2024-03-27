@@ -1,0 +1,103 @@
+#include <iostream>
+#include "alberi_bin.h"
+using namespace std;
+
+void init(tree &t) {
+    t=NULL;
+}
+
+bool empty(const tree &t) {
+    return (t==NULL);
+}
+
+tree search(int val, tree &t) {
+    tree res;
+    if (empty(t)) {
+        res = NULL;
+    }
+    else {
+        if (val==t->val) {
+            res = t;
+        }
+        else if (val<=t->val){
+            res = search(val, t->left);
+        }
+        else if (val>t->val) {
+            res = search(val, t->right);
+        }
+    }
+    return res;
+}
+
+bool insert(int val, tree &t) {
+    bool inserted;
+    if (empty(t)) {
+        t = new (nothrow) node;
+        if (t==NULL) {
+            inserted = false;
+        }
+        else {
+            t->val = val;
+            t->left = NULL;
+            t->right = NULL;
+            inserted = true;
+        }
+    }
+    else if (val<=t->val) {
+            inserted = insert(val, t->left);
+        }
+        else if (val>t->val) {
+            inserted = insert(val, t->right);
+        }
+    return inserted;
+}
+
+void deinit(tree &t) {
+    if (!empty(t)) {
+        deinit(t->left);
+        deinit(t->right);
+        delete t;
+    }
+}
+
+void print_ordered(const tree &t) {
+    tree s = t;
+    if(!empty(s)) {
+        print_ordered(t->left);
+        cout << t->val << '\n';
+        print_ordered(t->right);
+    }
+}
+
+void print_spaces(int depth) {
+    for (int i=0; i<depth; i++) {
+        cout << "  ";
+    }
+}
+
+void print_indented(const tree &t) {
+    static int depth = 0;
+    depth++;
+    if (!empty(t)) {
+    print_indented(t->right);
+    print_spaces(depth);
+    cout << t->val << '\n';
+    print_indented(t->left);
+    }
+    depth--;
+}
+ 
+void print_indented1(const tree &t, int space){
+   if (t != NULL) {
+    space ++;
+    
+    print_indented1(t->right, space);
+ 
+    for (int i = 1; i < space; i++) {
+        cout<<"\t";
+    }
+    cout<<t->val<<"\n";
+    
+    print_indented1(t->left, space);
+   }
+}

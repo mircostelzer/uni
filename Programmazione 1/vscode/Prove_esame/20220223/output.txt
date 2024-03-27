@@ -1,0 +1,6 @@
+AAA: 2
+BFE: 3
+ASAS: 1
+FRE: 1
+PEWDFS: 1
+ASSDA: 1
