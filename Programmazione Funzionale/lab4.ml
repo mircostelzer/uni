@@ -38,4 +38,29 @@ fun del (nil, _) = nil
 | del (x::xs, i) = x::del(xs, i-1); 
 
 fun square (0) = 0
-| square (n)
+| square (n) = square(n-1) + 2*n - 1;
+
+fun flip1 (nil) = nil
+| flip1((x as (a:int, b))::xs) = if a<b then x::flip1(xs)
+else (b, a)::flip1(xs);
+
+fun vowel(nil) = false
+| vowel(#"a"::xs) = true
+| vowel(#"e"::xs) = true
+| vowel(#"i"::xs) = true
+| vowel(#"o"::xs) = true
+| vowel(#"u"::xs) = true;
+
+fun member(_, nil) = false
+| member(x, y::ys) = if x=y then true
+else member(x, ys);
+
+fun delete(_, nil) = nil
+| delete(x, y::ys) = if (x=y) then ys 
+else y::delete(x, ys);
+
+fun prod(_, nil) = 1.0
+| prod(x, y::ys) = (x-y)*prod(x, ys);
+
+fun prod1(nil) = 1.0
+| prod1(x::xs) = prod(x, xs)*prod1(xs);
