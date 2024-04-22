@@ -1,24 +1,48 @@
 package data;
 
+import data.blocks.interfaces.Block;
+import data.blocks.*;
+import data.blocks.interfaces.IronSwordInterfaceBlock;
+import data.blocks.solids.EarthBlock;
+import data.blocks.solids.RawIronBlock;
+
 import java.util.Random;
 
 public class BlockFactory {
-    private static final int RAND_UPPERBOUND = 5;
+    private static final int RAND_UPPERBOUND = 3;
     public BlockFactory(){}
 
-    // create a random block
     public Block random_block(){
         Random rand = new Random();
         int r = rand.nextInt(RAND_UPPERBOUND);
-        return new Block(r);
+        switch (r){
+            case 0:
+                return this.rawIronBlock();
+            case 1:
+                return this.sand_block();
+            case 2:
+                return this.earth_block();
+            default:
+                return this.nullBlock();
+        }
     }
-    // create a default block
-    public Block default_block(){
-        return new Block();
+
+    public AirBlock default_block(){
+        return new AirBlock();
     }
-    // create a fixed block 'A'
-    public Block block_to_A(){
-        return new Block('A');
+    public SandBlock sand_block(){
+        return new SandBlock();
     }
-    // TODO at some point make Block private and expose its interface
+    public WaterBlock waterBlock(){
+        return new WaterBlock();
+    }
+    public NullBlock nullBlock(){
+        return new NullBlock();
+    }
+    public RawIronBlock rawIronBlock(){
+        return new RawIronBlock();
+    }
+    public EarthBlock earth_block(){
+        return new EarthBlock();
+    }
 }
