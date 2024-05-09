@@ -6,7 +6,12 @@ public abstract class AbstractBlock implements Block {
     protected char content;
     protected boolean falls_with_gravity;
     protected boolean fall_through;
+    protected boolean pickable;
     protected String blockname;
+
+    protected AbstractBlock(){
+        this.pickable = false;
+    }
 
     public char display(){
         return this.content;
@@ -17,8 +22,15 @@ public abstract class AbstractBlock implements Block {
     public boolean isFall_through(){
         return this.fall_through;
     }
+    public boolean isPickable(){
+        return this.pickable;
+    }
 
     public String toString(){
         return this.blockname+" ["+this.content+"]";
+    }
+
+    public String display_in_inventory(){
+        return "["+this.content+"]";
     }
 }

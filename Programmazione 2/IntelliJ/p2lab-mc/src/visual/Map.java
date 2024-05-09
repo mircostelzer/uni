@@ -1,6 +1,8 @@
 package visual;
 
-import Utils.MapCoordinates;
+import utils.BlockErrorException;
+import utils.MapCoordinates;
+import data.blocks.NullBlock;
 import data.blocks.interfaces.Block;
 import data.blocks.interfaces.SmeltableBlock;
 import data.blocks.AbstractBlock;
@@ -18,11 +20,11 @@ class Map {
     private BlockFactory bf;
 
     // the default map is a random one
-    public Map(BlockFactory bf){
+    Map(BlockFactory bf){
         this(bf,true);
     }
 
-    public Map(BlockFactory bf, boolean random){
+    Map(BlockFactory bf, boolean random){
         this.bf = bf;
         content = new AbstractBlock[MapCoordinates.DIMENSION_ROWS][MapCoordinates.DIMENSION_COLUMNS];
         for (int i = 0; i < MapCoordinates.DIMENSION_ROWS; i++){
@@ -32,7 +34,7 @@ class Map {
                 this.insert_block_at_coords(b,c,false);
             }
         }
-        this.addSea();
+        this.add_sea();
         if (random) {
             this.add_randomBlocks();
             // sanitycheck: almeno un ferro
@@ -50,6 +52,23 @@ class Map {
             System.out.print("||");
             System.out.println();
         }
+    }
+
+    private Block getBlock(MapCoordinates c){
+        if (!c.is_inbound()){
+            return bf.nullBlock();
+        }
+        int row = c.getRow();
+        int col = c.getCol();
+        return this.content[row][col];
+    }
+    private void setBlock(MapCoordinates c, Block b){
+        if (!c.is_inbound()){
+            return;
+        }
+        int row = c.getRow();
+        int col = c.getCol();
+        this.content[row][col] = b;
     }
 
     private void insert_block_at_coords(Block b, MapCoordinates c, boolean consider_stackeble){
@@ -137,26 +156,22 @@ class Map {
         this.insert_block_at_coords(b,c,true);
     }
 
-    public void addSea(){
-        this.addRiver();
-        this.addRiver();
+    public void add_sea(){
+        this.add_river();
+        this.add_river();
     }
-    public void addRiver(){
-        this.addRowsOfWater(1);
+    public void add_river(){
+        this.add_rows_of_water();
     }
-    private void addRowsOfWater(int howmanyrows){
-        for (int i = 0 ; i < howmanyrows ; i++){
-            //add a row of water
-            for (int k = 0; k < MapCoordinates.DIMENSION_COLUMNS ; k ++){
-                Block b = bf.waterBlock();
-                // basta aggiungere alla top row, l'acqua poi cade
-                MapCoordinates c = new MapCoordinates(0,k);
-                this.insert_block_at_coords(b, c,true);
-            }
+    private void add_rows_of_water(){
+        for (int k = 0; k < MapCoordinates.DIMENSION_COLUMNS ; k ++){
+            Block b = bf.waterBlock();
+            // basta aggiungere alla top row, l'acqua poi cade
+            MapCoordinates c = new MapCoordinates(0,k);
+            this.insert_block_at_coords(b, c,true);
         }
     }
-
-    public void add_randomBlocks(){
+    private void add_randomBlocks(){
         Random rand = new Random();
         for (int i = 0 ; i < RANDOM_BLOCKS_TO_ADD; i++){
             Block b = bf.random_block();
@@ -177,28 +192,34 @@ class Map {
         return true;
     }
 
-    public boolean is_smeltable(MapCoordinates c){
-        if (!c.is_inbound()){
+    private boolean is_smeltable(MapCoordinates c){
+        Block b = this.getBlock(c);
+        if (b instanceof NullBlock){
             return false;
         }
-        int row = c.getRow();
-        int col = c.getCol();
-        Block b = this.content[row][col];
         return b instanceof SmeltableBlock;
     }
-    public SmeltableBlock gimme_smeltable(MapCoordinates c){
-        if (!c.is_inbound()){
-            return bf.nullBlock();
-        }
-        int row = c.getRow();
-        int col = c.getCol();
-        Block b = this.content[row][col];
-        if (b instanceof SmeltableBlock){
-            SmeltableBlock bb = (SmeltableBlock) b;
-            this.content[row][col] = bf.default_block();
+    public SmeltableBlock gimme_smeltable(MapCoordinates c) throws BlockErrorException {
+        if (this.is_smeltable(c)){
+            SmeltableBlock bb = (SmeltableBlock) this.getBlock(c);
+            this.setBlock(c, bf.default_block());
             return bb;
         }else {
-            return bf.nullBlock();
+            throw new BlockErrorException();
+        }
+    }
+
+    private boolean is_pickable(MapCoordinates c){
+        Block b = this.getBlock(c);
+        return b.isPickable();
+    }
+    public Block gimme_pickable(MapCoordinates c) throws BlockErrorException{
+        if (this.is_pickable(c)){
+            Block b = this.getBlock(c);
+            this.setBlock(c, bf.default_block());
+            return b;
+        }else {
+            throw new BlockErrorException();
         }
     }
 }

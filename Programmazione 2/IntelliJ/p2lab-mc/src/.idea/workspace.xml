@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="487578f7-76b5-4285-afa1-30fac3b144dd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../SimpleMinecraft" beforeDir="false" afterPath="$PROJECT_DIR$/../../SimpleMinecraft" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SimpleMinecraft/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../SimpleMinecraft/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SimpleMinecraft/src/data/blocks/AbstractBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../SimpleMinecraft/src/data/blocks/AbstractBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SimpleMinecraft/src/data/blocks/WaterBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../SimpleMinecraft/src/data/blocks/WaterBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SimpleMinecraft/src/data/blocks/interfaces/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../SimpleMinecraft/src/data/blocks/interfaces/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SimpleMinecraft/src/data/blocks/interfaces/InventoryBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../SimpleMinecraft/src/data/blocks/interfaces/InventoryBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SimpleMinecraft/src/visual/Furnace.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../SimpleMinecraft/src/visual/Furnace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SimpleMinecraft/src/visual/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../SimpleMinecraft/src/visual/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SimpleMinecraft/src/visual/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../SimpleMinecraft/src/visual/MainView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SimpleMinecraft/src/visual/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../SimpleMinecraft/src/visual/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/MapCoordinates.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/blocks/AbstractBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/blocks/AbstractBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/blocks/AirBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/blocks/AirBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/blocks/NullBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/blocks/NullBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/blocks/SandBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/blocks/SandBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/blocks/WaterBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/blocks/WaterBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/blocks/interfaces/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/blocks/interfaces/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/blocks/solids/AbstractSolidBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/blocks/solids/AbstractSolidBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/Main/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/Utils/MapCoordinates.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/data/BlockFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/data/blocks/AbstractBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/data/blocks/AirBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/data/blocks/NullBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/data/blocks/SandBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/data/blocks/WaterBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/data/blocks/interfaces/Block.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/data/blocks/interfaces/IronSwordInterfaceBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/data/blocks/interfaces/SmeltableBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/data/blocks/solids/AbstractSolidBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/data/blocks/solids/EarthBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/data/blocks/solids/GlassBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/data/blocks/solids/IronSwordBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/data/blocks/solids/RawIronBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/p2lab-mc.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/visual/Furnace.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/visual/MainGui.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p2lab-mc/visual/Map.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual/Furnace.java" beforeDir="false" afterPath="$PROJECT_DIR$/visual/Furnace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual/MainGui.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/visual/Map.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2gBALDjP2EG60B22hfrsjn7Ymcp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/mirco/uni/Programmazione 2/IntelliJ/SimpleMinecraft",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="487578f7-76b5-4285-afa1-30fac3b144dd" name="Changes" comment="" />
+      <created>1715160538616</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715160538616</updated>
+      <workItem from="1715160539667" duration="264000" />
+      <workItem from="1715258279770" duration="1695000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

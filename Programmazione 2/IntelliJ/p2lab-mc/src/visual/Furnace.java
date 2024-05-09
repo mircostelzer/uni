@@ -1,6 +1,5 @@
 package visual;
 
-import Utils.MapCoordinates;
 import data.BlockFactory;
 import data.blocks.interfaces.Block;
 import data.blocks.interfaces.SmeltableBlock;
@@ -11,34 +10,37 @@ class Furnace {
     private Block furnaceOutput;
     private BlockFactory bf;
 
-    public Furnace(BlockFactory bf){
+    Furnace(BlockFactory bf){
         this.bf = bf;
-        furnaceInput = this.bf.nullBlock();
-        furnaceOutput = furnaceInput.smelt();
+        this.reset_furnace();
     }
 
     public void display_on_out(){
         System.out.println("|| "+this.furnaceInput.display()+" --> "+this.furnaceOutput.display()+" ||");
     }
 
-    public void move_into_furnace(MapCoordinates c, Map m) {
-        if (!c.is_inbound()){
-            return;
-        }
-        if (m.is_smeltable(c)){
-            SmeltableBlock sb = m.gimme_smeltable(c);
-            this.furnaceInput = sb;
-            this.furnaceOutput = sb.smelt();
-        }else{
-            System.out.println("Selection is not smeltable");
-        }
+    private void reset_furnace(){
+        this.furnaceInput = bf.nullBlock();
+        this.furnaceOutput = bf.nullBlock();
     }
-    public void smelt() {
+
+    public void setInput(SmeltableBlock sb){
+        this.furnaceInput = sb;
+        this.furnaceOutput = sb.smelt();
+    }
+    public SmeltableBlock getInput(){
+        SmeltableBlock s = this.furnaceInput;
+        this.reset_furnace();
+        return s;
+    }
+
+    public Block smelt() {
         if (!(furnaceInput instanceof NullBlock)) {
             System.out.println("Smelting "+furnaceInput.toString()+" into "+furnaceOutput.toString());
-            this.furnaceInput = bf.nullBlock();
-            System.out.println("No inventory where to store the smelted "+furnaceOutput.toString());
-            this.furnaceOutput = bf.nullBlock();
+            Block r = this.furnaceOutput;
+            this.reset_furnace();
+            return r;
         }
+        return furnaceInput;
     }
 }
