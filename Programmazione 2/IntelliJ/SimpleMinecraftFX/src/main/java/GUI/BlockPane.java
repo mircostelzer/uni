@@ -1,6 +1,10 @@
 package GUI;
 
+import data.blocks.SandBlock;
+import data.blocks.WaterBlock;
 import data.blocks.interfaces.Block;
+import data.blocks.solids.GlassBlock;
+import data.blocks.solids.RawIronBlock;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -24,6 +28,8 @@ public class BlockPane extends StackPane {
     public BlockPane(Block b) {
         super();
         this.content = b;
+        this.intialise();
+        this.getChildren().addAll(rectangle, text);
     }
 
     private void intialise() {
@@ -31,10 +37,34 @@ public class BlockPane extends StackPane {
         this.rectangle.setHeight(DIM_SQUARE);
         this.rectangle.setWidth(DIM_SQUARE);
         this.rectangle.setStroke(BLOCK_BORDER);
-        this.text = new Text();
-        text.setFill(FONT_FILL);
+        this.rectangle.setFill(this.blockColor(this.content));
+        this.text = new Text(this.content.toString());
+        this.text.setFill(FONT_FILL);
         this.text.setFont(Font.font(FONT_NAME, FONT_WEIGHT, FONT_SIZE));
         this.text.setStroke(FONT_BORDER);
+    }
+
+    private Color blockColor(Block b) {
+        if (this.content instanceof SandBlock) {
+            return Color.SANDYBROWN;
+        }
+        else if (this.content instanceof GlassBlock) {
+            return Color.AZURE;
+        }
+        else if (this.content instanceof WaterBlock) {
+            return Color.AQUA;
+        }
+        else if (this.content instanceof RawIronBlock) {
+            return Color.GRAY;
+        }
+        else {
+            return Color.WHITE;
+        }
+    }
+
+    public void changeBlock(Block b) {
+        this.content = b;
+        intialise();
     }
 
 }
