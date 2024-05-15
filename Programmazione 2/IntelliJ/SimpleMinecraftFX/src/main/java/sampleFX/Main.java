@@ -1,6 +1,8 @@
 package sampleFX;
 
 import GUI.BlockPane;
+import GUI.InventoryPane;
+import GUI.MapPane;
 import data.blocks.SandBlock;
 import data.blocks.WaterBlock;
 import data.blocks.solids.GlassBlock;
@@ -12,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import visual.Inventory;
 
 import java.util.Scanner;
 
@@ -27,10 +30,10 @@ public class Main extends Application {
 //                System.out.println("Hello World!");
 //            }
 //        });
-        BlockPane root = new BlockPane(new SandBlock());
 //        root.getChildren().add(btn);
-        Scene scene = new Scene(root, 300, 250);
-        primaryStage.setTitle("Hello World!");
+        MapPane mapPane = new MapPane();
+        Scene scene = new Scene(mapPane, 300, 250);
+        primaryStage.setTitle("Minecraft");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

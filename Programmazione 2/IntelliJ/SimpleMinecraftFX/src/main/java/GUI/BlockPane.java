@@ -38,7 +38,7 @@ public class BlockPane extends StackPane {
         this.rectangle.setWidth(DIM_SQUARE);
         this.rectangle.setStroke(BLOCK_BORDER);
         this.rectangle.setFill(this.blockColor(this.content));
-        this.text = new Text(this.content.toString());
+        this.text = new Text(""+this.content.display()+"");
         this.text.setFill(FONT_FILL);
         this.text.setFont(Font.font(FONT_NAME, FONT_WEIGHT, FONT_SIZE));
         this.text.setStroke(FONT_BORDER);
