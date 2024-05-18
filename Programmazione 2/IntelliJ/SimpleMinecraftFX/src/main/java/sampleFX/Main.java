@@ -3,6 +3,7 @@ package sampleFX;
 import GUI.BlockPane;
 import GUI.InventoryPane;
 import GUI.MapPane;
+import data.blocks.AirBlock;
 import data.blocks.SandBlock;
 import data.blocks.WaterBlock;
 import data.blocks.solids.GlassBlock;
@@ -31,8 +32,10 @@ public class Main extends Application {
 //            }
 //        });
 //        root.getChildren().add(btn);
-        MapPane mapPane = new MapPane();
-        Scene scene = new Scene(mapPane, 300, 250);
+        InventoryPane inventoryPane = new InventoryPane();
+        inventoryPane.addBlock(new AirBlock());
+        inventoryPane.addBlock(new GlassBlock());
+        Scene scene = new Scene(inventoryPane, 300, 250);
         primaryStage.setTitle("Minecraft");
         primaryStage.setScene(scene);
         primaryStage.show();

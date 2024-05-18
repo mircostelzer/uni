@@ -16,7 +16,6 @@ line(A, B, C) :- ordered_line(B, A, C).
 line(A, B, C) :- ordered_line(B, C, A).
 line(A, B, C) :- ordered_line(C, A, B).
 line(A, B, C) :- ordered_line(C, B, A).
-move(A) :- good(A), empty(A).
 full(A) :- x(A).
 full(A) :- o(A).
 empty(A) :- not(full(A)).
@@ -29,11 +28,11 @@ same(A, A).
 different(A, B) :- not(same(A, B)).
 strong_build(A) :- x(B), line(A, B, C), empty(C), not(risky(C)).
 risky(C) :- o(D), line(C, D, E), empty(E).
-weak_build(A) :- x(B), line(A, B, C), empty(C),
-not(double_risky(C)).
 double_risky(C) :- o(D), o(E), different(D, E), line(C, D, F),
 line(C, E, G), empty(F), empty(G).
-% strategies:
+weak_build(A) :- x(B), line(A, B, C), empty(C),
+not(double_risky(C)).
+
 good(A) :- win(A).
 good(A) :- split(A).
 good(A) :- block_win(A).
@@ -49,18 +48,19 @@ good(4).
 good(6).
 good(8).
 
+move(A) :- good(A), empty(A).
 all_full :- full(1), full(2), full(3), full(4), full(5), full(6),
 full(7), full(8), full(9).
 done :- line(A,B,C), x(A), x(B), x(C), write('I won'), nl.
 done :- all_full, write('Draw'), nl.
-% User's move
+
 getmove :- repeat, write('Please enter a move: '), read(X), empty(X),
 asserta(o(X)).
 makemove :- move(X), !, asserta(x(X)).
 makemove :- all_full.
-% Computer's move
+
 respond :- line(A,B,C), o(A), o(B), o(C),
-printboard, write('You won.'), nl. %Shouldn't ever happen!
+printboard, write('You won.'), nl. 
 respond :- makemove, printboard, done.
 printsquare(N) :- o(N), write( o ).
 printsquare(N) :- x(N), write( x ).
@@ -69,7 +69,7 @@ printboard :- printsquare(1), printsquare(2), printsquare(3), nl,
 printsquare(4), printsquare(5), printsquare(6), nl,
 printsquare(7), printsquare(8), printsquare(9), nl.
 
-% Clear everything to start a new game.
+
 clear :- retractall(x(_)), retractall(o(_)),
 write('Board:'), nl,
 write(' 1 '), write(' 2 '),write(' 3 '), nl,
@@ -78,5 +78,5 @@ write(' 7 '), write(' 8 '),write(' 9 '), nl,
 write('You will be o, computer will be x. '), nl,
 write('Enter moves by giving a number (1-9) followed by a period.'),nl,
 nl.
-% main goal:
+
 play :- clear, repeat, getmove, respond.

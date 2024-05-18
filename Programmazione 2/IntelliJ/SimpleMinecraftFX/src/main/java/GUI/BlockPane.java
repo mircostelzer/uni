@@ -38,23 +38,23 @@ public class BlockPane extends StackPane {
         this.rectangle.setWidth(DIM_SQUARE);
         this.rectangle.setStroke(BLOCK_BORDER);
         this.rectangle.setFill(this.blockColor(this.content));
-        this.text = new Text(""+this.content.display()+"");
+        this.text = new Text(this.content.display()+"");
         this.text.setFill(FONT_FILL);
         this.text.setFont(Font.font(FONT_NAME, FONT_WEIGHT, FONT_SIZE));
         this.text.setStroke(FONT_BORDER);
     }
 
     private Color blockColor(Block b) {
-        if (this.content instanceof SandBlock) {
+        if (b instanceof SandBlock) {
             return Color.SANDYBROWN;
         }
-        else if (this.content instanceof GlassBlock) {
+        else if (b instanceof GlassBlock) {
             return Color.AZURE;
         }
-        else if (this.content instanceof WaterBlock) {
+        else if (b instanceof WaterBlock) {
             return Color.AQUA;
         }
-        else if (this.content instanceof RawIronBlock) {
+        else if (b instanceof RawIronBlock) {
             return Color.GRAY;
         }
         else {
