@@ -1,4 +1,4 @@
-package visual;
+package visual.textual;
 
 import Utils.BlockErrorException;
 import Utils.Coordinates;
@@ -16,8 +16,8 @@ public class Map {
     private static int rows;
     private static int columns;
 
-    private static final int DEFAULT_ROWS = 20;
-    private static final int DEFAULT_COLUMNS = 40;
+    public static final int DEFAULT_ROWS = 5;
+    public static final int DEFAULT_COLUMNS = 10;
 
     private Block[][] grid;
     private BlockFactory bf;

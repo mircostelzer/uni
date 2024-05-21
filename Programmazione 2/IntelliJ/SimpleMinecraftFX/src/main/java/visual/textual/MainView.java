@@ -1,8 +1,7 @@
-package visual;
+package visual.textual;
 
 import Utils.BlockErrorException;
 import Utils.Coordinates;
-import Utils.WrongCoordinatesException;
 import data.BlockFactory;
 import data.blocks.NullBlock;
 import data.blocks.interfaces.Block;

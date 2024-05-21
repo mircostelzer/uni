@@ -1,10 +1,11 @@
-package GUI;
+package visual.GUI;
 
 import data.blocks.SandBlock;
 import data.blocks.WaterBlock;
 import data.blocks.interfaces.Block;
 import data.blocks.solids.GlassBlock;
 import data.blocks.solids.RawIronBlock;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -29,19 +30,19 @@ public class BlockPane extends StackPane {
         super();
         this.content = b;
         this.intialise();
-        this.getChildren().addAll(rectangle, text);
     }
 
     private void intialise() {
-        this.rectangle = new Rectangle();
-        this.rectangle.setHeight(DIM_SQUARE);
-        this.rectangle.setWidth(DIM_SQUARE);
+        this.rectangle = new Rectangle(DIM_SQUARE, DIM_SQUARE);
         this.rectangle.setStroke(BLOCK_BORDER);
         this.rectangle.setFill(this.blockColor(this.content));
         this.text = new Text(this.content.display()+"");
         this.text.setFill(FONT_FILL);
         this.text.setFont(Font.font(FONT_NAME, FONT_WEIGHT, FONT_SIZE));
         this.text.setStroke(FONT_BORDER);
+        super.getChildren().addAll(this.rectangle, this.text);
+        Tooltip tip = new Tooltip(this.content.toString());
+        Tooltip.install(this, tip);
     }
 
     private Color blockColor(Block b) {
@@ -64,7 +65,6 @@ public class BlockPane extends StackPane {
 
     public void changeBlock(Block b) {
         this.content = b;
-        intialise();
     }
 
 }

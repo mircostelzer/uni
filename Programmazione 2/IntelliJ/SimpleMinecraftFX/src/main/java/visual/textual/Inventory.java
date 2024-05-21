@@ -1,4 +1,4 @@
-package visual;
+package visual.textual;
 
 import Utils.BlockErrorException;
 import data.blocks.utils.AlphabeticalBlockComparator;
