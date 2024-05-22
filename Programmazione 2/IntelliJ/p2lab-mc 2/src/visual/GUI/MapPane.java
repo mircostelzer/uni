@@ -35,7 +35,7 @@ public class MapPane extends GridPane {
         //BlockPane bp = new BlockPane(b);
         //super.add(bp, c.getCol(), c.getRow());
         BlockPane toremove = this.getBlockAtCoord(c);
-        if (toremove == null){
+        if (toremoreturn (BlockPane) MapPane.getElementAt(this, x, y);ve == null){
             super.add(new BlockPane(b), c.getCol(), c.getRow());
         }else {
             toremove.changeBlock(b);

@@ -2,7 +2,6 @@ package visual.GUI;
 
 import Utils.Coordinates;
 import data.BlockFactory;
-import data.blocks.AirBlock;
 import data.blocks.interfaces.Block;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
@@ -36,7 +35,10 @@ public class MapPane extends GridPane {
     public BlockPane get_block_at_coord(Coordinates coords) {
         int x = coords.getX();
         int y = coords.getY();
-        return (BlockPane) MapPane.getElementAt(this, x, y);
+        if (x >= 0 && y >= 0 && x < Map.DEFAULT_ROWS && y < Map.DEFAULT_COLUMNS) {
+            return (BlockPane) MapPane.getElementAt(this, x, y);
+        }
+        return null;
     }
 
     public void setCell(Block b, Coordinates coords) {

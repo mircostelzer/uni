@@ -19,8 +19,26 @@ TextIO.closeIn infile;
 
 (* --------------------------------------- *)
 
-fun reverseList([]) = []
-| reverseList(x :: xs) = reverseList(xs) @ [x];
+
+fun sizeList(nil) = 0
+| sizeList(x::xs) = 1 + sizeList(xs);
+
+fun sublist_left(nil, _) = nil
+| sublist_left(L, 0) = nil
+| sublist_left(x::xs, k) = x::sublist_left(xs, k-1);
+
+fun sublist_right(nil, _) = nil
+| sublist_right(L, 0) = L
+| sublist_right(x::xs, k) = sublist_right(xs, k-1);
+
+fun reverseList1(nil, _, _) = nil
+| reverseList1(L, 0, _) = L
+| reverseList1(x::xs, n, k) = if (k = n div 2)
+    then ((sublist_left(x::xs, k)))@(reverseList1(sublist_right(x::xs, k), k, 0))
+else reverseList1(xs, n, k+1)@[x];
+
+fun reverseList(L) = reverseList1(L, sizeList(L), 0);
+
 
 fun charToInt(a) = ord(a)-ord(#"0");
 
@@ -42,12 +60,10 @@ end;
 
 val numList = getNumList(stringList);
 
+reverseList(numList);
+
 
 (* --------------------------- *)
-
-fun sizeList(nil) = 0
-| sizeList(x::xs) = 1 + sizeList(xs);
-
 
 fun maxInd1(nil, _, _, ind, _) = ind
 | maxInd1(x::xs, i, k, ind, maxx) = 
@@ -58,30 +74,28 @@ else ind;
 
 fun maxInd(L, k) = maxInd1(L, 0, k, 0, 0);
 
-fun sublist_left(nil, _) = nil
-| sublist_left(L, 0) = nil
-| sublist_left(x::xs, k) = x::sublist_left(xs, k-1);
-
-fun sublist_right(nil, _) = nil
-| sublist_right(L, 0) = L
-| sublist_right(x::xs, k) = sublist_right(xs, k-1);
-
 fun flip(nil, _) = nil
-| flip(L, k) = reverseList(sublist_left(L, k))@sublist_right(L, k);
+| flip(L, k) = (reverseList(sublist_left(L, k)))@sublist_right(L, k);
 
 fun pancake_sort1(nil, _) = nil
-|   pancake_sort1(L, n) = 
+| pancake_sort1(L, n) = 
 if (n<=1) then L
-else 
-let 
-    val max_ind = maxInd(L, n)
+else
+let
+    val max_i = maxInd(L, n-1)
+in
+    pancake_sort1(flip(flip(L, max_i), n-1), n-1)
+end;
+
+(* let 
+    val max_ind = maxInd(L, n-1)
     val next_n = n-1
 in
 if (max_ind<>next_n) then 
     if (max_ind<>0) then pancake_sort1(flip(L, max_ind), next_n)
     else pancake_sort1(flip(L, next_n), next_n)
 else pancake_sort1(L, next_n)
-end;
+end; *)
 
 fun pancake_sort(L) = pancake_sort1(L, sizeList(L));
 

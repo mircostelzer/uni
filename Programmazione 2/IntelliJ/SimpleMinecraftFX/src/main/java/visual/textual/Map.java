@@ -16,7 +16,7 @@ public class Map {
     private static int rows;
     private static int columns;
 
-    public static final int DEFAULT_ROWS = 5;
+    public static final int DEFAULT_ROWS = 10;
     public static final int DEFAULT_COLUMNS = 10;
 
     private Block[][] grid;
