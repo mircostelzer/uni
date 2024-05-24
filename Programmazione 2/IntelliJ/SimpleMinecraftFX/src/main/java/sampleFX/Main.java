@@ -14,24 +14,16 @@ import visual.GUI.MapPane;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-//        Button btn = new Button();
-//        btn.setText("Say 'Hello World'");
-//        btn.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//                System.out.println("Hello World!");
-//            }
-//        });
-//        root.getChildren().add(btn);
+
         MainGui mainGui = new MainGui();
-        Scene scene = new Scene(mainGui, 300, 250);
+        Scene scene = new Scene(mainGui, 800, 510);
         primaryStage.setTitle("Minecraft");
         primaryStage.setScene(scene);
+        // primaryStage.setFullScreen(true);
         primaryStage.show();
     }
 
     public static void main(String[] args) {
         launch();
-
     }
 }

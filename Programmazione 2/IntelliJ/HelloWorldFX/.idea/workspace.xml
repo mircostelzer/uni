@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ebd92ba-b6ae-4065-ac34-a3693fa65f87" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SimpleMinecraft" beforeDir="false" afterPath="$PROJECT_DIR$/../SimpleMinecraft" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SimpleMinecraft/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SimpleMinecraft/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SimpleMinecraft/src/data/blocks/interfaces/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SimpleMinecraft/src/data/blocks/interfaces/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Programmazione Funzionale/prova.pl" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Programmazione Funzionale/prova.pl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SimpleMinecraftFX/src/main/java/sampleFX/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SimpleMinecraftFX/src/main/java/sampleFX/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SimpleMinecraftFX/src/main/java/visual/GUI/FurnacePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SimpleMinecraftFX/src/main/java/visual/GUI/FurnacePane.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +43,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/mirco/uni/Programmazione 2/IntelliJ/HelloWorldFX",
+    "last_opened_file_path": "/home/mirco/uni/Programmazione 2/IntelliJ/Patatino",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,6 +75,7 @@
       <workItem from="1713464578256" duration="1728000" />
       <workItem from="1713466340099" duration="126000" />
       <workItem from="1714557408484" duration="26000" />
+      <workItem from="1716380982926" duration="931000" />
     </task>
     <servers />
   </component>

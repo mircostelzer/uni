@@ -1,7 +1,9 @@
 package visual.GUI;
 
 import data.BlockFactory;
+import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class FurnacePane extends VBox {
@@ -16,6 +18,9 @@ public class FurnacePane extends VBox {
         this.addArrow();
         this.output = new BlockPane(new BlockFactory().nullBlock());
         super.getChildren().addAll(this.output);
+
+        this.setAlignment(Pos.TOP_CENTER);
+        this.setSpacing(10);
     }
 
     private void addText() {
@@ -25,6 +30,7 @@ public class FurnacePane extends VBox {
 
     private void addArrow() {
         Text arrow = new Text("-->");
+        arrow.setRotate(90);
         super.getChildren().add(arrow);
     }
 }
