@@ -13,4 +13,8 @@ public class Card {
     public void print() {
         System.out.println(rank + " of " + suit);
     }
+
+    public boolean equals(Card card) {
+        return rank == card.rank && suit == card.suit;
+    }
 }

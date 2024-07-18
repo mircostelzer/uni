@@ -38,5 +38,9 @@ public class Deck {
             show.print();
         }
     }
+
+    public Card getCard(int i) {
+        return cards.get(i);
+    }
 }
 
