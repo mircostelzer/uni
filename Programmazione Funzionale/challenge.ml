@@ -31,14 +31,8 @@ fun sublist_right(nil, _) = nil
 | sublist_right(L, 0) = L
 | sublist_right(x::xs, k) = sublist_right(xs, k-1);
 
-fun reverseList1(nil, _, _) = nil
-| reverseList1(L, 0, _) = L
-| reverseList1(x::xs, n, k) = if (k = n div 2)
-    then ((sublist_left(x::xs, k)))@(reverseList1(sublist_right(x::xs, k), k, 0))
-else reverseList1(xs, n, k+1)@[x];
-
-fun reverseList(L) = reverseList1(L, sizeList(L), 0);
-
+fun reverseList(nil) = nil
+|   reverseList(x::xs) = reverseList(xs)@[x]; 
 
 fun charToInt(a) = ord(a)-ord(#"0");
 
