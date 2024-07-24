@@ -3,6 +3,7 @@ package visual.GUI;
 import Utils.Coordinates;
 import data.BlockFactory;
 import data.blocks.interfaces.Block;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import visual.textual.Map;
@@ -11,6 +12,7 @@ public class MapPane extends GridPane {
 
     public MapPane() {
         super();
+        this.setAlignment(Pos.CENTER);
         this.initialise_air();
     }
 

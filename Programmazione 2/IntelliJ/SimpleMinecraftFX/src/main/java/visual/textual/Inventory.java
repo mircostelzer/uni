@@ -18,6 +18,10 @@ public class Inventory {
         comparator = new BlockComparator();
     }
 
+    public ListIterator<Block> getIterator() {
+        return inventory.listIterator();
+    }
+
     public void display_inventory() {
         for (Iterator<Block> i = this.inventory.iterator(); i.hasNext(); ) {
             Block b = i.next();
@@ -41,8 +45,7 @@ public class Inventory {
 
     public SmeltableBlock get_smeltable_item(int i) throws BlockErrorException {
         if (this.is_smeltable(i)) {
-            Block b = this.inventory.get(i);
-            this.inventory.remove(i);
+            Block b = this.inventory.remove(i);
             return (SmeltableBlock)b;
             // alternative
             // return (SmeltableBlock) ((ArrayList<Block>) this.inventory_list).remove(index);

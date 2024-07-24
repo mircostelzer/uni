@@ -16,7 +16,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         MainGui mainGui = new MainGui();
-        Scene scene = new Scene(mainGui, 800, 510);
+        Scene scene = new Scene(mainGui, 800, 560);
         primaryStage.setTitle("Minecraft");
         primaryStage.setScene(scene);
         // primaryStage.setFullScreen(true);

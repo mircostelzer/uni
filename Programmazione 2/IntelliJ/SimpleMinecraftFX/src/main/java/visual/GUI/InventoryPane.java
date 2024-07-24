@@ -23,11 +23,13 @@ public class InventoryPane extends HBox {
     }
 
     private void initialise() {
-        this.text = new Text("Inventory: ");
+        this.text = new Text("Inventory:");
+        this.text.setFont(Font.font("VERDANA", BlockPane.FONT_WEIGHT, 8));
         StackPane sp = new StackPane();
         Rectangle rect = new Rectangle(BlockPane.DIM_SQUARE, BlockPane.DIM_SQUARE);
         rect.setFill(Color.TRANSPARENT);
         rect.setStroke(Color.TRANSPARENT);
+        rect.setStroke(BlockPane.BLOCK_BORDER);
         sp.getChildren().add(rect);
         sp.getChildren().add(text);
         super.getChildren().add(sp);

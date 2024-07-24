@@ -20,11 +20,11 @@ public class BlockPane extends StackPane {
 
     public static final int DIM_SQUARE = 50;
     private static final String FONT_NAME = "Verdana";
-    private static final int FONT_SIZE = 18;
-    private static final FontWeight FONT_WEIGHT = FontWeight.BOLD;
-    private static final Color BLOCK_BORDER = Color.BLACK;
-    private static final Color FONT_FILL = Color.BLACK;
-    private static final Color FONT_BORDER = Color.BLACK;
+    public static final int FONT_SIZE = 18;
+    public static final FontWeight FONT_WEIGHT = FontWeight.BOLD;
+    public static final Color BLOCK_BORDER = Color.BLACK;
+    public static final Color FONT_FILL = Color.BLACK;
+    public static final Color FONT_BORDER = Color.BLACK;
 
     public BlockPane(Block b) {
         super();

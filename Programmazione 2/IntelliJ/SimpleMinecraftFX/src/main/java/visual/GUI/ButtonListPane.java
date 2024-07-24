@@ -27,7 +27,7 @@ public class ButtonListPane extends VBox {
     public ButtonListPane(MainGui gui) {
         super();
         this.mg = gui;
-
+        super.setSpacing(10);
         this.pick = new Button("Pick");
         this.pick_row = new TextField();
         this.pick_row.setMaxWidth(40);
