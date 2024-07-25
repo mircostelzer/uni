@@ -13,22 +13,29 @@ public class FurnacePane extends VBox {
     public FurnacePane() {
         super();
         this.addText();
-        this.input = new BlockPane(new BlockFactory().nullBlock());
-        super.getChildren().add(this.input);
+        this.setInput(new BlockPane(new BlockFactory().nullBlock()));
         this.addArrow();
-        this.output = new BlockPane(new BlockFactory().nullBlock());
-        super.getChildren().addAll(this.output);
-
+        this.setOutput(new BlockPane(new BlockFactory().nullBlock()));
         this.setAlignment(Pos.TOP_CENTER);
         this.setSpacing(10);
     }
 
-    private void addText() {
+    public void setInput(BlockPane b) {
+        this.input = b;
+        super.getChildren().add(this.input);
+    }
+
+    public void setOutput(BlockPane b) {
+        this.output = b;
+        super.getChildren().addAll(this.output);
+    }
+
+    public void addText() {
         Text text = new Text("Furnace");
         super.getChildren().add(text);
     }
 
-    private void addArrow() {
+    public void addArrow() {
         Text arrow = new Text("-->");
         arrow.setRotate(90);
         super.getChildren().add(arrow);

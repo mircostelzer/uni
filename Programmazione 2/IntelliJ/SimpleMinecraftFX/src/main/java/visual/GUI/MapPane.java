@@ -49,7 +49,7 @@ public class MapPane extends GridPane {
             remove.changeBlock(b);
         }
         else {
-            super.add(new BlockPane(b), coords.getX(), coords.getY());
+            super.add(new BlockPane(b), coords.getY(), coords.getX());
         }
     }
 }

@@ -92,7 +92,7 @@ public class Map {
 //        }
 //    }
 
-    private Block getBlock(Coordinates coords) throws WrongCoordinatesException {
+    public Block getBlock(Coordinates coords) throws WrongCoordinatesException {
         if (this.checkCoordinates(coords)) {
             return grid[coords.getX()][coords.getY()];
         }

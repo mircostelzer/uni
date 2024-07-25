@@ -39,4 +39,8 @@ public abstract class AbstractBlock implements Block {
         return "["+this.display()+"]";
     }
 
+    public int compareTo(Block block) {
+        return 0;
+    }
+
 }

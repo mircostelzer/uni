@@ -1,6 +1,6 @@
 package data.blocks.interfaces;
 
-public interface Block extends InventoryBlock{
+public interface Block extends InventoryBlock {
 
     char display();
 
