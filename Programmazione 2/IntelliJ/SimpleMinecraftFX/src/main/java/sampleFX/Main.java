@@ -1,9 +1,6 @@
 package sampleFX;
 
-import Controllers.FurnaceSimpleController;
-import Controllers.InventorySimpleController;
-import Controllers.MapSimpleController;
-import Controllers.SimpleController;
+import Controllers.*;
 import data.BlockFactory;
 import visual.GUI.FurnacePane;
 import visual.GUI.InventoryPane;
@@ -16,6 +13,7 @@ import visual.GUI.MainGui;
 import visual.GUI.MapPane;
 import visual.textual.Furnace;
 import visual.textual.Inventory;
+import visual.textual.MainView;
 import visual.textual.Map;
 
 
@@ -24,14 +22,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-//        MainGui mainGui = new MainGui();
-//        Scene scene = new Scene(mainGui, 800, 560);
-        MapPane mapPane = new MapPane();
-        Map map = new Map();
-        MapSimpleController mapController = new MapSimpleController(map, mapPane);
+        MainSimpleController mc = new MainSimpleController(new MainView());
+        MainGui layout = mc.getMainGui();
+        Scene scene = new Scene(layout);
 
-
-        Scene scene = new Scene(mapPane);
         primaryStage.setTitle("Minecraft");
         primaryStage.setScene(scene);
         // primaryStage.setFullScreen(true);

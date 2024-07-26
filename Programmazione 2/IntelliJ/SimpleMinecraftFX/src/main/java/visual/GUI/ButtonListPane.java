@@ -1,5 +1,6 @@
 package visual.GUI;
 
+import Controllers.MainSimpleController;
 import Utils.Coordinates;
 import data.BlockFactory;
 import data.blocks.SandBlock;
@@ -23,10 +24,12 @@ public class ButtonListPane extends VBox {
     private Button move_back;
     private Button toggle_inventory;
     private MainGui mg;
+    private MainSimpleController mainController;
 
     public ButtonListPane(MainGui gui) {
         super();
         this.mg = gui;
+        this.mainController = mg.getMainController();
         super.setSpacing(10);
         this.pick = new Button("Pick");
         this.pick_row = new TextField();
@@ -43,6 +46,34 @@ public class ButtonListPane extends VBox {
         this.smelt = new Button("Smelt");
         this.move_back = new Button("Move back");
         this.toggle_inventory = new Button("Toggle inventory sorting");
+
+        this.pick.setOnMouseClicked(mouseEvent -> {
+            int x = Integer.parseInt(pick_row.getText());
+            int y = Integer.parseInt(pick_col.getText());
+            this.pick_row.clear();
+            this.pick_col.clear();
+
+            this.mainController.pick_up_block(new Coordinates(x, y));
+        });
+
+        this.move_to_furnace.setOnMouseClicked(mouseEvent -> {
+            int i = Integer.parseInt(inventory_ind.getText());
+            this.inventory_ind.clear();
+
+            this.mainController.move_into_furnace_from_inventory(i);
+        });
+
+        this.smelt.setOnMouseClicked(mouseEvent -> {
+            this.mainController.smelt();
+        });
+
+        this.move_back.setOnMouseClicked(mouseEvent -> {
+            this.mainController.move_into_inventory_from_furnace();
+        });
+
+        this.toggle_inventory.setOnMouseClicked(mouseEvent -> {
+            this.mainController.toggle_inventory_comparator();
+        });
 
 
         super.getChildren().addAll(pick_box, inventory_box, smelt, move_back, toggle_inventory);

@@ -72,4 +72,16 @@ public class MainView {
     public void toggle_inventory_comparator() {
         this.inventory.switch_comparator();
     }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public Furnace getFurnace() {
+        return furnace;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
 }
