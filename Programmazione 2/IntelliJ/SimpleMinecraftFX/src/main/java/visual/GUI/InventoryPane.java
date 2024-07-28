@@ -22,13 +22,13 @@ public class InventoryPane extends HBox {
     }
 
     public void initialise() {
-        this.addInventoryText();
+        this.addInventoryText("t");
         this.inventory = new HBox();
         super.getChildren().add(this.inventory);
     }
 
-    public void addInventoryText() {
-        this.text = new Text("Inventory:");
+    public void addInventoryText(String t) {
+        this.text = new Text("Inventory("+t+":");
         this.text.setFont(Font.font("VERDANA", BlockPane.FONT_WEIGHT, 8));
         this.text.setTextAlignment(TextAlignment.CENTER);
         StackPane sp = new StackPane();
@@ -38,7 +38,7 @@ public class InventoryPane extends HBox {
         rect.setStroke(BlockPane.BLOCK_BORDER);
         sp.getChildren().add(rect);
         sp.getChildren().add(text);
-        sp.setAlignment(Pos.CENTER_LEFT);
+        sp.setAlignment(Pos.CENTER);
         super.getChildren().add(sp);
     }
 

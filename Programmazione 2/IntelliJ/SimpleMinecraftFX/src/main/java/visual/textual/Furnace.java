@@ -16,12 +16,6 @@ public class Furnace {
         this.output = this.bf.nullBlock();
     }
 
-
-
-    public void display_on_out() {
-        System.out.println("|| " + this.input.display() + "  ->  " + this.output.display() + " ||");
-    }
-
     public Block smelt() {
         Block b = this.input.smelt();
         this.input = this.bf.nullBlock();

@@ -16,8 +16,8 @@ public class Map {
     private static int rows;
     private static int columns;
 
-    public static final int DEFAULT_ROWS = 10;
-    public static final int DEFAULT_COLUMNS = 10;
+    public static final int DEFAULT_ROWS = 5;
+    public static final int DEFAULT_COLUMNS = 5;
 
     private Block[][] grid;
     private BlockFactory bf;
@@ -57,25 +57,8 @@ public class Map {
         this.addRandomBlocks();
     }
 
-    public void display_on_out() {
-        System.out.print("  ");
-        for (int i = 0; i< columns; i++) {
-            System.out.print("=");
-        }
-        System.out.println();
-        for (int i = 0; i< rows; i++) {
-            System.out.print("||");
-            for (int j = 0; j< columns; j++) {
-                System.out.print(grid[i][j].display());
-            }
-            System.out.print("||");
-            System.out.println();
-        }
-        System.out.print("  ");
-        for (int i = 0; i< columns; i++) {
-            System.out.print("=");
-        }
-        System.out.println();
+    public Block[][] getGrid() {
+        return this.grid;
     }
 
     public boolean checkCoordinates(Coordinates coords) {

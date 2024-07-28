@@ -20,21 +20,6 @@ public class MainView {
         this.inventory = new Inventory();
     }
 
-    public void display_on_out() {
-        this.map.display_on_out();
-        this.furnace.display_on_out();
-        this.inventory.display_inventory();
-    }
-
-//    public void move_into_furnace_from_map(Coordinates coords) {
-//        SmeltableBlock smeltableBlock = this.map.getSmeltableBlock(coords);
-//        if (!(smeltableBlock instanceof NullBlock)) {
-//            this.furnace.setInput(smeltableBlock);
-//            Block b = this.bf.airBlock();
-//            this.map.insert_at_coords(b, coords);
-//        }
-//    }
-
     public void smelt() {
         Block b = this.furnace.smelt();
         this.inventory.add_block(b);

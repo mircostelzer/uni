@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.Random;
+
 public class MapCoordinates {
     public static final int DIMENSION_COLUMNS = 9;
     public static final int DIMENSION_ROWS = 5;
@@ -23,5 +25,12 @@ public class MapCoordinates {
     }
     public String toString(){
         return "("+this.row+"-"+this.col+")";
+    }
+
+    public static MapCoordinates randomCoords() {
+        Random rand = new Random();
+        int r = rand.nextInt(DIMENSION_ROWS);
+        int c = rand.nextInt(DIMENSION_COLUMNS);
+        return new MapCoordinates(r,c);
     }
 }

@@ -65,7 +65,7 @@ public class BlockPane extends StackPane {
 
     public void changeBlock(Block b) {
         this.content = b;
-        intialise();
+        this.intialise();
     }
 
 }

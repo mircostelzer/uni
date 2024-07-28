@@ -4,6 +4,7 @@ import data.blocks.interfaces.Block;
 import data.blocks.*;
 import data.blocks.interfaces.IronSwordInterfaceBlock;
 import data.blocks.solids.EarthBlock;
+import data.blocks.solids.GlassBlock;
 import data.blocks.solids.RawIronBlock;
 
 import java.util.Random;
@@ -22,6 +23,26 @@ public class BlockFactory {
                 return this.sand_block();
             case 2:
                 return this.earth_block();
+            default:
+                return this.nullBlock();
+        }
+    }
+    public Block truly_random_block() {
+        Random rand = new Random();
+        int r = rand.nextInt(RAND_UPPERBOUND);
+        switch (r){
+            case 0:
+                return this.rawIronBlock();
+            case 1:
+                return this.sand_block();
+            case 2:
+                return this.earth_block();
+            case 3:
+                return this.waterBlock();
+            case 4:
+                return this.default_block();
+            case 5:
+                return new GlassBlock();
             default:
                 return this.nullBlock();
         }
@@ -45,4 +66,5 @@ public class BlockFactory {
     public EarthBlock earth_block(){
         return new EarthBlock();
     }
+
 }

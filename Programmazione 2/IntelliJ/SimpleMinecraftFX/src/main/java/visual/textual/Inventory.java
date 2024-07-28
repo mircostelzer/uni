@@ -22,12 +22,8 @@ public class Inventory {
         return inventory.listIterator();
     }
 
-    public void display_inventory() {
-        for (Iterator<Block> i = this.inventory.iterator(); i.hasNext(); ) {
-            Block b = i.next();
-            System.out.print(b.display_in_inventory());
-        }
-        System.out.println();
+    public Comparator<Block> getComparator() {
+        return this.comparator;
     }
 
     public void add_block(Block b) {

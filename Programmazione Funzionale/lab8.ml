@@ -39,3 +39,9 @@ fun applyList nil _ = nil
 | applyList (F::Fs) x = F(x)::(applyList Fs x);
 
 fun curry F x1 x2 x3 = F(x1, x2, x3);
+
+fun toReal (L) = map real L;
+toReal([1, 2, 3]);
+
+val andB = foldr (fn(x, y) => x andalso y) true;
+andB [true, true, true];

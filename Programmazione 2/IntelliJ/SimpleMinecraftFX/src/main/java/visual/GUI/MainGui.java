@@ -1,21 +1,18 @@
 package visual.GUI;
 
-import Controllers.MainSimpleController;
+import controllers.MainSimpleController;
 import javafx.scene.layout.BorderPane;
-import visual.textual.MainView;
 
 public class MainGui extends BorderPane {
     private MapPane mapPane;
     private ButtonListPane buttons;
     private FurnacePane furnacePane;
     private InventoryPane inventoryPane;
-    private MainSimpleController mainController;
 
     public MainGui(MainSimpleController mainController) {
         super();
-        this.mainController = mainController;
         mapPane = new MapPane();
-        buttons = new ButtonListPane(this);
+        buttons = new ButtonListPane(mainController);
         furnacePane = new FurnacePane();
         inventoryPane = new InventoryPane();
         super.setCenter(mapPane);
@@ -28,10 +25,6 @@ public class MainGui extends BorderPane {
         return this.mapPane;
     }
 
-    public ButtonListPane getButtons() {
-        return this.buttons;
-    }
-
     public FurnacePane getFurnacePane() {
         return this.furnacePane;
     }
@@ -40,7 +33,4 @@ public class MainGui extends BorderPane {
         return this.inventoryPane;
     }
 
-    public MainSimpleController getMainController() {
-        return this.mainController;
-    }
 }

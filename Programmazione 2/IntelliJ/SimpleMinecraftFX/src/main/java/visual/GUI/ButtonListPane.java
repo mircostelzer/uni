@@ -1,16 +1,11 @@
 package visual.GUI;
 
-import Controllers.MainSimpleController;
+import controllers.MainSimpleController;
 import Utils.Coordinates;
-import data.BlockFactory;
-import data.blocks.SandBlock;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import visual.textual.Map;
-import java.util.Random;
 
 public class ButtonListPane extends VBox {
     private TextField pick_row;
@@ -23,13 +18,11 @@ public class ButtonListPane extends VBox {
     private Button smelt;
     private Button move_back;
     private Button toggle_inventory;
-    private MainGui mg;
     private MainSimpleController mainController;
 
-    public ButtonListPane(MainGui gui) {
+    public ButtonListPane(MainSimpleController mc) {
         super();
-        this.mg = gui;
-        this.mainController = mg.getMainController();
+        this.mainController = mc;
         super.setSpacing(10);
         this.pick = new Button("Pick");
         this.pick_row = new TextField();

@@ -25,6 +25,9 @@ public abstract class AbstractBlock implements Block {
     public boolean isPickable(){
         return this.pickable;
     }
+    public boolean isNull(){
+        return (this instanceof NullBlock);
+    }
 
     public String toString(){
         return this.blockname+" ["+this.content+"]";

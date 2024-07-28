@@ -1,7 +1,7 @@
 package main;
 
 import utils.MapCoordinates;
-import visual.textual.MainUI;
+import controller.textual.TextMainUIController;
 
 import java.util.Scanner;
 
@@ -16,8 +16,8 @@ public class Main {
     }
 
     private static void change_at_coords(){
-        MainUI m = new MainUI();
-        m.display_on_out();
+        TextMainUIController m = new TextMainUIController();
+        m.update_and_display();
         for (int i = 0 ; i < INTERACTIONS ; i++){
             System.out.print("Enter row: ");
             Scanner myObj = new Scanner(System.in);
@@ -30,12 +30,12 @@ public class Main {
             System.out.println("Setting Sand for: "+c.toString()+" - attention, it may fall");
             m.change_cell_with_Sand(c);
 
-            m.display_on_out();
+            m.update_and_display();
         }
     }
     private static void test_gravity(){
-        MainUI m = new MainUI(false);
-        m.display_on_out();
+        TextMainUIController m = new TextMainUIController(false);
+        m.update_and_display();
         for (int i = 0 ; i < INTERACTIONS ; i++){
             System.out.print("Enter column where to drop a block: ");
             Scanner myObj = new Scanner(System.in);
@@ -45,12 +45,12 @@ public class Main {
             MapCoordinates c = new MapCoordinates(0,col);
             m.change_cell_with_Sand(c);
 
-            m.display_on_out();
+            m.update_and_display();
         }
     }
     private static void test_smelting(){
-        MainUI m = new MainUI();
-        m.display_on_out();
+        TextMainUIController m = new TextMainUIController();
+        m.update_and_display();
         for (int i = 0 ; i < INTERACTIONS ; i++){
             System.out.print("Enter row and then column, or enter '9' and then '9' for smelting: ");
             Scanner myObj = new Scanner(System.in);
@@ -62,12 +62,12 @@ public class Main {
                 MapCoordinates c = new MapCoordinates(row,col);
                 m.move_into_furnace_from_map(c);
             }
-            m.display_on_out();
+            m.update_and_display();
         }
     }
     private static void test_picking(){
-        MainUI m = new MainUI();
-        m.display_on_out();
+        TextMainUIController m = new TextMainUIController();
+        m.update_and_display();
         for (int i = 0 ; i < INTERACTIONS ; i++){
             System.out.println("Enter row and then column to pick that block");
             System.out.println("Enter '9' and the item number to move the item to the furnace");
@@ -91,7 +91,7 @@ public class Main {
                 MapCoordinates c = new MapCoordinates(row,col);
                 m.pick_up_block(c);
             }
-            m.display_on_out();
+            m.update_and_display();
         }
     }
 }
