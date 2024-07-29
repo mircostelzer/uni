@@ -2,6 +2,7 @@ package visual.textual;
 
 import Utils.BlockErrorException;
 import Utils.Coordinates;
+import Utils.WrongCoordinatesException;
 import data.BlockFactory;
 import data.blocks.NullBlock;
 import data.blocks.interfaces.Block;
@@ -25,14 +26,9 @@ public class MainView {
         this.inventory.add_block(b);
     }
 
-    public void move_into_furnace_from_inventory(int i) {
-        try {
+    public void move_into_furnace_from_inventory(int i) throws BlockErrorException {
             SmeltableBlock b = this.inventory.get_smeltable_item(i);
             this.furnace.setInput(b);
-        }
-        catch (BlockErrorException e) {
-            System.out.println("Not a smeltable block");
-        }
     }
 
     public void move_into_inventory_from_furnace() {
@@ -42,20 +38,19 @@ public class MainView {
         this.furnace.setInput(nullBlock);
     }
 
-    public void pick_up_block(Coordinates coords) {
-        try {
+    public void pick_up_block(Coordinates coords) throws BlockErrorException, WrongCoordinatesException {
             Block pick_up = this.map.gimme_pickable(coords);
             if (!(pick_up instanceof NullBlock)) {
                 this.inventory.add_block(pick_up);
             }
-        }
-        catch (BlockErrorException e) {
-            System.out.println("Block cannot be picked up") ;
-        }
     }
 
     public void toggle_inventory_comparator() {
         this.inventory.switch_comparator();
+    }
+
+    public void add_random_blocks(int n) {
+        this.map.addRandomBlocks(n);
     }
 
     public Map getMap() {

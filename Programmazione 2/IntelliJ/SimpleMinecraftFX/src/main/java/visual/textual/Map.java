@@ -16,8 +16,8 @@ public class Map {
     private static int rows;
     private static int columns;
 
-    public static final int DEFAULT_ROWS = 5;
-    public static final int DEFAULT_COLUMNS = 5;
+    public static final int DEFAULT_ROWS = 10;
+    public static final int DEFAULT_COLUMNS = 10;
 
     private Block[][] grid;
     private BlockFactory bf;
@@ -37,7 +37,7 @@ public class Map {
         }
 
         this.addRiver();
-        this.addRandomBlocks();
+        this.addRandomBlocks(rows * columns/5);
     }
 
     public Map(int r, int c) {
@@ -54,7 +54,7 @@ public class Map {
         }
 
         this.addSea();
-        this.addRandomBlocks();
+        this.addRandomBlocks(rows * columns/5);
     }
 
     public Block[][] getGrid() {
@@ -84,12 +84,9 @@ public class Map {
         }
     }
 
-    private void setBlock(Coordinates coords, Block b) throws WrongCoordinatesException {
+    private void setBlock(Coordinates coords, Block b) {
         if (this.checkCoordinates(coords)) {
             grid[coords.getX()][coords.getY()] = b;
-        }
-        else {
-            throw new WrongCoordinatesException();
         }
     }
 
@@ -105,13 +102,9 @@ public class Map {
     }
 
     private void insert_at_coords(Block b, Coordinates coords) {
-        try {
             this.setBlock(coords, b);
             //this.insert_iter(coords);
             insert_rec(coords);
-        }
-        catch (WrongCoordinatesException e) {
-        }
     }
 
     public void insert_rec(Coordinates coords) {
@@ -120,11 +113,8 @@ public class Map {
 
         if (grid[x][y] instanceof SandBlock) {
             if ((x+1 < rows) && (grid[x+1][y] instanceof TorchBlock) ) {
-                try {
                     this.setBlock(coords, this.bf.airBlock());
                     this.gravity(coords);
-                }
-                catch (WrongCoordinatesException e) {}
                 return;
             }
         }
@@ -189,10 +179,9 @@ public class Map {
 //        }
 //    }
 
-    public void addRandomBlocks() {
+    public void addRandomBlocks(int n) {
         Random rand = new Random();
-        int randomBlocks = rows * columns/5;
-        for (int i=0; i<randomBlocks; i++) {
+        for (int i=0; i<n; i++) {
             Block b = this.bf.randomBlock();
             int row = rand.nextInt(rows);
             int col = rand.nextInt(columns);
@@ -224,31 +213,21 @@ public class Map {
 
     }
 
-    public boolean is_pickable(Coordinates coords) {
-        try {
-            Block b = this.getBlock(coords);
-            return b.is_pickable();
-        }
-        catch (WrongCoordinatesException e){
-            System.out.println("Coordinates are not inbound");
-        }
-        return false;
+    public boolean is_pickable(Coordinates coords) throws WrongCoordinatesException {
+        Block b = this.getBlock(coords);
+        return b.is_pickable();
     }
 
-    public Block gimme_pickable(Coordinates coords) throws BlockErrorException {
+    public Block gimme_pickable(Coordinates coords) throws BlockErrorException, WrongCoordinatesException {
             if (this.is_pickable(coords)) {
-                try {
-                    Block b = this.getBlock(coords);
-                    this.setBlock(coords, this.bf.airBlock());
-                    this.gravity(coords);
-                    return b;
-                }
-                catch (WrongCoordinatesException e) {}
+                Block b = this.getBlock(coords);
+                this.setBlock(coords, this.bf.airBlock());
+                this.gravity(coords);
+                return b;
             }
             else {
-                throw new BlockErrorException();
-            }
-        return this.bf.nullBlock();
+                    throw new BlockErrorException();
+                }
     }
 
     public void gravity(Coordinates coords) {

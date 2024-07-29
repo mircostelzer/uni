@@ -21,7 +21,6 @@ public class InventorySimpleController implements SimpleController {
     @Override
     public void redraw() {
         this.inventoryPane.getChildren().clear();
-        this.inventoryPane.initialise();
         String t = null;
         Comparator<Block> cmp = this.inventory.getComparator();
         if (cmp instanceof BlockComparator) {
@@ -30,7 +29,7 @@ public class InventorySimpleController implements SimpleController {
         else if (cmp instanceof AlphabeticalBlockComparator) {
             t = "a";
         }
-        this.inventoryPane.addInventoryText(t);
+        this.inventoryPane.initialise(t);
         ListIterator<Block> it = this.inventory.getIterator();
         while (it.hasNext()) {
             this.inventoryPane.addBlock(it.next());

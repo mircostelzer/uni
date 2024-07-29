@@ -1,7 +1,10 @@
 package visual.GUI;
 
 import controllers.MainSimpleController;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
+
+import java.awt.event.KeyEvent;
 
 public class MainGui extends BorderPane {
     private MapPane mapPane;

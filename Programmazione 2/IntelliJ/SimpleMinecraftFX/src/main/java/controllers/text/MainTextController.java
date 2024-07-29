@@ -1,6 +1,8 @@
 package controllers.text;
 
+import Utils.BlockErrorException;
 import Utils.Coordinates;
+import Utils.WrongCoordinatesException;
 import visual.printer.FurnacePrinter;
 import visual.printer.InventoryPrinter;
 import visual.printer.MainPrinter;
@@ -36,10 +38,23 @@ public class MainTextController extends AbstractTextController {
         this.mainView.move_into_inventory_from_furnace();
     }
     public void move_into_furnace_from_inventory(int index) {
-        this.mainView.move_into_furnace_from_inventory(index);
+        try {
+            this.mainView.move_into_furnace_from_inventory(index);
+        }
+        catch (BlockErrorException e) {
+            System.out.println("Not a smeltable block");
+        }
     }
     public void pick_up_block(Coordinates c) {
-        this.mainView.pick_up_block(c);
+        try {
+            this.mainView.pick_up_block(c);
+        }
+        catch (BlockErrorException e) {
+            System.out.println("Block cannot be picked up") ;
+        }
+        catch (WrongCoordinatesException e) {
+            System.out.println("Coordinates are not inbound") ;
+        }
     }
     public void toggle_inventory_comparator() {
         this.mainView.toggle_inventory_comparator();

@@ -1,6 +1,10 @@
 package controllers;
 
+import Utils.BlockErrorException;
 import Utils.Coordinates;
+import Utils.WrongCoordinatesException;
+import javafx.scene.control.Alert;
+import javafx.scene.layout.Pane;
 import visual.GUI.MainGui;
 import visual.textual.MainView;
 
@@ -25,6 +29,21 @@ public class MainSimpleController implements SimpleController {
         this.controllersList.add(furnaceController);
         this.controllersList.add(inventoryController);
         this.controllersList.add(mapController);
+
+        this.mainGui.setOnKeyPressed(e -> {
+            switch (e.getCode()) {
+                case S:
+                    this.toggle_inventory_comparator();
+                    break;
+                case N:
+                    this.add_random_blocks(1);
+                    break;
+                case R:
+                    this.add_random_blocks(10);
+                    break;
+                default:
+            }
+        });
     }
 
     public void redraw() {
@@ -46,13 +65,38 @@ public class MainSimpleController implements SimpleController {
     }
 
     public void move_into_furnace_from_inventory(int i) {
-        this.mainView.move_into_furnace_from_inventory(i);
+        try {
+            this.mainView.move_into_furnace_from_inventory(i);
+        }
+        catch (BlockErrorException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("This block doesn't allow this operation");
+            alert.setContentText("Not a smeltable block");
+            alert.showAndWait();
+
+        }
         this.inventoryController.redraw();
         this.furnaceController.redraw();
     }
 
     public void pick_up_block(Coordinates coords) {
-        this.mainView.pick_up_block(coords);
+        try {
+            this.mainView.pick_up_block(coords);
+        }
+        catch (BlockErrorException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("This block doesn't allow this operation");
+            alert.setContentText("This block cannot be picked up");
+            alert.showAndWait();
+        }
+        catch (WrongCoordinatesException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Coordinates are not inbound");
+            alert.showAndWait();
+        }
         this.mapController.redraw();
         this.inventoryController.redraw();
     }
@@ -60,6 +104,11 @@ public class MainSimpleController implements SimpleController {
     public void toggle_inventory_comparator() {
         this.mainView.toggle_inventory_comparator();
         this.inventoryController.redraw();
+    }
+
+    public void add_random_blocks(int n) {
+        this.mainView.add_random_blocks(n);
+        this.mapController.redraw();
     }
 
     public MainGui getMainGui() {

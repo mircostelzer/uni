@@ -18,17 +18,17 @@ public class InventoryPane extends HBox {
 
     public InventoryPane() {
         super();
-        this.initialise();
+        this.initialise("t");
     }
 
-    public void initialise() {
-        this.addInventoryText("t");
+    public void initialise(String t) {
+        this.addInventoryText(t);
         this.inventory = new HBox();
         super.getChildren().add(this.inventory);
     }
 
     public void addInventoryText(String t) {
-        this.text = new Text("Inventory("+t+":");
+        this.text = new Text("Inventory("+t+"):");
         this.text.setFont(Font.font("VERDANA", BlockPane.FONT_WEIGHT, 8));
         this.text.setTextAlignment(TextAlignment.CENTER);
         StackPane sp = new StackPane();
