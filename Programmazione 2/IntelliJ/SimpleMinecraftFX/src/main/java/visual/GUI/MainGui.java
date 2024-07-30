@@ -14,10 +14,10 @@ public class MainGui extends BorderPane {
 
     public MainGui(MainSimpleController mainController) {
         super();
-        mapPane = new MapPane();
+        mapPane = new MapPane(mainController);
         buttons = new ButtonListPane(mainController);
-        furnacePane = new FurnacePane();
-        inventoryPane = new InventoryPane();
+        furnacePane = new FurnacePane(mainController);
+        inventoryPane = new InventoryPane(mainController);
         super.setCenter(mapPane);
         super.setLeft(buttons);
         super.setRight(furnacePane);

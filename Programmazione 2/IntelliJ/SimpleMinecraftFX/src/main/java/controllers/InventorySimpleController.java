@@ -3,6 +3,7 @@ package controllers;
 import data.blocks.interfaces.Block;
 import data.blocks.utils.AlphabeticalBlockComparator;
 import data.blocks.utils.BlockComparator;
+import visual.GUI.InventoryBlockPane;
 import visual.GUI.InventoryPane;
 import visual.textual.Inventory;
 
@@ -12,10 +13,12 @@ import java.util.ListIterator;
 public class InventorySimpleController implements SimpleController {
     private Inventory inventory;
     private InventoryPane inventoryPane;
+    private MainSimpleController mainController;
 
-    public InventorySimpleController(Inventory inventory, InventoryPane inventoryPane) {
+    public InventorySimpleController(Inventory inventory, InventoryPane inventoryPane, MainSimpleController mainController) {
         this.inventory = inventory;
         this.inventoryPane = inventoryPane;
+        this.mainController = mainController;
         this.redraw();
     }
     @Override
@@ -31,8 +34,11 @@ public class InventorySimpleController implements SimpleController {
         }
         this.inventoryPane.initialise(t);
         ListIterator<Block> it = this.inventory.getIterator();
+        int count = 0;
         while (it.hasNext()) {
-            this.inventoryPane.addBlock(it.next());
+            InventoryBlockPane bp = new InventoryBlockPane(it.next(), mainController, count);
+            count++;
+            this.inventoryPane.getChildren().add(bp);
         }
     }
 }

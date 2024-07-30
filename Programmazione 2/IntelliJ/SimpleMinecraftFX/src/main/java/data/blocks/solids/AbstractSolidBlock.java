@@ -10,4 +10,6 @@ public abstract class AbstractSolidBlock extends AbstractBlock {
         this.fall_through = false;
         this.pickable = true;
     }
+
+
 }

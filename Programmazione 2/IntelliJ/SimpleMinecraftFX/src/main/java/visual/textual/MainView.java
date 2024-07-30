@@ -53,6 +53,14 @@ public class MainView {
         this.map.addRandomBlocks(n);
     }
 
+    public void mine(int n, Coordinates coords) throws WrongCoordinatesException, BlockErrorException {
+        Block b = this.map.mine(n, coords);
+        if (!(b instanceof NullBlock)) {
+            b = this.map.gimme_pickable(coords);
+            this.inventory.add_block(b);
+        }
+    }
+
     public Map getMap() {
         return map;
     }

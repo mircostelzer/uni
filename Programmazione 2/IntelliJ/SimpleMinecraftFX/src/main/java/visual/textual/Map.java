@@ -6,7 +6,9 @@ import Utils.WrongCoordinatesException;
 import data.BlockFactory;
 import data.blocks.*;
 import data.blocks.interfaces.Block;
+import data.blocks.solids.AbstractMineableBlock;
 import data.blocks.solids.RawIronBlock;
+import data.blocks.solids.SandBlock;
 import data.blocks.solids.TorchBlock;
 
 import java.util.Random;
@@ -233,6 +235,16 @@ public class Map {
     public void gravity(Coordinates coords) {
         for (int i= coords.getX()-1; i>=0; i--) {
             this.insert_rec(new Coordinates(i, coords.getY()));
+        }
+    }
+
+    public Block mine(int n, Coordinates coords) throws WrongCoordinatesException, BlockErrorException {
+        Block b = this.getBlock(coords);
+        if (b instanceof AbstractMineableBlock) {
+            return ((AbstractMineableBlock) b).mine(n);
+        }
+        else {
+            throw new BlockErrorException();
         }
     }
 

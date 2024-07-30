@@ -1,5 +1,6 @@
 package visual.GUI;
 
+import controllers.MainSimpleController;
 import data.blocks.interfaces.Block;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
@@ -16,7 +17,7 @@ public class InventoryPane extends HBox {
     private Text text;
     private HBox inventory;
 
-    public InventoryPane() {
+    public InventoryPane(MainSimpleController mainController) {
         super();
         this.initialise("t");
     }
@@ -40,10 +41,5 @@ public class InventoryPane extends HBox {
         sp.getChildren().add(text);
         sp.setAlignment(Pos.CENTER);
         super.getChildren().add(sp);
-    }
-
-    public void addBlock(Block block) {
-        BlockPane bp = new BlockPane(block);
-        this.inventory.getChildren().add(bp);
     }
 }

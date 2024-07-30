@@ -2,7 +2,7 @@ package data.blocks.utils;
 
 import data.blocks.AirBlock;
 import data.blocks.NullBlock;
-import data.blocks.SandBlock;
+import data.blocks.solids.SandBlock;
 import data.blocks.WaterBlock;
 import data.blocks.interfaces.Block;
 import data.blocks.interfaces.IronSwordInterface;

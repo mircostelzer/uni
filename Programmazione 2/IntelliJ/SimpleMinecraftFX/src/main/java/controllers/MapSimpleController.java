@@ -3,12 +3,14 @@ package controllers;
 import Utils.Coordinates;
 import Utils.WrongCoordinatesException;
 import data.blocks.interfaces.Block;
+import visual.GUI.MapBlockPane;
 import visual.GUI.MapPane;
+import visual.textual.MainView;
 import visual.textual.Map;
 
 public class MapSimpleController implements SimpleController {
     private Map map;
-    private MapPane mapPane = new MapPane();
+    private MapPane mapPane;
 
     public MapSimpleController(Map map, MapPane mapPane) {
         this.map = map;
@@ -31,4 +33,5 @@ public class MapSimpleController implements SimpleController {
             }
         }
     }
+
 }

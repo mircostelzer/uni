@@ -23,8 +23,8 @@ public class MainSimpleController implements SimpleController {
         this.mainView = mainView;
         this.mainGui = new MainGui(this);
         this.controllersList = new ArrayList<>();
-        this.furnaceController = new FurnaceSimpleController(mainView.getFurnace(), mainGui.getFurnacePane());
-        this.inventoryController = new InventorySimpleController(mainView.getInventory(), mainGui.getInventoryPane());
+        this.furnaceController = new FurnaceSimpleController(mainView.getFurnace(), mainGui.getFurnacePane(), this);
+        this.inventoryController = new InventorySimpleController(mainView.getInventory(), mainGui.getInventoryPane(), this);
         this.mapController = new MapSimpleController(mainView.getMap(), mainGui.getMapPane());
         this.controllersList.add(furnaceController);
         this.controllersList.add(inventoryController);
@@ -109,6 +109,25 @@ public class MainSimpleController implements SimpleController {
     public void add_random_blocks(int n) {
         this.mainView.add_random_blocks(n);
         this.mapController.redraw();
+    }
+
+    public void mine(int n, Coordinates coords) {
+        try {
+            this.mainView.mine(n, coords);
+        }
+        catch (BlockErrorException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("This block doesn't allow this operation");
+            alert.setContentText("Not a mineable block");
+            alert.showAndWait();
+        }
+        catch (WrongCoordinatesException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Coordinates are not inbound");
+            alert.showAndWait();
+        }
     }
 
     public MainGui getMainGui() {

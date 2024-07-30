@@ -3,6 +3,7 @@ package data;
 import data.blocks.*;
 import data.blocks.interfaces.Block;
 import data.blocks.solids.RawIronBlock;
+import data.blocks.solids.SandBlock;
 import data.blocks.solids.TorchBlock;
 
 import java.util.Random;

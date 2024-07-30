@@ -1,6 +1,8 @@
 package data.blocks.solids;
 
-public class GlassBlock extends AbstractSolidBlock {
+import data.blocks.AbstractBlock;
+
+public class GlassBlock extends AbstractBlock {
 
     public GlassBlock() {
         super();

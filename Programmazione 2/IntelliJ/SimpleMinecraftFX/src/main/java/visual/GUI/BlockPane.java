@@ -1,6 +1,7 @@
 package visual.GUI;
 
-import data.blocks.SandBlock;
+import data.blocks.solids.AbstractMineableBlock;
+import data.blocks.solids.SandBlock;
 import data.blocks.WaterBlock;
 import data.blocks.interfaces.Block;
 import data.blocks.solids.GlassBlock;
@@ -66,6 +67,10 @@ public class BlockPane extends StackPane {
     public void changeBlock(Block b) {
         this.content = b;
         this.intialise();
+    }
+
+    public AbstractMineableBlock getContent() {
+        return (AbstractMineableBlock)this.content;
     }
 
 }

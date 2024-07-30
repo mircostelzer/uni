@@ -1,17 +1,21 @@
 package visual.GUI;
 
 import Utils.Coordinates;
+import controllers.MainSimpleController;
 import data.BlockFactory;
 import data.blocks.interfaces.Block;
+import data.blocks.solids.AbstractMineableBlock;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import visual.textual.Map;
 
 public class MapPane extends GridPane {
+    private MainSimpleController mainController;
 
-    public MapPane() {
+    public MapPane(MainSimpleController mainController) {
         super();
+        this.mainController = mainController;
         this.setAlignment(Pos.CENTER);
         this.initialise_air();
     }
@@ -19,7 +23,7 @@ public class MapPane extends GridPane {
     public void initialise_air() {
         for (int i=0; i< Map.DEFAULT_ROWS; i++) {
             for (int j=0; j<Map.DEFAULT_COLUMNS; j++) {
-                BlockPane bp = new BlockPane(new BlockFactory().airBlock());
+                MapBlockPane bp = new MapBlockPane(new BlockFactory().airBlock(), mainController, new Coordinates(i, j));
                 super.add(bp, j, i);
             }
         }
@@ -34,22 +38,23 @@ public class MapPane extends GridPane {
         return null;
     }
 
-    public BlockPane get_block_at_coord(Coordinates coords) {
+    public MapBlockPane get_block_at_coord(Coordinates coords) {
         int x = coords.getX();
         int y = coords.getY();
         if (x >= 0 && y >= 0 && x < Map.DEFAULT_ROWS && y < Map.DEFAULT_COLUMNS) {
-            return (BlockPane) MapPane.getElementAt(this, x, y);
+            return (MapBlockPane) MapPane.getElementAt(this, x, y);
         }
         return null;
     }
 
     public void setCell(Block b, Coordinates coords) {
-        BlockPane remove = this.get_block_at_coord(coords);
+        MapBlockPane remove = this.get_block_at_coord(coords);
         if (remove != null) {
             remove.changeBlock(b);
         }
         else {
-            super.add(new BlockPane(b), coords.getY(), coords.getX());
+            super.add(new MapBlockPane(b, mainController, coords), coords.getY(), coords.getX());
         }
     }
+
 }
