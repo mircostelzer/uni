@@ -25,3 +25,19 @@ in
 end;
 
 substring "Ciaoc" "Ciao";
+
+fun makeFnList F nil = nil
+| makeFnList F (x::xs) = F(x)::(makeFnList F xs);
+
+fun IntToReal(nil) = nil
+| IntToReal(L) = map real (map abs(L));
+
+(* alternative *)
+
+val IntToReal = map (real o abs);
+
+IntToReal [~1, 2, 4, ~9];
+
+val concat = foldr op^ "";
+
+concat ["Hello", "world"];
