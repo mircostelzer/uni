@@ -4,6 +4,7 @@ import data.blocks.interfaces.Block;
 import data.blocks.interfaces.SmeltableBlock;
 
 public class SandBlock extends AbstractMineableBlock implements SmeltableBlock {
+    public static final int DEFAULT_MINE_VALUE = 4;
 
     public SandBlock() {
         super();
@@ -12,7 +13,7 @@ public class SandBlock extends AbstractMineableBlock implements SmeltableBlock {
         this.blockname = "Sand";
         this.content = 'S';
         this.pickable = true;
-        this.mineValue = 3;
+        this.mineValue = DEFAULT_MINE_VALUE;
     }
 
     public Block smelt() {

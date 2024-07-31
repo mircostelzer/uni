@@ -128,6 +128,7 @@ public class MainSimpleController implements SimpleController {
             alert.setHeaderText("Coordinates are not inbound");
             alert.showAndWait();
         }
+        this.redraw();
     }
 
     public MainGui getMainGui() {

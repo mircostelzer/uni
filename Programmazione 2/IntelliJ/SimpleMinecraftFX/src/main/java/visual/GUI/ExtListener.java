@@ -23,7 +23,5 @@ public class ExtListener implements EventHandler<MouseEvent> {
 
     public void handle(MouseEvent event) {
         mainController.mine(1, coords);
-        mapBlockPane.opacityProperty().add(-0.2);
-        mainController.redraw();
     }
 }

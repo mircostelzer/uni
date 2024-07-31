@@ -19,4 +19,8 @@ public class AbstractMineableBlock extends AbstractSolidBlock {
             return new BlockFactory().nullBlock();
         }
     }
+
+    public int getMineValue() {
+        return this.mineValue;
+    }
 }

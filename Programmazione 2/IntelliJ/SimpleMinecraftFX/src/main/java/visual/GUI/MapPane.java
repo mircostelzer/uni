@@ -5,6 +5,8 @@ import controllers.MainSimpleController;
 import data.BlockFactory;
 import data.blocks.interfaces.Block;
 import data.blocks.solids.AbstractMineableBlock;
+import data.blocks.solids.RawIronBlock;
+import data.blocks.solids.SandBlock;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
@@ -53,7 +55,14 @@ public class MapPane extends GridPane {
             remove.changeBlock(b);
         }
         else {
-            super.add(new MapBlockPane(b, mainController, coords), coords.getY(), coords.getX());
+            MapBlockPane add = new MapBlockPane(b, mainController, coords);
+            if (b instanceof SandBlock) {
+                add.setOpacity((double) ((AbstractMineableBlock) b).getMineValue() / SandBlock.DEFAULT_MINE_VALUE);
+            }
+            else if (b instanceof RawIronBlock) {
+                add.setOpacity((double) ((AbstractMineableBlock) b).getMineValue() / RawIronBlock.DEFAULT_MINE_VALUE);
+            }
+            super.add(add, coords.getY(), coords.getX());
         }
     }
 
