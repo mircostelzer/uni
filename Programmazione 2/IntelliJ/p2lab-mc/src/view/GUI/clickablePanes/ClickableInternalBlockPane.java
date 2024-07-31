@@ -1,16 +1,15 @@
 package view.GUI.clickablePanes;
 
-import controller.simple.MainSimpleController;
+import controller.main.MainControllerInterface;
 import data.blocks.interfaces.Block;
 import data.blocks.interfaces.SmeltableBlock;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import utils.MapCoordinates;
 import view.GUI.BlockPane;
 
 public class ClickableInternalBlockPane extends BlockPane {
 
-    public ClickableInternalBlockPane(Block bb, MainSimpleController mc) {
+    public ClickableInternalBlockPane(Block bb, MainControllerInterface mc) {
         super(bb);
         EventHandler<MouseEvent> bpch;
         if ( bb instanceof SmeltableBlock) {
@@ -24,9 +23,9 @@ public class ClickableInternalBlockPane extends BlockPane {
     }
 
     class BlockPaneSmeltClickHandler implements EventHandler<MouseEvent> {
-        private MainSimpleController mc;
+        private MainControllerInterface mc;
 
-        BlockPaneSmeltClickHandler(MainSimpleController mc) {
+        BlockPaneSmeltClickHandler(MainControllerInterface mc) {
             this.mc = mc;
         }
         public void handle(MouseEvent mouseEvent) {
@@ -36,9 +35,9 @@ public class ClickableInternalBlockPane extends BlockPane {
     }
 
     class BlockPaneMoveBackClickHandler implements EventHandler<MouseEvent> {
-        private MainSimpleController mc;
+        private MainControllerInterface mc;
 
-        BlockPaneMoveBackClickHandler(MainSimpleController mc) {
+        BlockPaneMoveBackClickHandler(MainControllerInterface mc) {
             this.mc = mc;
         }
         public void handle(MouseEvent mouseEvent) {

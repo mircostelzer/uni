@@ -1,5 +1,6 @@
 package visual.GUI;
 
+import controllers.MainControllerInterface;
 import controllers.MainSimpleController;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
@@ -12,12 +13,12 @@ public class MainGui extends BorderPane {
     private FurnacePane furnacePane;
     private InventoryPane inventoryPane;
 
-    public MainGui(MainSimpleController mainController) {
+    public MainGui(MainControllerInterface mainController) {
         super();
         mapPane = new MapPane(mainController);
         buttons = new ButtonListPane(mainController);
         furnacePane = new FurnacePane(mainController);
-        inventoryPane = new InventoryPane(mainController);
+        inventoryPane = new InventoryPane();
         super.setCenter(mapPane);
         super.setLeft(buttons);
         super.setRight(furnacePane);
@@ -34,6 +35,10 @@ public class MainGui extends BorderPane {
 
     public InventoryPane getInventoryPane() {
         return this.inventoryPane;
+    }
+
+    public boolean is_active() {
+        return this.buttons.is_active();
     }
 
 }

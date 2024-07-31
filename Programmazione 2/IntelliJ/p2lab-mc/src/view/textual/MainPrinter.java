@@ -1,9 +1,6 @@
 package view.textual;
 
 import utils.MapCoordinates;
-import controller.textual.TextFurnaceController;
-import controller.textual.TextInventoryController;
-import controller.textual.TextMapController;
 
 public class MainPrinter implements TextPrinter{
     MapPrinter m;

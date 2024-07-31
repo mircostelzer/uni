@@ -1,6 +1,7 @@
 package visual.GUI;
 
 import Utils.Coordinates;
+import controllers.MainControllerInterface;
 import controllers.MainSimpleController;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -22,6 +23,11 @@ public class ExtListener implements EventHandler<MouseEvent> {
     }
 
     public void handle(MouseEvent event) {
-        mainController.mine(1, coords);
+        if (this.mainController.getMainGui().is_active()) {
+            mainController.mine(2, coords);
+        }
+        else {
+            mainController.mine(1, coords);
+        }
     }
 }

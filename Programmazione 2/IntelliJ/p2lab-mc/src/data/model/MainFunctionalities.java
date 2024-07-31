@@ -8,7 +8,6 @@ import data.blocks.interfaces.Block;
 import data.blocks.interfaces.SmeltableBlock;
 import utils.BlockErrorException;
 import utils.MapCoordinates;
-import view.textual.MainPrinter;
 
 public class MainFunctionalities {
     private Map m ;
@@ -35,7 +34,6 @@ public class MainFunctionalities {
     public Furnace getFurnace(){
         return this.f;
     }
-
 
     public void change_cell_with_Sand(MapCoordinates c){
         m.change_cell_with_Sand(c);

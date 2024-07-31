@@ -1,7 +1,6 @@
 package main;
 
 import controller.simple.MainSimpleController;
-import controller.textual.TextMainUIController;
 import data.model.MainFunctionalities;
 import javafx.application.Application;
 import javafx.scene.Scene;

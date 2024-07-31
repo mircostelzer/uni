@@ -9,9 +9,9 @@ import visual.textual.Furnace;
 public class FurnaceSimpleController implements SimpleController {
     private Furnace furnace;
     private FurnacePane furnacePane;
-    private MainSimpleController mainController;
+    private MainControllerInterface mainController;
 
-    public FurnaceSimpleController(Furnace furnace, FurnacePane furnacePane, MainSimpleController mainController) {
+    public FurnaceSimpleController(Furnace furnace, FurnacePane furnacePane, MainControllerInterface mainController) {
         this.furnace = furnace;
         this.furnacePane = furnacePane;
         this.mainController = mainController;

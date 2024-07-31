@@ -1,6 +1,6 @@
 package view.GUI.clickablePanes;
 
-import controller.simple.MainSimpleController;
+import controller.main.MainControllerInterface;
 import data.blocks.interfaces.Block;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
@@ -8,7 +8,7 @@ import view.GUI.BlockPane;
 
 public class ClickableAnonymousBlockPane extends BlockPane {
 
-    public ClickableAnonymousBlockPane(Block bb, MainSimpleController mc, int index) {
+    public ClickableAnonymousBlockPane(Block bb, MainControllerInterface mc, int index) {
         super(bb);
         this.setOnMouseClicked(new EventHandler<MouseEvent>() {
                @Override

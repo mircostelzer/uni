@@ -17,7 +17,7 @@ public class InventoryPane extends HBox {
     private Text text;
     private HBox inventory;
 
-    public InventoryPane(MainSimpleController mainController) {
+    public InventoryPane() {
         super();
         this.initialise("t");
     }

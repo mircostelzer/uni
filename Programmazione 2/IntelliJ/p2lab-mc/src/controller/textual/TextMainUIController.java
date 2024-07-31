@@ -1,67 +1,76 @@
 package controller.textual;
 
-import data.model.Furnace;
-import data.model.Inventory;
+import controller.MyController;
+import controller.main.AbstractMainController;
 import data.model.MainFunctionalities;
-import data.model.Map;
-import utils.BlockErrorException;
 import utils.MapCoordinates;
-import data.BlockFactory;
-import data.blocks.interfaces.Block;
-import data.blocks.interfaces.SmeltableBlock;
-import view.textual.FurnacePrinter;
-import view.textual.InventoryPrinter;
-import view.textual.MainPrinter;
-import view.textual.MapPrinter;
+import view.GUI.MainGUI;
+import view.textual.*;
 
-public class TextMainUIController extends AbstractTextController{
-    private TextMapController m ;
-    private TextFurnaceController f;
-    private TextInventoryController i;
+import java.util.ArrayList;
 
-    private MainFunctionalities mf;
+public class TextMainUIController extends AbstractMainController implements TextControllerInterface {
+    private TextMainControllerHelper tmc_helper;
 
     public TextMainUIController(){
         this(true);
     }
     public TextMainUIController(boolean random){
-        mf = new MainFunctionalities(random);
+        super(new MainFunctionalities(random));
 
-        tp = new MainPrinter();
-        m = new TextMapController(mf.getMap());
-        f = new TextFurnaceController(mf.getFurnace());
-        i = new TextInventoryController(mf.getInventory());
+        tmc_helper = new TextMainControllerHelper();
+
+        this.setMapcontroller( new TextMapController(this.mainfunc.getMap()) );
+        this.setFurnacecontroller( new TextFurnaceController(this.mainfunc.getFurnace()) );
+        this.setInventorycontroller( new TextInventoryController(this.mainfunc.getInventory()) );
     }
 
     public void updatePrinter(){
-        m.updatePrinter();
-        f.updatePrinter();
-        i.updatePrinter();
-        ((MainPrinter)tp).update((MapPrinter) m.getPrinter(), (FurnacePrinter) f.getPrinter(), (InventoryPrinter) i.getPrinter());
+        for (MyController simpleController : this.controllerslist) {
+            ((TextControllerInterface) simpleController).updatePrinter();
+        }
+        this.tmc_helper.update(
+                (MapPrinter) ((TextMapController) ((ArrayList<?>)this.controllerslist).get(0)).getPrinter() ,
+                (FurnacePrinter) ((TextFurnaceController) ((ArrayList<?>)this.controllerslist).get(1)).getPrinter() ,
+                (InventoryPrinter) ((TextInventoryController) ((ArrayList<?>)this.controllerslist).get(2)).getPrinter()
+        );
+        this.tmc_helper.updatePrinter();
+    }
+    public void redraw() {
+        this.updatePrinter();
+        this.tmc_helper.redraw();
+    }
+    public TextPrinter getPrinter() {
+        return this.tmc_helper.tp;
     }
 
     public void smelt() {
-        this.mf.smelt();
+        this.mainfunc.smelt();
     }
-    public void move_into_inventory_from_furnace() {
-        this.mf.move_into_inventory_from_furnace();
+    public MainGUI getMainGUI() {
+        return null;
     }
-    public void move_into_furnace_from_inventory(int index) {
-        this.mf.move_into_furnace_from_inventory(index);
+    public void move_from_furnace_to_inventory() {
+        this.mainfunc.move_into_inventory_from_furnace();
     }
-    public void pick_up_block(MapCoordinates c) {
-        this.mf.pick_up_block(c);
+    public void move_from_inventory_to_furnace(int index) {
+        this.mainfunc.move_into_furnace_from_inventory(index);
     }
-    public void toggle_inventory_comparator() {
-        this.mf.toggle_inventory_comparator();
+    public void pick_block(MapCoordinates c) {
+        this.mainfunc.pick_up_block(c);
     }
-    public void add_random_block_at_coords(MapCoordinates c) {
-        this.mf.add_random_block_at_coords(c);
+    public void toggle_sort_inventory() {
+        this.mainfunc.toggle_inventory_comparator();
+    }
+    public void add_random_block() {
+        MapCoordinates c = MapCoordinates.randomCoords();
+        this.mainfunc.add_random_block_at_coords(c);
     }
     public void change_cell_with_Sand(MapCoordinates c) {
-        this.mf.change_cell_with_Sand(c);
+        this.mainfunc.change_cell_with_Sand(c);
     }
     public void move_into_furnace_from_map(MapCoordinates c) {
-        this.mf.move_into_furnace_from_map(c);
+        this.mainfunc.move_into_furnace_from_map(c);
     }
+
 }

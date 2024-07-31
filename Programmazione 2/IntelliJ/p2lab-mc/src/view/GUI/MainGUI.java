@@ -1,6 +1,6 @@
 package view.GUI;
 
-import controller.simple.MainSimpleController;
+import controller.main.MainControllerInterface;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -14,7 +14,7 @@ public class MainGUI extends BorderPane {
 
     private BlockPaneClickHandlerFactory bcphf;
 
-    public MainGUI(MainSimpleController mc){
+    public MainGUI(MainControllerInterface mc){
         super();
         bcphf = new BlockPaneClickHandlerFactory(mc);
         g = new MapPane(bcphf);

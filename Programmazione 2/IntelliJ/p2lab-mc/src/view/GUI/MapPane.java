@@ -45,6 +45,7 @@ public class MapPane extends GridPane {
         }else {
             toremove.changeBlock(b);
         }
+//        System.err.println("Re-printed cell "+c);
     }
 
     public static Node getElementAt(GridPane gp, int i, int j) {

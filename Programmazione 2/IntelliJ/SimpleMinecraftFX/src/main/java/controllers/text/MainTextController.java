@@ -3,13 +3,15 @@ package controllers.text;
 import Utils.BlockErrorException;
 import Utils.Coordinates;
 import Utils.WrongCoordinatesException;
+import controllers.MainControllerInterface;
+import sampleFX.Main;
 import visual.printer.FurnacePrinter;
 import visual.printer.InventoryPrinter;
 import visual.printer.MainPrinter;
 import visual.printer.MapPrinter;
 import visual.textual.MainView;
 
-public class MainTextController extends AbstractTextController {
+public class MainTextController extends AbstractTextController implements MainControllerInterface {
     private MainView mainView;
     private MapTextController mtc;
     private FurnaceTextController ftc;

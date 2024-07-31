@@ -1,13 +1,13 @@
 package view.GUI.handlers;
 
-import controller.simple.MainSimpleController;
+import controller.main.MainControllerInterface;
 import utils.MapCoordinates;
 
 public class BlockPaneClickHandlerFactory {
 
-    private MainSimpleController mc;
+    private MainControllerInterface mc;
 
-    public BlockPaneClickHandlerFactory(MainSimpleController mc){
+    public BlockPaneClickHandlerFactory(MainControllerInterface mc){
         this.mc = mc;
     }
 

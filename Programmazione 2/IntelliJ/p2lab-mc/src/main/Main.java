@@ -17,7 +17,7 @@ public class Main {
 
     private static void change_at_coords(){
         TextMainUIController m = new TextMainUIController();
-        m.update_and_display();
+        m.redraw();
         for (int i = 0 ; i < INTERACTIONS ; i++){
             System.out.print("Enter row: ");
             Scanner myObj = new Scanner(System.in);
@@ -30,12 +30,12 @@ public class Main {
             System.out.println("Setting Sand for: "+c.toString()+" - attention, it may fall");
             m.change_cell_with_Sand(c);
 
-            m.update_and_display();
+            m.redraw();
         }
     }
     private static void test_gravity(){
         TextMainUIController m = new TextMainUIController(false);
-        m.update_and_display();
+        m.redraw();
         for (int i = 0 ; i < INTERACTIONS ; i++){
             System.out.print("Enter column where to drop a block: ");
             Scanner myObj = new Scanner(System.in);
@@ -45,12 +45,12 @@ public class Main {
             MapCoordinates c = new MapCoordinates(0,col);
             m.change_cell_with_Sand(c);
 
-            m.update_and_display();
+            m.redraw();
         }
     }
     private static void test_smelting(){
         TextMainUIController m = new TextMainUIController();
-        m.update_and_display();
+        m.redraw();
         for (int i = 0 ; i < INTERACTIONS ; i++){
             System.out.print("Enter row and then column, or enter '9' and then '9' for smelting: ");
             Scanner myObj = new Scanner(System.in);
@@ -62,12 +62,12 @@ public class Main {
                 MapCoordinates c = new MapCoordinates(row,col);
                 m.move_into_furnace_from_map(c);
             }
-            m.update_and_display();
+            m.redraw();
         }
     }
     private static void test_picking(){
         TextMainUIController m = new TextMainUIController();
-        m.update_and_display();
+        m.redraw();
         for (int i = 0 ; i < INTERACTIONS ; i++){
             System.out.println("Enter row and then column to pick that block");
             System.out.println("Enter '9' and the item number to move the item to the furnace");
@@ -78,20 +78,20 @@ public class Main {
             int row = myObj.nextInt();
             int col = myObj.nextInt();
             if (row == 9){
-                m.move_into_furnace_from_inventory(col);
+                m.move_from_inventory_to_furnace(col);
             }else if( row == 99 ){
                 if (col == 9) {
                     m.smelt();
                 }else if (col == 0){
-                    m.toggle_inventory_comparator();
+                    m.toggle_sort_inventory();
                 }else {
-                    m.move_into_inventory_from_furnace();
+                    m.move_from_furnace_to_inventory();
                 }
             } else{
                 MapCoordinates c = new MapCoordinates(row,col);
-                m.pick_up_block(c);
+                m.pick_block(c);
             }
-            m.update_and_display();
+            m.redraw();
         }
     }
 }

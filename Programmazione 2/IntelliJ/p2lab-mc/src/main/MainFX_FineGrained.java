@@ -1,7 +1,6 @@
 package main;
 
-import controller.simple.MainSimpleController;
-import controller.textual.TextMainUIController;
+import controller.finegrained.FGMainController;
 import data.model.MainFunctionalities;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -10,11 +9,11 @@ import view.GUI.MainGUI;
 
 
 public class MainFX_FineGrained extends Application {
-    MainSimpleController mc;
+    FGMainController mc;
 
     @Override
     public void start(Stage stage) throws Exception{
-        mc = new MainSimpleController(new MainFunctionalities());
+        mc = new FGMainController(new MainFunctionalities());
 
         MainGUI layout = mc.getMainGUI();
         Scene scene = new Scene(layout);

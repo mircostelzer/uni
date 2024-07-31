@@ -1,5 +1,6 @@
 package visual.GUI;
 
+import controllers.MainControllerInterface;
 import controllers.MainSimpleController;
 import data.BlockFactory;
 import javafx.geometry.Pos;
@@ -10,11 +11,9 @@ import javafx.scene.text.Text;
 public class FurnacePane extends VBox {
     private FurnaceBlockPane input;
     private FurnaceBlockPane output;
-    private MainSimpleController mainController;
 
-    public FurnacePane(MainSimpleController mainController) {
+    public FurnacePane(MainControllerInterface mainController) {
         super();
-        this.mainController = mainController;
         this.addText();
         this.setInput(new FurnaceBlockPane(new BlockFactory().nullBlock(), mainController));
         this.addArrow();

@@ -2,12 +2,10 @@ package controller.textual;
 
 import view.textual.TextPrinter;
 
-public abstract class AbstractTextController {
+public abstract class AbstractTextController implements TextControllerInterface {
     TextPrinter tp;
 
-    abstract void updatePrinter();
-
-    public void update_and_display(){
+    public void redraw(){
         this.updatePrinter();
         tp.display_on_out();
     }

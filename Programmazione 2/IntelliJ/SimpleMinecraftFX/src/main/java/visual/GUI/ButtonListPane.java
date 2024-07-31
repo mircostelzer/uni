@@ -1,8 +1,11 @@
 package visual.GUI;
 
+import controllers.MainControllerInterface;
 import controllers.MainSimpleController;
 import Utils.Coordinates;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -18,9 +21,10 @@ public class ButtonListPane extends VBox {
     private Button smelt;
     private Button move_back;
     private Button toggle_inventory;
-    private MainSimpleController mainController;
+    private CheckBox pickaxe;
+    private MainControllerInterface mainController;
 
-    public ButtonListPane(MainSimpleController mc) {
+    public ButtonListPane(MainControllerInterface mc) {
         super();
         this.mainController = mc;
         super.setSpacing(10);
@@ -39,6 +43,7 @@ public class ButtonListPane extends VBox {
         this.smelt = new Button("Smelt");
         this.move_back = new Button("Move back");
         this.toggle_inventory = new Button("Toggle inventory sorting");
+        this.pickaxe = new CheckBox("Pickaxe");
 
         this.pick.setOnMouseClicked(mouseEvent -> {
             int x = Integer.parseInt(pick_row.getText());
@@ -69,6 +74,10 @@ public class ButtonListPane extends VBox {
         });
 
 
-        super.getChildren().addAll(pick_box, inventory_box, smelt, move_back, toggle_inventory);
+        super.getChildren().addAll(pick_box, inventory_box, smelt, move_back, toggle_inventory, pickaxe);
+    }
+
+    public boolean is_active() {
+        return this.pickaxe.isSelected();
     }
 }

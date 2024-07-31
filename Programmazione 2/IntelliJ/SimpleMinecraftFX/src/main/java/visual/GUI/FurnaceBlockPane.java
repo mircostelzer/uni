@@ -1,5 +1,6 @@
 package visual.GUI;
 
+import controllers.MainControllerInterface;
 import controllers.MainSimpleController;
 import data.blocks.interfaces.Block;
 import data.blocks.interfaces.SmeltableBlock;
@@ -7,11 +8,9 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
 public class FurnaceBlockPane extends BlockPane {
-    private MainSimpleController mainController;
 
-    public FurnaceBlockPane(Block b, MainSimpleController mainController) {
+    public FurnaceBlockPane(Block b, MainControllerInterface mainController) {
         super(b);
-        this.mainController = mainController;
         if (b instanceof SmeltableBlock) {
             this.setOnMouseClicked(new InputListener(mainController));
         }
@@ -21,9 +20,9 @@ public class FurnaceBlockPane extends BlockPane {
     }
 
     class InputListener implements EventHandler<MouseEvent> {
-        MainSimpleController mainController;
+        MainControllerInterface mainController;
 
-        public InputListener(MainSimpleController mainController) {
+        public InputListener(MainControllerInterface mainController) {
             this.mainController = mainController;
         }
 
@@ -34,9 +33,9 @@ public class FurnaceBlockPane extends BlockPane {
     }
 
     class OutputListener implements EventHandler<MouseEvent> {
-        MainSimpleController mainController;
+        MainControllerInterface mainController;
 
-        public OutputListener(MainSimpleController mainController) {
+        public OutputListener(MainControllerInterface mainController) {
             this.mainController = mainController;
         }
 

@@ -1,6 +1,7 @@
 package visual.GUI;
 
 import Utils.Coordinates;
+import controllers.MainControllerInterface;
 import controllers.MainSimpleController;
 import data.blocks.NullBlock;
 import data.blocks.interfaces.Block;

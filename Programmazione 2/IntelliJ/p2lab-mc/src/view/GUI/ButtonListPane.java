@@ -1,6 +1,6 @@
 package view.GUI;
 
-import controller.simple.MainSimpleController;
+import controller.main.MainControllerInterface;
 import data.BlockFactory;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,9 +21,9 @@ public class ButtonListPane extends VBox {
     HBox move_to_furnace_hbox;
     Button move_to_inventory_button;
 
-    private MainSimpleController mc;
+    private MainControllerInterface mc;
 
-    public ButtonListPane(MainSimpleController m){
+    public ButtonListPane(MainControllerInterface m){
         super();
 
         mc = m;
@@ -54,11 +54,6 @@ public class ButtonListPane extends VBox {
         b.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                int row = Integer.parseInt(pick_row_text.getText());
-                int col = Integer.parseInt(pick_col_text.getText());
-                BlockPane b = (BlockPane) MapPane.getElementAt(mc.getMainGUI().getMapPane(),row,col);
-                b.changeBlock(new BlockFactory().sand_block());
-                // TODO not really clean, does not update the model
             }
         });
         super.getChildren().add(b);

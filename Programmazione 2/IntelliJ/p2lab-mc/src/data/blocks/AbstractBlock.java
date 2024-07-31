@@ -26,7 +26,7 @@ public abstract class AbstractBlock implements Block {
         return this.pickable;
     }
     public boolean isNull(){
-        return (this instanceof NullBlock);
+        return (this instanceof NullBlock) ;
     }
 
     public String toString(){

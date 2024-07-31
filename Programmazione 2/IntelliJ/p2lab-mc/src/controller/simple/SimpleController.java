@@ -1,5 +1,6 @@
 package controller.simple;
 
-public interface SimpleController {
-    void redraw();
+import controller.MyController;
+
+public interface SimpleController extends MyController {
 }

@@ -1,7 +1,5 @@
 package controller.textual;
 
-import data.blocks.interfaces.Block;
-import data.blocks.interfaces.SmeltableBlock;
 import data.model.Furnace;
 import view.textual.FurnacePrinter;
 

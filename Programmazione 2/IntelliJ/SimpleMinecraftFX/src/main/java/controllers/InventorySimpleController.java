@@ -13,9 +13,9 @@ import java.util.ListIterator;
 public class InventorySimpleController implements SimpleController {
     private Inventory inventory;
     private InventoryPane inventoryPane;
-    private MainSimpleController mainController;
+    private MainControllerInterface mainController;
 
-    public InventorySimpleController(Inventory inventory, InventoryPane inventoryPane, MainSimpleController mainController) {
+    public InventorySimpleController(Inventory inventory, InventoryPane inventoryPane, MainControllerInterface mainController) {
         this.inventory = inventory;
         this.inventoryPane = inventoryPane;
         this.mainController = mainController;
