@@ -1,4 +1,3 @@
-val infile = TextIO.openIn "test.txt";
 fun getWord1 (infile,NONE) = nil
 | getWord1 (infile, SOME c) = 
 if (c = #" " orelse c = #"\n") then nil else 
@@ -11,10 +10,6 @@ fun getList1 (infile, NONE) = nil
 [implode(getWord (infile))] @ getList1 (infile, TextIO.lookahead infile);
 
 fun getList (infile) = getList1(infile, TextIO.lookahead infile);
-
-val stringList = getList(infile);
-
-TextIO.closeIn infile;
 
 
 (* --------------------------------------- *)
@@ -30,9 +25,11 @@ fun sublist_left(nil, _) = nil
 fun sublist_right(nil, _) = nil
 | sublist_right(L, 0) = L
 | sublist_right(x::xs, k) = sublist_right(xs, k-1);
+(* deletes first k element from the list *)
+
 
 fun reverseList(nil) = nil
-|   reverseList(x::xs) = reverseList(xs)@[x]; 
+|   reverseList(x::xs) = reverseList(xs)@[x];
 
 fun charToInt(a) = ord(a)-ord(#"0");
 
@@ -52,45 +49,36 @@ in
 
 end;
 
-val numList = getNumList(stringList);
-
-reverseList(numList);
-
 
 (* --------------------------- *)
 
-fun maxInd1(nil, _, _, ind, _) = ind
-| maxInd1(x::xs, i, k, ind, maxx) = 
-if (i<=k) then
-if(x>maxx) then maxInd1(xs, i+1, k, i, x)
-else maxInd1(xs, i+1, k, ind, maxx)
-else ind;
+fun maxInd(nil, max, ind_max, curr_ind) = ind_max
+| maxInd(x::xs, max, ind_max, curr_ind) = if x>max
+then maxInd(xs, x, curr_ind, curr_ind + 1) else maxInd(xs, max, ind_max, curr_ind + 1);
 
-fun maxInd(L, k) = maxInd1(L, 0, k, 0, 0);
-
-fun flip(nil, _) = nil
-| flip(L, k) = (reverseList(sublist_left(L, k)))@sublist_right(L, k);
-
-fun pancake_sort1(nil, _) = nil
-| pancake_sort1(L, n) = 
-if (n<=1) then L
-else
+fun pancake_sort(nil, _, _) = nil
+| pancake_sort(L, n,  1) = L
+| pancake_sort(L, n, curr_size) = 
 let
-    val max_i = maxInd(L, n-1)
+    val max_i = maxInd(sublist_left(L, curr_size), 0, 0, 0)
+    val L1 = reverseList(sublist_left(L, max_i+1))@sublist_right(L, max_i+1)
+    val L2 = reverseList(sublist_left(L1, curr_size))@sublist_right(L1, curr_size)
 in
-    pancake_sort1(flip(flip(L, max_i), n-1), n-1)
+    pancake_sort(L2, n, curr_size-1)
 end;
 
-(* let 
-    val max_ind = maxInd(L, n-1)
-    val next_n = n-1
+fun pancake_sort1(L) = pancake_sort(L, sizeList(L), sizeList(L));
+
+
+
+fun solve(string) = 
+let
+    val infile = TextIO.openIn "test.txt"
+    val stringList = getList(infile)
+    val numList = getNumList(stringList)
+    val close = TextIO.closeIn infile
 in
-if (max_ind<>next_n) then 
-    if (max_ind<>0) then pancake_sort1(flip(L, max_ind), next_n)
-    else pancake_sort1(flip(L, next_n), next_n)
-else pancake_sort1(L, next_n)
-end; *)
+    pancake_sort1(numList)
+end;
 
-fun pancake_sort(L) = pancake_sort1(L, sizeList(L));
-
-pancake_sort(numList);
+solve("test.txt");
