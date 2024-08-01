@@ -14,7 +14,7 @@ public class Main {
     private static void test_picking(){
         MainView view = new MainView();
         MainTextController m = new MainTextController(view);
-        m.update_and_display();
+        m.redraw();
         for (int i = 0 ; i < 5 ; i++){
             System.out.println("Enter row and then column to pick that block");
             System.out.println("Enter '9' and the item number to move the item to the furnace");
@@ -38,7 +38,7 @@ public class Main {
                 Coordinates c = new Coordinates(row,col);
                 m.pick_up_block(c);
             }
-            m.update_and_display();
+            m.redraw();
         }
     }
 }

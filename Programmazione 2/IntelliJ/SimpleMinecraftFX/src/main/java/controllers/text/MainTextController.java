@@ -4,33 +4,40 @@ import Utils.BlockErrorException;
 import Utils.Coordinates;
 import Utils.WrongCoordinatesException;
 import controllers.MainControllerInterface;
-import sampleFX.Main;
-import visual.printer.FurnacePrinter;
-import visual.printer.InventoryPrinter;
-import visual.printer.MainPrinter;
-import visual.printer.MapPrinter;
+import controllers.AbstractMainController;
+import controllers.SimpleController;
+import visual.printer.*;
 import visual.textual.MainView;
 
-public class MainTextController extends AbstractTextController implements MainControllerInterface {
-    private MainView mainView;
-    private MapTextController mtc;
-    private FurnaceTextController ftc;
-    private InventoryTextController itc;
+import java.util.ArrayList;
+
+public class MainTextController extends AbstractMainController implements TextControllerInterface { ;
+    private MainTextControllerHelper tmcHelper;
 
     public MainTextController(MainView mainView) {
-        this.mainView = mainView;
-        this.mtc = new MapTextController(this.mainView.getMap());
-        this.ftc = new FurnaceTextController(this.mainView.getFurnace());
-        this.itc = new InventoryTextController(this.mainView.getInventory());
-        this.tp = new MainPrinter();
+        super(mainView);
+        this.setMapController(new MapTextController(mainView.getMap()));
+        this.setFurnaceController(new FurnaceTextController(mainView.getFurnace()));
+        this.setInventoryController(new InventoryTextController(mainView.getInventory()));
+        this.tmcHelper = new MainTextControllerHelper();
+    }
+
+
+    public void updatePrinter() {
+        for (SimpleController simpleController : this.controllerList) {
+            ((TextControllerInterface)simpleController).updatePrinter();
+        }
+        this.tmcHelper.update(
+                (MapPrinter) ((MapTextController) ((ArrayList<?>)this.controllerList).get(0)).getTextPrinter(),
+                (FurnacePrinter) ((FurnaceTextController) ((ArrayList<?>)this.controllerList).get(1)).getTextPrinter(),
+                (InventoryPrinter) ((InventoryTextController) ((ArrayList<?>)this.controllerList).get(2)).getTextPrinter()
+        );
+        this.tmcHelper.updatePrinter();
     }
 
     @Override
-    void updatePrinter() {
-        this.mtc.updatePrinter();
-        this.ftc.updatePrinter();
-        this.itc.updatePrinter();
-        ((MainPrinter)this.tp).update((MapPrinter)this.mtc.getTextPrinter(), (FurnacePrinter)this.ftc.getTextPrinter(), (InventoryPrinter)this.itc.getTextPrinter());
+    public TextPrinter getTextPrinter() {
+        return this.tmcHelper.getTextPrinter();
     }
 
     public void smelt() {
@@ -60,5 +67,15 @@ public class MainTextController extends AbstractTextController implements MainCo
     }
     public void toggle_inventory_comparator() {
         this.mainView.toggle_inventory_comparator();
+    }
+
+    public void add_random_blocks(int n) {
+        this.mainView.add_random_blocks(n);
+    }
+
+    @Override
+    public void redraw() {
+        this.updatePrinter();
+        this.tmcHelper.redraw();
     }
 }

@@ -12,7 +12,7 @@ public class InventoryTextController extends AbstractTextController {
     }
 
     @Override
-    void updatePrinter() {
+    public void updatePrinter() {
         ((InventoryPrinter)this.tp).update(inventory.getIterator(), inventory.getComparator());
     }
 }

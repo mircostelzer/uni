@@ -12,7 +12,7 @@ public class MapTextController extends AbstractTextController {
     }
 
     @Override
-    void updatePrinter() {
+    public void updatePrinter() {
         ((MapPrinter)this.tp).update(this.map.getGrid(), Map.DEFAULT_ROWS, Map.DEFAULT_COLUMNS);
 
     }

@@ -2,6 +2,7 @@ package visual.GUI;
 
 import controllers.MainControllerInterface;
 import controllers.MainSimpleController;
+import javafx.geometry.Insets;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 

@@ -12,7 +12,7 @@ public class FurnaceTextController extends AbstractTextController  {
     }
 
     @Override
-    void updatePrinter() {
+    public void updatePrinter() {
         ((FurnacePrinter)this.tp).update(this.furnace.getInput(), this.furnace.getOutput());
     }
 }
