@@ -1,0 +1,12 @@
+Domanda 1)	Nessuna delle altre risposte
+Domanda 2)	Nessuna delle altre risposte
+Domanda 3)	Non usa ricorsione in coda
+Domanda 4)	0x21FE
+Domanda 5)	lambda f.lambda x.fx
+Domanda 6)	11
+Domanda 7)	lambda b.lambda c.b (è alfa-equivalente a "lambda d.lambda e.d")
+Domanda 8)	999
+Domanda 9)	Quarta risposta
+Domanda 10)	E' necessaria per implementare la ricorsione
+Domanda 11)	Quarta risposta
+Domanda 12)	Nessuna delle altre risposte	

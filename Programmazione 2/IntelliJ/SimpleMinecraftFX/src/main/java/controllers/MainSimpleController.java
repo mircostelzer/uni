@@ -11,7 +11,7 @@ import visual.textual.MainView;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class MainSimpleController implements MainControllerInterface, SimpleController {
+public class MainSimpleController implements MainVisualInterface {
     private MainView mainView;
     private MainGui mainGui;
     private Collection<SimpleController> controllersList;

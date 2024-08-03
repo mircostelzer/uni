@@ -3,6 +3,7 @@ package visual.GUI;
 import Utils.Coordinates;
 import controllers.MainControllerInterface;
 import controllers.MainSimpleController;
+import controllers.MainVisualInterface;
 import data.BlockFactory;
 import data.blocks.interfaces.Block;
 import data.blocks.solids.AbstractMineableBlock;
@@ -14,9 +15,9 @@ import javafx.scene.layout.GridPane;
 import visual.textual.Map;
 
 public class MapPane extends GridPane {
-    private MainControllerInterface mainController;
+    private MainVisualInterface mainController;
 
-    public MapPane(MainControllerInterface mainController) {
+    public MapPane(MainVisualInterface mainController) {
         super();
         this.mainController = mainController;
         this.setAlignment(Pos.CENTER);
@@ -26,7 +27,7 @@ public class MapPane extends GridPane {
     public void initialise_air() {
         for (int i=0; i< Map.DEFAULT_ROWS; i++) {
             for (int j=0; j<Map.DEFAULT_COLUMNS; j++) {
-                MapBlockPane bp = new MapBlockPane(new BlockFactory().airBlock(), (MainSimpleController) mainController, new Coordinates(i, j));
+                MapBlockPane bp = new MapBlockPane(new BlockFactory().airBlock(), (MainVisualInterface) mainController, new Coordinates(i, j));
                 super.add(bp, j, i);
             }
         }
@@ -56,7 +57,7 @@ public class MapPane extends GridPane {
             remove.changeBlock(b);
         }
         else {
-            MapBlockPane add = new MapBlockPane(b, (MainSimpleController)mainController, coords);
+            MapBlockPane add = new MapBlockPane(b, (MainVisualInterface) mainController, coords);
             if (b instanceof SandBlock) {
                 add.setOpacity((double) ((AbstractMineableBlock) b).getMineValue() / SandBlock.DEFAULT_MINE_VALUE);
             }

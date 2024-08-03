@@ -2,6 +2,7 @@ package visual.GUI;
 
 import controllers.MainControllerInterface;
 import controllers.MainSimpleController;
+import controllers.MainVisualInterface;
 import javafx.geometry.Insets;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
@@ -14,7 +15,7 @@ public class MainGui extends BorderPane {
     private FurnacePane furnacePane;
     private InventoryPane inventoryPane;
 
-    public MainGui(MainControllerInterface mainController) {
+    public MainGui(MainVisualInterface mainController) {
         super();
         mapPane = new MapPane(mainController);
         buttons = new ButtonListPane(mainController);

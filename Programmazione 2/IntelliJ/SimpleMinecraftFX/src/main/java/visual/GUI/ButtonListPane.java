@@ -3,6 +3,7 @@ package visual.GUI;
 import controllers.MainControllerInterface;
 import controllers.MainSimpleController;
 import Utils.Coordinates;
+import controllers.MainVisualInterface;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -22,9 +23,9 @@ public class ButtonListPane extends VBox {
     private Button move_back;
     private Button toggle_inventory;
     private CheckBox pickaxe;
-    private MainControllerInterface mainController;
+    private MainVisualInterface mainController;
 
-    public ButtonListPane(MainControllerInterface mc) {
+    public ButtonListPane(MainVisualInterface mc) {
         super();
         this.mainController = mc;
         super.setSpacing(10);

@@ -1,6 +1,7 @@
 package controllers;
 
 import Utils.Coordinates;
+import visual.GUI.MainGui;
 
 public interface MainControllerInterface {
     void smelt();

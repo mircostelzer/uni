@@ -4,6 +4,7 @@ import Utils.BlockErrorException;
 import Utils.Coordinates;
 import Utils.WrongCoordinatesException;
 import controllers.AbstractMainController;
+import controllers.MainVisualInterface;
 import controllers.SimpleController;
 import javafx.scene.control.Alert;
 import visual.GUI.MainGui;
@@ -12,7 +13,7 @@ import visual.textual.MainView;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class FGMainController extends AbstractMainController implements FGController {
+public class FGMainController extends AbstractMainController implements FGController, MainVisualInterface {
     private MainGui mainGui;
     private AbstractFGController afgHelper;
 
@@ -134,5 +135,25 @@ public class FGMainController extends AbstractMainController implements FGContro
         else {
             this.efficient_redraw();
         }
+    }
+
+    public void mine(int n, Coordinates coords) {
+        try {
+            this.mainView.mine(n, coords);
+        }
+        catch (BlockErrorException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("This block doesn't allow this operation");
+            alert.setContentText("Not a mineable block");
+            alert.showAndWait();
+        }
+        catch (WrongCoordinatesException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Coordinates are not inbound");
+            alert.showAndWait();
+        }
+        this.redraw();
     }
 }
