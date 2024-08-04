@@ -12,6 +12,11 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Grid grid = new Grid();
+        Controller c = new Controller(grid);
+        Scene scene = new Scene(c.getPlayground(), 500, 350);
+
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 

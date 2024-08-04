@@ -11,17 +11,20 @@ public class Cell extends StackPane {
     private String content;
     private Rectangle rectangle;
     private Text text;
+    private int x;
+    private int y;
+    private Controller controller;
 
     public final static int DIM = 50;
 
-    public Cell(String content) {
+    public Cell(String content, int x, int y, Controller controller) {
         this.content = content;
-        this.redraw();
+        this.x = x;
+        this.y = y;
+        this.controller = controller;
 
-        this.setOnMouseClicked(event -> {
-            this.setContent("X");
-            this.redraw();
-        });
+        this.setOnMouseClicked(new ClickListener(controller, x, y));
+        this.redraw();
     }
 
     private void addText() {

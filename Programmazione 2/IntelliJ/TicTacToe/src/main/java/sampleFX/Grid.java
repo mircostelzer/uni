@@ -1,14 +1,29 @@
 package sampleFX;
 
+import java.util.Random;
+
 public class Grid {
     private String[][] spaces;
     final static String PLAYER = "X";
     final static String COMPUTER = "O";
     private boolean gameOver = false;
+    private boolean start;
 
     public Grid() {
         super();
+        Random r = new Random();
+        int n = r.nextInt(2);
+        start = n == 0;
         this.spaces = new String[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                this.spaces[i][j] = " ";
+            }
+        }
+    }
+
+    public boolean getStart() {
+        return start;
     }
 
     public String getCell(int row, int col) {
@@ -21,7 +36,7 @@ public class Grid {
 
     public void move(int row, int col, String s) {
         if (row >= 0 && row < 3 && col >= 0 && col < 3) {
-            if (spaces[row][col] == null) {
+            if (spaces[row][col] == " ") {
                 this.setCell(row, col, s);
             }
         }
@@ -53,4 +68,15 @@ public class Grid {
         return this.win(COMPUTER);
     }
 
+    public void computer() {
+        boolean placed = false;
+        while (!placed) {
+            Random r = new Random();
+            int choice = r.nextInt(9);
+            if (spaces[choice/3][choice%3] == " ") {
+                placed = true;
+                spaces[choice/3][choice%3] = COMPUTER;
+            }
+        }
+    }
 }
