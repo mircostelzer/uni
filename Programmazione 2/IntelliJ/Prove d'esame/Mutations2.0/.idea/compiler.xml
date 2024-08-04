@@ -9,8 +9,5 @@
         <module name="Mutations2.0" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Mutations2.0" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>
