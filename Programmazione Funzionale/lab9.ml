@@ -48,14 +48,14 @@ sig
     val mirror: 'a T -> 'a T
 end;
 
-structure tree =
+structure Tree =
 struct
     datatype 'a T =
     Lf | Br of 'a * 'a T * 'a T;
     fun count(Lf) = 0
     | count(Br(a,b,c)) = 1 + count(b) + count(c);
     fun depth(Lf) = 0
-    | depth(Br(a, b, c)) = if (count(b)>count(c)) then count(b) else count(c);
+    | depth(Br(a, b, c)) = if (depth(b)>depth(c)) then 1+depth(b) else 1+depth(c);
     fun mirror(Lf) = Lf
     | mirror(Br(a, b, c)) = Br(a, mirror(c), mirror(b));
 

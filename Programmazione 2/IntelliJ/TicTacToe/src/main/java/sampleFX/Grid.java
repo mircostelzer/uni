@@ -43,7 +43,7 @@ public class Grid {
     }
 
     public boolean isGameOver() {
-        if (playerWin() || computerWin()) {
+        if (playerWin() || computerWin() || tie()) {
             this.gameOver = true;
         }
         return gameOver;
@@ -68,6 +68,19 @@ public class Grid {
         return this.win(COMPUTER);
     }
 
+    public boolean tie() {
+        boolean res = true;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (this.spaces[i][j].equals(" ")) {
+                    res = false;
+                }
+            }
+        }
+
+        return res;
+    }
+
     public void computer() {
         boolean placed = false;
         while (!placed) {
@@ -79,4 +92,6 @@ public class Grid {
             }
         }
     }
+
+
 }

@@ -7,6 +7,10 @@ public class Controller {
     public Controller(Grid grid) {
         this.playground = new Playground(grid, this);
         this.grid = playground.getGrid();
+        boolean start = grid.getStart();
+        if (start) {
+            this.computer();
+        }
     }
 
     public void move(int x, int y, String s) {
