@@ -1,5 +1,7 @@
 package view;
 
+import controller.Controller;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -14,21 +16,25 @@ public class CellPane extends StackPane {
     private Rectangle rectangle;
     private Text text;
     private AbstractCell content;
+    private Controller controller;
 
-    public CellPane(AbstractCell content) {
+    public CellPane(AbstractCell content, Controller controller) {
         this.content = content;
+        this.controller = controller;
         this.initialise();
     }
 
     private void initialise() {
+        this.getChildren().clear();
         rectangle = new Rectangle(50, 50);
         if (content.isActive()) {
             this.reveal();
         } else {
             rectangle.setStroke(Paint.valueOf("BLACK"));
             rectangle.setFill(Paint.valueOf("YELLOW"));
+            this.addEventHandler(MouseEvent.MOUSE_CLICKED, this.controller);
+            this.getChildren().add(rectangle);
         }
-        this.getChildren().add(rectangle);
     }
 
     public void reveal() {

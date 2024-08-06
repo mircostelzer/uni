@@ -1,27 +1,31 @@
 package view;
 
+import controller.Controller;
+import javafx.event.Event;
+import javafx.event.EventType;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Cell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import model.Grid;
 import model.cells.AbstractCell;
-import model.cells.BaseCell;
 
 public class PlayGridPane extends GridPane {
     private Grid grid;
+    private Controller controller;
 
-    public PlayGridPane(Grid grid) {
+    public PlayGridPane(Grid grid, Controller controller) {
         this.grid = grid;
-        this.initialise();
+        this.controller = controller;
+        this.redraw();
         this.setAlignment(Pos.CENTER);
     }
 
-    private void initialise() {
+    public void redraw() {
         for (int i=0; i<10; i++) {
             for (int j=0; j<10; j++) {
                 AbstractCell c = grid.getCellAtCoords(i, j);
-
+                this.setCell(c, i, j);
             }
         }
     }
@@ -40,7 +44,7 @@ public class PlayGridPane extends GridPane {
         if (remove != null) {
             remove.setContent(cell);
         } else {
-            super.add(new CellPane(cell), y, x);
+            super.add(new CellPane(cell, this.controller), y, x);
         }
 
     }

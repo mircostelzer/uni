@@ -22,6 +22,10 @@ public class Player {
         return tries;
     }
 
+    public void setTries(int tries) {
+        this.tries = tries;
+    }
+
     public void applyModifier(MyConsumer<Player> c) {
         c.accept(this);
     }

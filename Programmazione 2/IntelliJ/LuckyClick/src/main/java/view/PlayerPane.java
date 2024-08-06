@@ -12,10 +12,11 @@ public class PlayerPane extends VBox {
 
     public PlayerPane(Player player) {
         this.player = player;
-
+        this.redraw();
     }
 
     public void redraw() {
+        this.getChildren().clear();
         points = new Text("Points: " + player.getPoints());
         tries = new Text("Tries: " + player.getTries());
         getChildren().addAll(points, tries);

@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Grid {
     private AbstractCell[][] grid;
-    Player player;
+    private Player player;
 
     public Grid(Player p) {
         grid = new AbstractCell[10][10];
