@@ -31,16 +31,4 @@ public class MainGui extends BorderPane {
     public Player getPlayer() {
         return this.player;
     }
-
-    public Grid getGrid() {
-        return this.grid;
-    }
-
-    public PlayerPane getPlayerPane() {
-        return this.playerPane;
-    }
-
-    public PlayGridPane getPlayGridPane() {
-        return this.playGridPane;
-    }
 }

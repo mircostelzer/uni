@@ -19,8 +19,4 @@ public abstract class AbstractCell {
     public String getContent() {
         return content;
     }
-
-    public CellType getCellType() {
-        return cellType;
-    }
 }

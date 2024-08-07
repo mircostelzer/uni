@@ -30,7 +30,7 @@ public class Grid {
                 } else if (c instanceof DividerCell) {
                     grid[row][col] = new DividerCell();
                 } else if (c instanceof BaseCell) {
-                    int val = rand.nextInt(10)*1000;
+                    int val = (rand.nextInt(10)+1)*1000;
                     grid[row][col] = new BaseCell(val);
                 }
             }
