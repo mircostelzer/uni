@@ -8,8 +8,8 @@ import model.Directions;
 public class UserBall extends AbstractBall {
     private static final Color color = Color.ORANGE;
 
-    public UserBall(double x, double y) {
-        super(x, y);
+    public UserBall(Directions directions, double x, double y) {
+        super(directions, x, y);
         this.circle.setFill(color);
 
     }

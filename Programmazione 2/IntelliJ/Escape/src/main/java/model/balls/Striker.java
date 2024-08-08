@@ -10,9 +10,10 @@ public class Striker extends AbstractBall {
     private static final Color color = Color.BLUE;
 
     public Striker(Directions direction, double x, double y) {
-        super(x, y);
+        super(direction, x, y);
         this.direction = direction;
         this.circle.setFill(color);
+        this.ballType = BallType.Striker;
     }
 
 }
