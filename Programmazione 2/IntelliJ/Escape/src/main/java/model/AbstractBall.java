@@ -10,7 +10,8 @@ public abstract class AbstractBall implements BallsInterface {
     protected BallType ballType;
 
     public AbstractBall(Directions direction, double x, double y) {
-        this.circle = new Circle(DIM);
+        this.circle = new Circle();
+        this.circle.setRadius(DIM);
         this.direction = direction;
         this.circle.setCenterX(x);
         this.circle.setCenterY(y);
@@ -30,18 +31,18 @@ public abstract class AbstractBall implements BallsInterface {
 
     public void move() {
             switch (direction) {
-                case Up -> this.circle.setTranslateY(this.circle.getCenterY()-10);
-                case Down -> this.circle.setTranslateY(this.circle.getCenterY()+10);
-                case Left -> this.circle.setTranslateX(this.circle.getCenterX()-10);
-                case Right -> this.circle.setTranslateX(this.circle.getCenterX()+10);
-                case UpLeft ->  { this.circle.setTranslateX(this.circle.getCenterX()-10);
-                    this.circle.setTranslateY(this.circle.getCenterY()-10); }
-                case UpRight -> { this.circle.setTranslateX(this.circle.getCenterX()+10);
-                    this.circle.setTranslateY(this.circle.getCenterY()-10); }
-                case DownLeft -> { this.circle.setTranslateX(this.circle.getCenterX()-10);
-                    this.circle.setTranslateY(this.circle.getCenterY()+10); }
-                case DownRight -> { this.circle.setTranslateX(this.circle.getCenterX()+10);
-                    this.circle.setTranslateY(this.circle.getCenterY()+10); }
+                case Up -> this.circle.setCenterY(this.circle.getCenterY()-10);
+                case Down -> this.circle.setCenterY(this.circle.getCenterY()+10);
+                case Left -> this.circle.setCenterX(this.circle.getCenterX()-10);
+                case Right -> this.circle.setCenterX(this.circle.getCenterX()+10);
+                case UpLeft ->  { this.circle.setCenterX(this.circle.getCenterX()-10);
+                    this.circle.setCenterY(this.circle.getCenterY()-10); }
+                case UpRight -> { this.circle.setCenterX(this.circle.getCenterX()+10);
+                    this.circle.setCenterY(this.circle.getCenterY()-10); }
+                case DownLeft -> { this.circle.setCenterX(this.circle.getCenterX()-10);
+                    this.circle.setCenterY(this.circle.getCenterY()+10); }
+                case DownRight -> { this.circle.setCenterX(this.circle.getCenterX()+10);
+                    this.circle.setCenterY(this.circle.getCenterY()+10); }
             }
     }
 

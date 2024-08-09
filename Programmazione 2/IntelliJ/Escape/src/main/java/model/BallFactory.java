@@ -10,32 +10,32 @@ import java.util.Random;
 public class BallFactory {
      public UserBall createUserBall() {
          Random rand = new Random();
-         int x = rand.nextInt(460)+20;
-         int y = rand.nextInt(460)+20;
+         int x = rand.nextInt(461)+20;
+         int y = rand.nextInt(461)+20;
          Directions directions = this.randomDirections();
          return new UserBall(directions, x, y);
      }
 
      public Striker createStriker() {
          Random rand = new Random();
-         int x = rand.nextInt(460)+20;
-         int y = rand.nextInt(460)+20;
+         int x = rand.nextInt(461)+20;
+         int y = rand.nextInt(461)+20;
          Directions directions = this.randomDirections();
          return new Striker(directions, x, y);
      }
 
      public Wanderer createWanderer() {
          Random rand = new Random();
-         int x = rand.nextInt(460)+20;
-         int y = rand.nextInt(460)+20;
+         int x = rand.nextInt(461)+20;
+         int y = rand.nextInt(461)+20;
          Directions directions = this.randomDirections();
          return new Wanderer(directions, x, y);
      }
 
      public Bubbler createBubbler() {
          Random rand = new Random();
-         int x = rand.nextInt(460)+20;
-         int y = rand.nextInt(460)+20;
+         int x = rand.nextInt(461)+20;
+         int y = rand.nextInt(461)+20;
          Directions directions = this.randomDirections();
          return new Bubbler(directions, x, y);
      }

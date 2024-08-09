@@ -1,5 +1,6 @@
 package sampleFX;
 
+import controller.Controller;
 import controller.MainGui;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -18,9 +19,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Player player = new Player();
-        MainGui root = new MainGui(player);
+        MainGui mainGui = new MainGui(player);
 
-        Scene scene = new Scene(root, 500, 500);
+        Scene scene = new Scene(mainGui, 500, 500);
+        Controller controller = new Controller(player, scene, mainGui);
         primaryStage.setTitle("Escape!");
         primaryStage.setScene(scene);
         primaryStage.show();
