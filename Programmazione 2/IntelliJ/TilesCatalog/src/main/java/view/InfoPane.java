@@ -1,5 +1,6 @@
 package view;
 
+import controller.Controller;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -13,15 +14,42 @@ public class InfoPane extends VBox {
     private Button prev;
     private Button next;
     private TileInterface content;
+    private Controller controller;
 
-    public InfoPane() {
+    public InfoPane(Controller controller) {
         super();
-        this.setSpacing(10);
+        this.controller = controller;
+        this.setSpacing(40);
         info = new VBox();
         buttons = new HBox();
-        prev = new Button("Prev");
-        next = new Button("Next");
+        prev = new Button("<prev");
+        prev.setDisable(true);
+        next = new Button("next>");
+        buttons.getChildren().addAll(prev, next);
+        this.content = this.controller.getTiles().stream().toList().get(0);
         this.redraw();
+
+        prev.setOnMouseClicked(mouseEvent -> {
+            if (Controller.GENERAL_INDEX == 1) {
+                prev.setDisable(true);
+            }
+            if (Controller.GENERAL_INDEX == this.controller.getSetSize()-1) {
+                next.setDisable(false);
+            }
+            this.controller.decrementIndex();
+            this.controller.changeView(this.controller.getTiles().stream().toList().get(Controller.GENERAL_INDEX));
+        });
+
+        next.setOnMouseClicked(mouseEvent -> {
+            if (Controller.GENERAL_INDEX == this.controller.getSetSize()-2) {
+                next.setDisable(true);
+            }
+            if (Controller.GENERAL_INDEX == 0) {
+                prev.setDisable(false);
+            }
+            this.controller.incrementIndex();
+            this.controller.changeView(this.controller.getTiles().stream().toList().get(Controller.GENERAL_INDEX));
+        });
     }
 
     public void redraw() {
@@ -32,10 +60,10 @@ public class InfoPane extends VBox {
         Text dimension = new Text("Dimensione: "+this.content.getDimension());
         Text colorChoice = new Text();
         if (content instanceof MultiColorTileInterface) {
-            colorChoice.setText("SI");
+            colorChoice.setText("Scelta colore: SI");
         }
         else {
-            colorChoice.setText("NO");
+            colorChoice.setText("Scelta colore: NO");
         }
 
         this.info.getChildren().addAll(code, price, dimension, colorChoice);

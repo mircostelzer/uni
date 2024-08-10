@@ -1,5 +1,6 @@
 package view;
 
+import controller.Controller;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -16,10 +17,11 @@ public class MainGui extends TilePane {
     private InfoPane infoPane;
     private TilesPane tilesPane;
 
-    public MainGui() {
-        super.setPadding(new Insets(10, 10, 10, 10));
-        infoPane = new InfoPane();
-        tilesPane = new TilesPane();
+    public MainGui(Controller controller) {
+        super.setPadding(new Insets(20, 20, 20, 20));
+        infoPane = new InfoPane(controller);
+        tilesPane = new TilesPane(controller);
+        this.getChildren().addAll(infoPane, tilesPane);
 
     }
 
@@ -29,7 +31,8 @@ public class MainGui extends TilePane {
     }
 
     public void setContent(TileInterface content) {
-
+        infoPane.setContent(content);
+        tilesPane.setContent(content);
     }
 
     public InfoPane getInfoPane() {
