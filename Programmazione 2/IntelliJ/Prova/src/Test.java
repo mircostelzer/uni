@@ -1,36 +1,29 @@
 package Prova;
 
 import java.util.*;
+
 public class Test {
-    static String removeLast(String str) {
-        return str.substring(0, str.length() - 1);
-    }
+
 public static void main(String[] args) {
-        I obj = new B("Scala");
-        System.out.println(obj.m());
+        A a = new B(3);
+        a = null;
+        System.gc();
+        System.runFinalization();
 
     }
-}
-
-interface I {
-    public String m();
 }
 
 class A {
-    String s;
-    public A(String s) {
-        this.s = s;
-    }
-    public String m() {
-        return s;
-    }
+    A(int x) { System.out.println("X"); }
+    A() { System.out.println("Y"); }
+    public void finalize() { System.out.println("Z"); }
 }
 
-class B extends A implements I {
-    B(String s) {
-        super(s);
-    }
-    public String m() {
-        return Test.removeLast(s);
-    }
+class B extends A {
+    B(int x) { System.out.println("A"); }
+    B() { System.out.println("B"); }
+    public void finalize() { System.out.println("C"); }
 }
+
+
+
