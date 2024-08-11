@@ -1,11 +1,13 @@
 package view;
 
 import controller.Controller;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import model.BiColorTile;
+import model.FixedColorException;
 import model.MultiBiColorInterface;
 import model.MultiColorTileInterface;
 import model.tiles.TileInterface;
@@ -32,30 +34,47 @@ public class TilesPane extends StackPane {
         this.redraw();
 
         super.setOnMouseClicked(mouseEvent -> {
-            if (content instanceof MultiColorTileInterface) {
                 this.controller.incrementPrimaryColorIndex();
-                this.setFirstColor(Controller.colorRotation.get(Controller.PRIMARY_COLOR_INDEX));
+                try {
+                    this.setFirstColor(Controller.colorRotation.get(Controller.PRIMARY_COLOR_INDEX));
+                } catch (FixedColorException e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Can't change the color");
+                    alert.show();
+                }
                 this.redraw();
-            }
         });
 
         innerRectangle.setOnMouseClicked(mouseEvent -> {
-            if (content instanceof MultiBiColorInterface) {
                 this.controller.incrementSecondaryColorIndex();
-                this.setSecondColor(Controller.colorRotation.get(Controller.SECONDARY_COLOR_INDEX));
+                try {
+                    this.setSecondColor(Controller.colorRotation.get(Controller.SECONDARY_COLOR_INDEX));
+                } catch (FixedColorException e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Can't change the color");
+                    alert.show();
+                }
                 this.redraw();
                 mouseEvent.consume();
-            }
+
         });
 
 
         circle.setOnMouseClicked(mouseEvent -> {
-            if (content instanceof MultiBiColorInterface) {
                 this.controller.incrementSecondaryColorIndex();
-                this.setSecondColor(Controller.colorRotation.get(Controller.SECONDARY_COLOR_INDEX));
+                try {
+                    this.setSecondColor(Controller.colorRotation.get(Controller.SECONDARY_COLOR_INDEX));
+                } catch (FixedColorException e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Can't change the color");
+                    alert.show();
+                }
                 this.redraw();
                 mouseEvent.consume();
-            }
+
         });
     }
 
@@ -79,12 +98,20 @@ public class TilesPane extends StackPane {
         this.content = content;
     }
 
-    public void setFirstColor(Color color) {
-        ((MultiColorTileInterface)content).setColor(color);
+    public void setFirstColor(Color color) throws FixedColorException {
+        if (content instanceof MultiColorTileInterface) {
+            ((MultiColorTileInterface)content).setColor(color);
+        } else {
+            throw new FixedColorException();
+        }
     }
 
-    public void setSecondColor(Color color) {
-        ((MultiBiColorInterface)content).setSecondColor(color);
+    public void setSecondColor(Color color) throws FixedColorException {
+        if (content instanceof MultiBiColorInterface) {
+            ((MultiBiColorInterface)content).setSecondColor(color);
+        } else {
+            throw new FixedColorException();
+        }
     }
 
 }
