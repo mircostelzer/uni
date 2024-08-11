@@ -1,7 +1,8 @@
 package model;
 
 import javafx.scene.paint.Color;
+import model.tiles.TileInterface;
 
 public interface MultiBiColorInterface extends MultiColorTileInterface {
-    public void setSecondColor(Color color);
+    void setSecondColor(Color color);
 }

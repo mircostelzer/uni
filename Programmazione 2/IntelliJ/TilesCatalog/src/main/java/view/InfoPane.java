@@ -56,8 +56,9 @@ public class InfoPane extends VBox {
         this.getChildren().clear();
         info.getChildren().clear();
         Text code = new Text("Codice: "+this.content.getCode());
-        Text price = new Text("Materiale: "+this.content.getPrice());
-        Text dimension = new Text("Dimensione: "+this.content.getDimension());
+        Text material = new Text("Materiale: "+this.content.getMaterial());
+        Text price = new Text("Prezzo: "+this.content.getPrice()+ " €");
+        Text dimension = new Text("Dimensione: "+this.content.getDimension()+" cm");
         Text colorChoice = new Text();
         if (content instanceof MultiColorTileInterface) {
             colorChoice.setText("Scelta colore: SI");
@@ -66,7 +67,7 @@ public class InfoPane extends VBox {
             colorChoice.setText("Scelta colore: NO");
         }
 
-        this.info.getChildren().addAll(code, price, dimension, colorChoice);
+        this.info.getChildren().addAll(code, material, price, dimension, colorChoice);
         this.getChildren().addAll(info, buttons);
     }
 

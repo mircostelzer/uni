@@ -7,9 +7,9 @@ public abstract class BiColorTile extends AbstractTile {
     protected Color secondColor;
     protected String shape;
 
-    public BiColorTile() {
-        super();
-        this.secondColor = Color.WHEAT;
+    public BiColorTile(Color firstColor, Color secondColor) {
+        super(firstColor);
+        this.secondColor = secondColor;
     }
 
     public Color getSecondColor() {

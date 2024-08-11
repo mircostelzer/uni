@@ -6,7 +6,8 @@ import model.MultiColorTileInterface;
 
 public class P2Tile extends AbstractTile implements MultiColorTileInterface {
 
-    public P2Tile() {
+    public P2Tile(Color color) {
+        super(color);
         this.code = "P2";
         this.material = "Laminato";
         this.price = 20.0;

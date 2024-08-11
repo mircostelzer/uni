@@ -6,7 +6,8 @@ import model.MultiColorTileInterface;
 
 public class P3Tile extends AbstractTile implements MultiColorTileInterface {
 
-    public P3Tile() {
+    public P3Tile(Color color) {
+        super(color);
         this.code = "P3";
         this.material = "Terracotta";
         this.price = 50.0;

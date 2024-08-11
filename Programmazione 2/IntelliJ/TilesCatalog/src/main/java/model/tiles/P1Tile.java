@@ -6,8 +6,8 @@ import model.AbstractTile;
 
 public class P1Tile extends AbstractTile {
 
-    public P1Tile() {
-        super();
+    public P1Tile(Color color) {
+        super(color);
         this.code = "P1";
         this.material = "Ceramica";
         this.price = 50.0;

@@ -11,8 +11,8 @@ public abstract class AbstractTile implements TileInterface {
     protected double dimension;
     protected Color color;
 
-    public AbstractTile() {
-        this.color = Color.BROWN;
+    public AbstractTile(Color color) {
+        this.color = color;
     }
 
     public String getCode() {

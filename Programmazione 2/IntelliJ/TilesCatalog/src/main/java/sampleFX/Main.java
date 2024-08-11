@@ -16,8 +16,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Controller controller = new Controller();
         MainGui mainGui = controller.getMainGui();
+        Scene scene = new Scene(mainGui, 320, 180);
 
-        Scene scene = new Scene(mainGui, 300, 180);
+
         primaryStage.setTitle("Catalogo Piastrelle");
         primaryStage.setScene(scene);
         primaryStage.show();

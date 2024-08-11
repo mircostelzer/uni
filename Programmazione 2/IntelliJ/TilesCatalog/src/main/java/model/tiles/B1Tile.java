@@ -5,7 +5,8 @@ import model.BiColorTile;
 
 public class B1Tile extends BiColorTile {
 
-    public B1Tile() {
+    public B1Tile(Color firstColor, Color secondColor) {
+        super(firstColor, secondColor);
         this.code = "B1";
         this.material = "Laminato";
         this.price = 100.0;

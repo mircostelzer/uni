@@ -6,7 +6,8 @@ import model.MultiBiColorInterface;
 
 public class B2Tile extends BiColorTile implements MultiBiColorInterface {
 
-    public B2Tile() {
+    public B2Tile(Color firstColor, Color secondColor) {
+        super(firstColor, secondColor);
         this.code = "B2";
         this.material = "Ceramica";
         this.price = 120.0;

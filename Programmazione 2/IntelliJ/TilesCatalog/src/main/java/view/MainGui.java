@@ -3,11 +3,13 @@ package view;
 import controller.Controller;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import model.MultiBiColorInterface;
 import model.MultiColorTileInterface;
 import model.tiles.TileInterface;
 
@@ -22,6 +24,8 @@ public class MainGui extends TilePane {
         infoPane = new InfoPane(controller);
         tilesPane = new TilesPane(controller);
         this.getChildren().addAll(infoPane, tilesPane);
+
+
 
     }
 
