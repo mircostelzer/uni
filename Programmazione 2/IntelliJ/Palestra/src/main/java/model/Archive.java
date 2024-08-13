@@ -39,9 +39,6 @@ public class Archive {
         return currentShowing;
     }
 
-    public Comparator<PersonInterface> getComparator() {
-        return comparator;
-    }
 
     public void toggleComparator() {
         if (comparator instanceof AgeComparator) {

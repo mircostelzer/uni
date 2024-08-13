@@ -6,5 +6,4 @@ public interface PersonInterface {
     int getCode();
     String toString();
     double getTariffa();
-    void applyDiscount();
 }

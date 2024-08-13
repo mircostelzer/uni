@@ -44,7 +44,7 @@ public class Person implements PersonInterface {
         return getName() + " " + getCode() + " " + getBirthYear();
     }
 
-    public void applyDiscount() {
+    protected void applyDiscount() {
         if (birthYear < 1968) {
             this.setTariffa(Archive.TARIFFA_BASE*0.65);
         } else {

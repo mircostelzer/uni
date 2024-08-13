@@ -46,7 +46,7 @@ public class AthleteStudent extends Person implements AthleteInterface, StudentI
         return super.toString() + " " + getUniversity() + " " + getDegree() + " " + getSport() + " " + getRelevance();
     }
 
-    public void applyDiscount() {
+    protected void applyDiscount() {
         if (this.relevance == AthleteRelevance.Internazionale) {
             this.setTariffa(Archive.TARIFFA_BASE*0.5);
         } else if (this.degree == Degree.LT) {

@@ -30,7 +30,7 @@ public class Student extends Person implements StudentInterface {
     }
 
     @Override
-    public void applyDiscount() {
+    protected void applyDiscount() {
         if (this.degree == Degree.LT) {
             this.setTariffa(Archive.TARIFFA_BASE*0.6);
         } else if (this.getBirthYear() < 1968) {

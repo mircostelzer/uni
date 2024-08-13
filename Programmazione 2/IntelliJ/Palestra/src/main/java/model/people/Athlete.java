@@ -30,7 +30,7 @@ public class Athlete extends Person implements AthleteInterface {
     }
 
     @Override
-    public void applyDiscount() {
+    protected void applyDiscount() {
         if (relevance == AthleteRelevance.Internazionale) {
             this.setTariffa(Archive.TARIFFA_BASE*0.5);
         } else if (this.getBirthYear() < 1968) {
