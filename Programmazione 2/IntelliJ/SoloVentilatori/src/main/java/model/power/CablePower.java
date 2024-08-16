@@ -1,7 +1,6 @@
 package model.power;
 
 import model.interfaces.ElectricPowerInterface;
-import model.interfaces.FanInterface;
 
 public class CablePower implements ElectricPowerInterface {
 
@@ -10,7 +9,7 @@ public class CablePower implements ElectricPowerInterface {
         return "Presa";
     }
 
-    public double getMultiplier() {
+    public int getMultiplier() {
         return 2;
     }
 }

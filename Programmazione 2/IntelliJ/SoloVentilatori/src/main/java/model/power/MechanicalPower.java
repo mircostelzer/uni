@@ -1,6 +1,5 @@
 package model.power;
 
-import model.interfaces.FanInterface;
 import model.interfaces.MechanicalPowerInterface;
 
 public class MechanicalPower implements MechanicalPowerInterface {
@@ -10,7 +9,7 @@ public class MechanicalPower implements MechanicalPowerInterface {
         return "Meccanica";
     }
 
-    public double getMultiplier() {
+    public int getMultiplier() {
         return 1;
     }
 }

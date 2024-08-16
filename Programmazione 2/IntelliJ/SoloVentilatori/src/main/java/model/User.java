@@ -11,13 +11,13 @@ import java.util.List;
 public class User {
     private int capital;
     private int monthlyExpense;
+    private int months;
     private List<FanInterface> subscription;
-    private Comparator<FanInterface> comparator;
 
     public User() {
         this.capital = 100;
         this.monthlyExpense = 0;
-        this.comparator = new TypeComparator();
+        this.months = 0;
         this.subscription = new ArrayList<>();
     }
 
@@ -33,41 +33,50 @@ public class User {
         return monthlyExpense;
     }
 
+    public void addFan(FanInterface fan) {
+        fan.setSubscription(true);
+        subscription.add(fan);
+    }
+
+    public void removeFan() {
+        while(monthlyExpense > capital) {
+            FanInterface toRemove = subscription.get(0);
+            for(FanInterface fan : subscription) {
+                if (fan.getPrice() > toRemove.getPrice()) {
+                    toRemove = fan;
+                }
+            }
+            subscription.remove(toRemove);
+            monthlyExpense -= toRemove.getPrice();
+            toRemove.setSubscription(false);
+        }
+    }
+
     public void setMonthlyExpense(int monthlyExpense) {
         this.monthlyExpense = monthlyExpense;
     }
 
-    public List<FanInterface> getSubscription() {
-        return subscription;
-    }
-
-    public void addFan(FanInterface fan) {
-        this.subscription.add(fan);
-    }
-
-    public void removeFan(FanInterface fan) {
-        while (monthlyExpense > capital) {
-            FanInterface toRemove = this.subscription.get(0);
-            for (FanInterface f : subscription) {
-                if (f.getPrice() > toRemove.getPrice()) {
-                    toRemove = f;
-                }
+    public void advanceMonth() throws BrokeException {
+        this.months++;
+        if (monthlyExpense > capital) {
+            this.removeFan();
+            throw new BrokeException();
+        }
+        capital -= monthlyExpense;
+        monthlyExpense = 0;
+        for (FanInterface fan : subscription) {
+            if (fan.getSubscription()) {
+                monthlyExpense += fan.getPrice();
             }
-            this.subscription.remove(toRemove);
         }
     }
 
-    public void toggleComparator() {
-        if (comparator instanceof TypeComparator) {
-            comparator = new PriceComparator();
-        } else {
-            comparator = new TypeComparator();
-        }
-        this.sort();
+    public String toString() {
+        return "Capitale: " + capital + " Spesa Mensile: " + monthlyExpense + " Mesi Trascorsi: " + months;
     }
 
-    private void sort() {
-        subscription.sort(comparator);
+    public boolean canPurchase(FanInterface fan) {
+        return capital >= fan.getPrice();
     }
 
 }

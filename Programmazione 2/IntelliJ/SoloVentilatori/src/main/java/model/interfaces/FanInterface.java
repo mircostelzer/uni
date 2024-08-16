@@ -5,4 +5,7 @@ public interface FanInterface {
     int getPrice();
     void setPrice(int price);
     void setPower(String power);
+    boolean getSubscription();
+    void setSubscription(boolean subscription);
+    String toString();
 }
