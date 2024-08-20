@@ -16,22 +16,8 @@ public abstract class AbstractFan implements FanInterface {
     }
 
     @Override
-    public String getBrand() {
-        return brand;
-    }
-
-    @Override
     public int getPrice() {
         return price;
-    }
-
-    @Override
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public void setPower(String power) {
-        this.power = power;
     }
 
     public boolean getSubscription() {

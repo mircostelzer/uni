@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ebd92ba-b6ae-4065-ac34-a3693fa65f87" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SimpleMinecraft" beforeDir="false" afterPath="$PROJECT_DIR$/../SimpleMinecraft" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SimpleMinecraft/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SimpleMinecraft/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SimpleMinecraftFX/src/main/java/sampleFX/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SimpleMinecraftFX/src/main/java/sampleFX/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SimpleMinecraftFX/src/main/java/visual/GUI/FurnacePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SimpleMinecraftFX/src/main/java/visual/GUI/FurnacePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sampleFX/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Prove d'esame/Soluzione_2023_07_18_OnlyFans/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Prove d'esame/Soluzione_2023_07_18_OnlyFans/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SoloVentilatori/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SoloVentilatori/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SoloVentilatori/src/main/java/model/AbstractFan.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SoloVentilatori/src/main/java/model/AbstractFan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SoloVentilatori/src/main/java/model/FanCatalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SoloVentilatori/src/main/java/model/FanCatalog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SoloVentilatori/src/main/java/model/comparators/PriceComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SoloVentilatori/src/main/java/model/comparators/PriceComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SoloVentilatori/src/main/java/model/comparators/TypeComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SoloVentilatori/src/main/java/model/comparators/TypeComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Soluzione_2023_06_17_Geralt/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Soluzione_2023_06_17_Geralt/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programmazione Funzionale/Simulazioni/exercises1.ml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Programmazione Funzionale/Simulazioni/exercises1.ml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,11 +33,15 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2fDpZzO5sifGGGDKG6Zy4lspbCR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -43,16 +54,16 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/mirco/uni/Programmazione 2/IntelliJ/Patatino",
+    "last_opened_file_path": "/home/mirco/uni/Programmazione 2/IntelliJ/StreamThis!",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -76,10 +87,20 @@
       <workItem from="1713466340099" duration="126000" />
       <workItem from="1714557408484" duration="26000" />
       <workItem from="1716380982926" duration="931000" />
+      <workItem from="1724071828389" duration="117000" />
+      <workItem from="1724071951722" duration="75000" />
+      <workItem from="1724072077087" duration="368000" />
+      <workItem from="1724072517247" duration="746000" />
+      <workItem from="1724097855381" duration="16000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../SimpleMinecraft" />
+    </ignored-roots>
   </component>
 </project>

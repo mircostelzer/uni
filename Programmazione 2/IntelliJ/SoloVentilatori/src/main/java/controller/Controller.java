@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.scene.control.Alert;
+import model.AbstractFan;
 import model.BrokeException;
 import model.FanCatalog;
 import model.User;
@@ -38,7 +39,7 @@ public class Controller {
         mainGui.redraw();
     }
 
-    public void toggleComparator(Comparator<FanInterface> comparator) {
+    public void toggleComparator(Comparator<AbstractFan> comparator) {
         fanCatalog.toggleComparator(comparator);
         mainGui.redraw();
     }

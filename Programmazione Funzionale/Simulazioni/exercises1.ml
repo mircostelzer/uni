@@ -31,4 +31,3 @@ fun suffixes("") = nil
 | suffixes(string) = string::suffixes(implode(removeLast(explode(string))));
 
 suffixes "hi world";
-

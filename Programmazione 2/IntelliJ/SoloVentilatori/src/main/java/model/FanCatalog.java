@@ -15,8 +15,8 @@ import java.util.Comparator;
 import java.util.List;
 
 public class FanCatalog {
-    private List<FanInterface> fans;
-    private Comparator<FanInterface> comparator;
+    private List<AbstractFan> fans;
+    private Comparator<AbstractFan> comparator;
 
     public FanCatalog() {
         this.fans = new ArrayList<>();
@@ -29,11 +29,11 @@ public class FanCatalog {
         this.sort();
     }
 
-    public List<FanInterface> getFans() {
+    public List<AbstractFan> getFans() {
         return fans;
     }
 
-    public void toggleComparator(Comparator<FanInterface> comparator) {
+    public void toggleComparator(Comparator<AbstractFan> comparator) {
         this.comparator = comparator;
         this.sort();
     }
