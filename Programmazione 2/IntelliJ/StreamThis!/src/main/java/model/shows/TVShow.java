@@ -1,6 +1,8 @@
 package model.shows;
 
-public class TVShow extends Film {
+import model.AbstractShow;
+
+public class TVShow extends AbstractShow {
     private int seasonNumber;
     private int selectedSeasons;
 

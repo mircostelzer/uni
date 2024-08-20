@@ -4,22 +4,21 @@ import controller.Controller;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.shows.Anime;
-import model.shows.Film;
+import model.AbstractShow;
 import model.shows.TVShow;
 
 public class ShowPane extends StackPane {
     private Rectangle rectangle;
     private Text text;
-    private Film show;
+    private AbstractShow show;
     private Controller controller;
     private final Color FILM_COLOR = Color.CYAN;
     private final Color SHOW_COLOR = Color.MAGENTA;
     private final Color ANIME_COLOR = Color.SALMON;
 
-    public ShowPane(Film show, Controller controller) {
+    public ShowPane(AbstractShow show, Controller controller) {
         this.show = show;
         this.controller = controller;
         intialise();

@@ -10,8 +10,8 @@ import java.util.Comparator;
 import java.util.List;
 
 public class FilmCatalog {
-    private List<Film> shows;
-    private Comparator<Film> comparator;
+    private List<AbstractShow> shows;
+    private Comparator<AbstractShow> comparator;
 
     public FilmCatalog() {
         shows = new ArrayList<>();
@@ -26,11 +26,11 @@ public class FilmCatalog {
         shows.sort(comparator);
     }
 
-    public List<Film> getShows() {
+    public List<AbstractShow> getShows() {
         return shows;
     }
 
-    public void toggleComparator(Comparator<Film> comparator) {
+    public void toggleComparator(Comparator<AbstractShow> comparator) {
         this.comparator = comparator;
         shows.sort(comparator);
     }

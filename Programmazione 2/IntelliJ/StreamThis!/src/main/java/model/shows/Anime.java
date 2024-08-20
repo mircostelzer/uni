@@ -1,6 +1,8 @@
 package model.shows;
 
-public class Anime extends Film {
+import model.AbstractShow;
+
+public class Anime extends AbstractShow {
     private String dubbing;
 
     public Anime(String title, int year, String language, double basePrice, String dubbing) {

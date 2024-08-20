@@ -1,12 +1,12 @@
 package model.comparators;
 
-import model.shows.Film;
+import model.AbstractShow;
 
 import java.util.Comparator;
 
-public class NameComparator implements Comparator<Film> {
+public class NameComparator implements Comparator<AbstractShow> {
     @Override
-    public int compare(Film o1, Film o2) {
+    public int compare(AbstractShow o1, AbstractShow o2) {
         return o1.getTitle().compareTo(o2.getTitle());
     }
 }

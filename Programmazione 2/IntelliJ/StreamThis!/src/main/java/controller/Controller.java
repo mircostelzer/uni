@@ -1,7 +1,7 @@
 package controller;
 
 import model.FilmCatalog;
-import model.shows.Film;
+import model.AbstractShow;
 import view.CatalogPane;
 import view.InfoPane;
 import view.MainGui;
@@ -25,12 +25,12 @@ public class Controller {
         return mainGui;
     }
 
-    public void toggleComparator(Comparator<Film> comparator) {
+    public void toggleComparator(Comparator<AbstractShow> comparator) {
         filmCatalog.toggleComparator(comparator);
         catalogPane.redraw();
     }
 
-    public void selectShow(Film film) {
-        this.infoPane.setShow(film);
+    public void selectShow(AbstractShow show) {
+        this.infoPane.setShow(show);
     }
 }

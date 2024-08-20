@@ -7,13 +7,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import model.shows.Film;
+import model.AbstractShow;
 import model.shows.TVShow;
 
 
 public class InfoPane extends VBox {
     private Text info;
-    private Film show;
+    private AbstractShow show;
     private Button buyButton;
 
     public InfoPane() {
@@ -55,7 +55,7 @@ public class InfoPane extends VBox {
         this.getChildren().add(buyButton);
     }
 
-    public void setShow(Film show) {
+    public void setShow(AbstractShow show) {
         this.show = show;
         this.redraw();
     }
