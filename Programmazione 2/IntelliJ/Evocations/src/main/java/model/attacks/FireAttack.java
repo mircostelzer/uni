@@ -6,8 +6,8 @@ import model.exceptions.InsufficientEnergiesException;
 
 public class FireAttack extends AbstractAttack {
 
-    public FireAttack(String name, int damage, int neededEnergies, AbstractEvocation owner) {
-        super(Energy.Fire, name, damage, neededEnergies, owner);
+    public FireAttack(String name, int damage, int neededEnergies) {
+        super(Energy.Fire, name, damage, neededEnergies);
     }
     @Override
     public void strike(AbstractEvocation evocation) throws InsufficientEnergiesException {

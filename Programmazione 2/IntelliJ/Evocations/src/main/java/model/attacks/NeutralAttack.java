@@ -6,8 +6,8 @@ import model.exceptions.InsufficientEnergiesException;
 
 public class NeutralAttack extends AbstractAttack {
 
-    public NeutralAttack(String name, int damage, int neededEnergies, AbstractEvocation owner) {
-        super(Energy.Neutral, name, damage, neededEnergies, owner);
+    public NeutralAttack(String name, int damage, int neededEnergies) {
+        super(Energy.Neutral, name, damage, neededEnergies);
     }
     @Override
     public void strike(AbstractEvocation evocation) throws InsufficientEnergiesException {

@@ -21,6 +21,7 @@ public abstract class AbstractEvocation {
         this.currentLP = this.totalLP;
         this.energies = 0;
         this.attack = attack;
+        attack.setOwner(this);
         if (!attack.getType().equals(this.type)) {
             throw new WrongEnergyException();
         }

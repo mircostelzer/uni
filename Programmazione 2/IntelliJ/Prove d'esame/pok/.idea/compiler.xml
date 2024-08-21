@@ -9,8 +9,5 @@
         <module name="pok" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="pok" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>

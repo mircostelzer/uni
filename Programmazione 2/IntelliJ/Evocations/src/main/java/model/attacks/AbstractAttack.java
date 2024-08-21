@@ -12,12 +12,11 @@ public abstract class AbstractAttack {
     protected AbstractEvocation owner;
 
 
-    public AbstractAttack(Energy type, String name, int damage, int neededEnergies, AbstractEvocation owner) {
+    public AbstractAttack(Energy type, String name, int damage, int neededEnergies) {
         this.type = type;
         this.name = name;
         this.damage = damage;
         this.neededEnergies = neededEnergies;
-        this.owner = owner;
     }
 
     public String toString() {
@@ -26,6 +25,10 @@ public abstract class AbstractAttack {
 
     public Energy getType() {
         return type;
+    }
+
+    public void setOwner(AbstractEvocation owner) {
+        this.owner = owner;
     }
 
     public abstract void strike(AbstractEvocation evocation) throws InsufficientEnergiesException;
