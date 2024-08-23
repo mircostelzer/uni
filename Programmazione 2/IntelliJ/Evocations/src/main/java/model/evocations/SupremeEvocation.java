@@ -21,4 +21,8 @@ public class SupremeEvocation extends AbstractEvocation {
             this.attack.strike(e);
         }
     }
+
+    public String toString() {
+        return super.toString() + " (all)";
+    }
 }

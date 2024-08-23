@@ -34,9 +34,7 @@ public class Player {
     }
 
     public void removeEvocation() {
-        if (this.evocations.get(0).getCurrentLP() <= 0) {
-            this.evocations.remove(0);
-        }
+        evocations.removeIf(evocation -> evocation.getCurrentLP() <= 0);
     }
 
     public void attack(Player opponent, AbstractEvocation evocation) throws InsufficientEnergiesException {

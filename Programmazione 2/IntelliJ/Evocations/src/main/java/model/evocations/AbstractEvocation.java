@@ -40,7 +40,7 @@ public abstract class AbstractEvocation {
     }
 
     public void addEnergy(Energy energy) throws WrongEnergyException {
-        if (energy.equals(this.type)) {
+        if (energy.equals(this.type) || energy.equals(Energy.Neutral)) {
             this.energies++;
         } else {
             throw new WrongEnergyException();
