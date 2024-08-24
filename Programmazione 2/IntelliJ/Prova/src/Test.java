@@ -3,32 +3,31 @@ package Prova;
 import java.util.*;
 
 public class Test {
-
-public static void main(String[] args) {
-       Group<A> g = new Group<>();
-       g.add(new A());
-       g.add(new A());
-       g.add(new A());
-       g.show();
+    static Collection ll = new LinkedList();
+    int x = 6;
+    Test() {}
+    Test(int x) {
+        ll.add(this);
+        ll.add(new E5A());
     }
-}
 
-class Group<T> {
-    List<T> l = new ArrayList<>();
-    void add(T obj) { l.add(obj); }
-    void show() {
-        for (T t : l) {
-            System.out.println(t);
+    public static void main(String[] args) {
+       new Test(3);
+       Iterator it = ll.iterator();
+       while (it.hasNext()) {
+           ((Test)(it.next())).f();
+       }
+    }
+    public void f() { System.out.println(x); }
+    class E5A extends Test {
+        public void f() {
+            x++; super.f(); System.out.println(2);
         }
     }
 }
 
-class A {
-    static int counter = 20;
-    int x;
-    A() { x = ++counter; }
-    public String toString() { return x + ""; }
-}
+
+
 
 
 

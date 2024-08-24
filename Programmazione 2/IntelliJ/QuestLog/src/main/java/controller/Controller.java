@@ -48,7 +48,6 @@ public class Controller {
             alert.setContentText("You need to complete this quest: " + ((Main_DLCQuest)quest).prevQuestName());
             alert.show();
         } catch (MissingQuestException qe) {
-            qe.printStackTrace();
         }
         mainView.redraw();
     }

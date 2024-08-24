@@ -1,25 +1,19 @@
 #include <iostream>
+#include <cstdlib>
+#include <cstring>
 
 using namespace std;
 
-void g(char x[], int y) {
-    y--;
-    x[y]--;
-}
-
-void f(char *x, int * y) {
-    (*y)++;
-    x[*y]++;
+void f(char x[2], int index, char value) {
+    x[index] = value;
 }
 
 int main() {
-    char x[2];
-    int y;
-    x[0] = 'R';
-    x[1] = 'R';
-    y = 0;
-    f(x, &y);
-    g(x, y);
-    cout << x[0] << " " << x[1] << " " << y << endl;
+    char a[] = "ABCDEFGHIL";
+    strcpy(&a[3], "OOO");
+    f(&a[2], 4, '$');
+    f(&a[2], 6, 'O');
+    cout << a;
     return 0;
+
 }

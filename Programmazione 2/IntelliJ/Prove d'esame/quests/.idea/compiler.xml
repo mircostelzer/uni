@@ -9,8 +9,5 @@
         <module name="quests" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="quests" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>
