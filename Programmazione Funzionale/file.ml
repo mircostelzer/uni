@@ -56,3 +56,7 @@ fun sort (a, b, c) =
 fun dec a:real = (real(round (a*10.0)))/10.0;
 
 fun remove a: 'a list = (hd a) :: tl(tl a); 
+
+val infile = TextIO.openIn("IO.txt");
+
+val s = valOf(TextIO.inputLine(infile));
