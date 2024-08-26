@@ -1,6 +1,6 @@
 fun implode L = (foldr(op^) "" (map str L));
 
-val implode = (foldr(op^) "") o (map(str));
+val implode = (foldl(op^) "") o (map(str));
 
 implode([#"a", #"b", #"c"]);
 
