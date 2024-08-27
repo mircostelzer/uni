@@ -18,4 +18,8 @@ public class Block extends Enemy {
         this.shape.setStroke(COLOR);
         player.setLives(player.getLives() - 1);
     }
+
+    public Rectangle getShape() {
+        return ((Rectangle) this.shape);
+    }
 }

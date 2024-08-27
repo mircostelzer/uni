@@ -13,4 +13,7 @@ public class Finish extends NonPlayerEntity implements Entity{
         this.shape.setFill(COLOR);
     }
 
+    public Rectangle getShape() {
+        return (Rectangle) this.shape;
+    }
 }

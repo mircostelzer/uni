@@ -28,4 +28,8 @@ public class Player {
     public boolean isDead() {
         return lives <= 0;
     }
+
+    public String toString() {
+        return "Punteggio: " + points + "   Vite: " + lives;
+    }
 }
