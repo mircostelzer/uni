@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
+import model.Direction;
 import model.Player;
 import model.entities.Character;
 import model.entities.Entity;
@@ -45,8 +46,42 @@ public class MainGui extends BorderPane {
 
     public void setScene(Scene scene) {
         this.scene = scene;
+        this.scene.setOnKeyPressed(event -> {
+            switch (event.getCode()) {
+                case UP: {
+                    character.setDirection(Direction.Up);
+                    character.move();
+                    this.moveAll();
+                    break;
+                }
+                case DOWN: {
+                    character.setDirection(Direction.Down);
+                    character.move();
+                    this.moveAll();
+                    break;
+                }
+                case SPACE: {
+                    this.moveAll();
+                    break;
+                }
+                default: {}
+            }
+
+        });
     }
 
+    private void moveAll() {
+        player.setPoints(player.getPoints() + 100);
+        for (Enemy e : enemies) {
+            e.move();
+        }
+        finish.move();
+        this.checkCollisions();
+        if (player.isDead()) {
+            this.gameOverAlert(false);
+        }
+        this.playerPane.refresh();
+    }
 
 
     public void addEnemies() {
@@ -67,15 +102,15 @@ public class MainGui extends BorderPane {
 
 
     private boolean enemyCollision(Entity entity, Enemy enemy) {
-            if (enemy instanceof Block) {
-                return (enemy.getShape().intersects(entity.getShape().getBoundsInLocal()));
-            } else {
-                double x1 = entity.getShape().getLayoutX();
-                double x2 = enemy.getShape().getLayoutX();
-                double y1 = entity.getShape().getLayoutY();
-                double y2 = enemy.getShape().getLayoutY();
-                return (Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)) <= Penalty.DIM);
-            }
+//            if (enemy instanceof Block) {
+                return (enemy.getShape().getBoundsInParent().intersects(entity.getShape().getBoundsInParent()));
+//            } else {
+//                double x1 = entity.getShape().getLayoutX();
+//                double x2 = enemy.getShape().getLayoutX();
+//                double y1 = entity.getShape().getLayoutY();
+//                double y2 = enemy.getShape().getLayoutY();
+//                return (Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)) <= Penalty.DIM);
+//            }
     }
 
     private void checkCollisions() {
@@ -84,7 +119,7 @@ public class MainGui extends BorderPane {
                 e.hit(player);
             }
         }
-        if (finish.getShape().intersects(character.getBoundsInLocal())) {
+        if (finish.getShape().getBoundsInParent().intersects(character.getBoundsInParent())) {
             this.gameOverAlert(true);
         }
     }
@@ -97,5 +132,7 @@ public class MainGui extends BorderPane {
         } else {
             alert.setHeaderText("Hai terminato le vite a disposizione");
         }
+        alert.showAndWait();
+        System.exit(0 );
     }
 }
