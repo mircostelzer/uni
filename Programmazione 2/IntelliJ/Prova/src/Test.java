@@ -1,30 +1,33 @@
 package Prova;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
 
 public class Test {
-    static Collection ll = new LinkedList();
-    int x = 6;
-    Test() {}
-    Test(int x) {
-        ll.add(this);
-        ll.add(new E5A());
+    static Collection<Test> s = new HashSet<>();
+    int k, j;
+    Test(int k, int j) {
+        this.k = k;
+        this.j = j;
+    }
+    public boolean equals(Object d) {
+        return k-j == ((Test) d).j-((Test) d).k;
+    }
+    public int hashCode() { return 1; }
+    public static void main(String[] args) {
+       s.add(new Test(1, 2)); s.add(new Test(0, 1));
+       s.add(new Test(2, 1)); s.add(new Test(1, 0));
+       for (Test t: s) { System.out.println(t.k + " " + t.j); }
     }
 
-    public static void main(String[] args) {
-       new Test(3);
-       Iterator it = ll.iterator();
-       while (it.hasNext()) {
-           ((Test)(it.next())).f();
-       }
-    }
-    public void f() { System.out.println(x); }
-    class E5A extends Test {
-        public void f() {
-            x++; super.f(); System.out.println(2);
-        }
-    }
 }
+
+
+
+
+
 
 
 
