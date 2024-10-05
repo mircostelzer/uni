@@ -17,13 +17,17 @@ int main()
         arr[i] = n;
     }
 
-    int max = 0;
+
+    int maX = 0;
+    int sum = 0;
     for (int i=0; i<N; i++) {
-        
+        sum = max(sum+=arr[i], 0);
+        maX = max(maX, sum);
     }
 
+
     ofstream outfile("output.txt");
-    outfile << max;
+    outfile << maX;
 
     return 0;
 }
