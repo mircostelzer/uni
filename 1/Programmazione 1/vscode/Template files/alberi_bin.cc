@@ -149,20 +149,9 @@ void print_indented1(const tree &t, int space){
    }
 }
 
-int countNodes(const tree &t, int lvl=0, int res=0) {
-    if (t == nullptr) return res;
-    if (t->val == lvl) res++;
-    res = countNodes(t->left, lvl++, res) + countNodes(t->right, lvl++, res);
-    return res;
-}
+
 
 int main() {
-    tree t;
-    init(t);
-
-    insert(0, t);
-    insert(3, t);
-    insert(2, t);
-    insert(4, t);
-    cout << countNodes(t) << endl;
+    
+    return 0;
 }
