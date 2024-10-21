@@ -50,3 +50,15 @@ const flatten = (array) => {
         
 const data1 = [1, 2, [3, 4, [5]]];
 console.log(flatten(data1)); // [1, 2, 3, 4, 5]
+
+var mod = (a, b) =>  a%b;
+console.log(typeof mod);
+
+var a = 5;
+
+function sum(x) {
+    return this + x;
+}
+var bs = sum.bind(a);
+
+console.log(bs(2));
