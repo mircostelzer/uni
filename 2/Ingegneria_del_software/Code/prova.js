@@ -61,4 +61,12 @@ function sum(x) {
 }
 var bs = sum.bind(a);
 
-console.log(bs(2));
+console.log(sum.call(2, 3));
+
+var a = 1;
+
+function f() {
+    console.log(a);
+    var a = 10;
+}
+f();
