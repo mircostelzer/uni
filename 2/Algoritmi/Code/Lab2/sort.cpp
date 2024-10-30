@@ -6,14 +6,16 @@ using namespace std;
 void merge(int arr[], int first, int mid, int last) {
     int tmp[first+last+1];
 
-    int i;
-    for (i=mid; i>first; i--) {
+    int i = mid + 1;
+    while (i>first) {
         tmp[i-1] = arr[i-1];
+        i--;
     }
 
-    int j;
-    for (j=mid+1; j<last; j++) {
+    int j = mid;
+    while (j<last) {
         tmp[mid+(last-j)] = arr[j+1];
+        j++;
     }
 
     int k=first;

@@ -14,12 +14,6 @@ function myFunction() {
 
 }
 
-// console.log(myFunction.toString())
-function sum(a) {
-    return this + a;
-}
-
-// var bindedSum = sum.bind(2)
 console.log(sum(3))
 
 /**  
@@ -70,3 +64,23 @@ function f() {
     var a = 10;
 }
 f();
+
+function binarySearch(v, n, x) {
+    var start = 0;
+    var end = n-1;
+    var mid;
+    while (start <= end) {
+        mid = Number.parseInt((end+start)/2);
+        if (v[mid] === x) return mid;
+        if (v[mid] < x) {
+            start = mid + 1;
+        } else {
+            end = mid - 1;
+        }
+    }
+    return -1;
+}
+
+var arr = [1, 3, 6, 7, 12];
+
+console.log(binarySearch(arr, arr.length, 7));
