@@ -1,47 +1,73 @@
 #include <iostream>
 #include <bits/stdc++.h>
+#include <vector>
 
 using namespace std;
 
-void merge(int arr[], int first, int mid, int last) {
-    int tmp[first+last+1];
+// Merges two subarrays of arr[].
+// First subarray is arr[left..mid]
+// Second subarray is arr[mid+1..right]
+void merge(vector<int>& arr, int left, 
+                     int mid, int right)
+{
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
 
-    int i = mid + 1;
-    while (i>first) {
-        tmp[i-1] = arr[i-1];
-        i--;
-    }
+    // Create temp vectors
+    vector<int> L(n1), R(n2);
 
-    int j = mid;
-    while (j<last) {
-        tmp[mid+(last-j)] = arr[j+1];
-        j++;
-    }
+    // Copy data to temp vectors L[] and R[]
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = arr[mid + 1 + j];
 
-    int k=first;
-    while (k<=last) {
-        if (tmp[i] < tmp[j]) {
-            arr[k] = tmp[i++];
+    int i = 0, j = 0;
+    int k = left;
+
+    // Merge the temp vectors back 
+    // into arr[left..right]
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
         }
         else {
-            arr[k] = tmp[j--];
+            arr[k] = R[j];
+            j++;
         }
+        k++;
+    }
+
+    // Copy the remaining elements of L[], 
+    // if there are any
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of R[], 
+    // if there are any
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
         k++;
     }
 }
 
-void mergeSort(int arr[], int first, int last) {
-    if (first >= last) {
+// begin is for left index and end is right index
+// of the sub-array of arr to be sorted
+void mergeSort(vector<int>& arr, int left, int right)
+{
+    if (left >= right)
         return;
-    }
 
-    int mid = (first+last)/2;
-    mergeSort(arr, first, mid);
-    mergeSort(arr, mid+1, last);
-    merge(arr, first, mid, last);
-
+    int mid = left + (right - left) / 2;
+    mergeSort(arr, left, mid);
+    mergeSort(arr, mid + 1, right);
+    merge(arr, left, mid, right);
 }
-
 
 int main()
 {
@@ -49,18 +75,18 @@ int main()
     ifstream in("input.txt");
     in >> n;
 
-    int arr[n];
+    vector<int> v;
     for (int i=0; i<n; i++) {
-        in >> arr[i];
+        int x;
+        in >> x;
+        v.push_back(x);
     }
 
-
-    mergeSort(arr, 0, n);
-
+    mergeSort(v, 0, v.size()-1);
 
 
     ofstream out("output.txt");
-    for (int& i:arr) out << i << " "; 
+    for (int& i:v) out << i << " "; 
 
     return 0;
 }

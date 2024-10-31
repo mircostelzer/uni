@@ -4,25 +4,6 @@
 
 using namespace std;
 
-int sum(int a[], int i, int j) {
-    int res = 0;
-    for (int k=i; k<=j; k++) {
-        res+=a[k];
-    }
-
-    return res;
-}
-
-int kadane(int a[], int n) {
-    int maX = 0;
-    int sum = 0;
-    for (int i=0; i<n; i++) {
-        sum = max(sum+=a[i], 0);
-        maX = max(maX, sum);
-    }
-    return maX;
-}
-
 int main()
 {
     int R, C;
@@ -31,23 +12,27 @@ int main()
     infile >> C;
 
     int mat[R][C];
-    for (int i=0; i<R; i++) {
-        for (int j=0; j<C; j++) {
-            int n;
-            infile >> n;
-            mat[i][j] = n;
-        }
-        
+    int S[R][C];
+
+    for(int i=0; i<R; i++) {
+    int sumr = 0;
+
+    for(int j=0; j<C; j++) {
+      infile >> mat[i][j];
+      sumr += mat[i][j];
+      S[i][j] = sumr;
     }
+  }
 
     int mx = 0;
     for (int i=0; i<C; i++) {
         for (int j=i; j<C; j++) {
-            int s[R];
+            int tot = 0;
             for (int k=0; k<R; k++) {
-                s[k] = sum(mat[k], i, j);
+                int curr = S[k][j] - S[k][i-1];
+                tot = max(curr, curr+tot);
+                mx = max(mx, tot);
             }
-            mx = max(mx, kadane(s, R));
         }
     }
 
