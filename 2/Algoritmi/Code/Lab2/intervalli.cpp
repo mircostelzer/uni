@@ -8,36 +8,35 @@ using namespace std;
 int main()
 {
     int n;
-    vector<int> v;
-    map<int, int> m;
+    vector<int> v1;
+    vector<int> v2;
     ifstream in("input.txt");
     in >> n;
     int x;
-    for (int i=0; i<n*2; i++) {
+    int y;
+    for (int i=0; i<n; i++) {
         in >> x;
-        m.insert(pair<int, int>(x, i%2));
-        v.push_back(x);
+        in >> y;
+        v1.push_back(x);
+        v2.push_back(y);
     }
 
-    sort(v.begin(), v.end());
+    sort(v1.begin(), v1.end());    
+    sort(v2.begin(), v2.end());    
 
-    for (int i=0; i<v.size(); i++) {
-        cout << v[i] << " ";
-    }
+
 
     int low = -1;
     int up = -1;
     int maxDiff = 0;
 
-    for (int i=0; i<v.size()-1; i++) {
-        if ((v[i+1] != v[i]+1) && (v[i+1] != v[i])) {
-                if ((m[v[i]] == 1) && (m[v[i+1]] == 0)) {
-                    int diff = v[i+1] - v[i];
-                    if (diff > maxDiff) {
-                        low = v[i];
-                        up = v[i+1];
-                        maxDiff = diff;
-                    }
+    for (int i=0; i<n-1; i++) {
+        if ((v1[i+1] != v2[i]) && (v1[i+1] != v2[i]+1)) {
+            int diff = v1[i+1] - v2[i];
+            if (diff > maxDiff) {
+                low = v2[i];
+                up = v1[i+1];
+                maxDiff = diff;
             }
         }
     }

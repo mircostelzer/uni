@@ -16,13 +16,14 @@
 var express = require('express');
 var app = express();
 const port = 8080;
+const path = require('path');
 
 app.use( express.json() );
 app.use( express.urlencoded( { extended: true }))
 
-app.use(`/static`, express.static(`public`));
+app.use(express.static('/'));
 
-app.get("/", (req, res) => {
+app.get("/hello", (req, res) => {
   res.json({message: "Hello World"});
 })
 
