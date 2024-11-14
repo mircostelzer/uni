@@ -3,73 +3,50 @@
 
 using namespace std;
 
-void copy(int *src, int *dest, int n) {
-    for (int i=0; i<n; i++) {
-        dest[i] = src[i];
-    }
-}
-
-int Min(int a, int b) {
-    if (a < b) {
-        return a;
-    }
-    return b;
-}
-
 int main()
 {
     ifstream in("input.txt");
     int n;
     in >> n;
-    int arr[n];
-    int index[n];
-    int x;
-    for (int i=0; i<n; i++) {
-        in >> x;
-        arr[i] = x-1;
-        index[x-1] = i;
-    }
+    vector<int> num;
+    vector<bool> visited;
 
-    int arr1[n];
-    int index1[n];
-    copy(arr, arr1, n);
-    copy(index, index1, n); 
+    num.resize(n + 1);
+    visited.resize(n + 1, false);
+    for (int i = 1; i <= n; i++) {
+        in >> num[i];
+    }
 
     int S = 0;
     int P = 0;
-    int min = 0;
-    int max = n-1;
-    
-    while(min < max) {
-        if (index[min] == min) {
-            min++;
-        } else {
-            int x = arr[index[index[min]]];
-            int y = arr[index[min]];
-            swap(arr[index[index[min]]], arr[index[min]]);
-            swap(index[min], index[x]);
-            S++;
+
+    for (int i = 1; i <= n; i++) {
+        if (!visited[i]) {
+            if (num[i] != i) {
+                int curr = num[i];
+                visited[curr] = true;
+
+                int currS = 0;
+                int sum = curr;
+                int m = curr;
+                
+                do {
+                    visited[num[curr]] = true;
+                    curr = num[curr];
+                    m = min(m, curr);
+                    sum += curr;
+                    currS++;
+                } while (!visited[num[curr]]);
+
+                S += currS;
+                int Cm = currS * m + sum - m;
+                int C1 = 2 * (1 + m) + currS + sum - m;
+
+                P += min(Cm, C1);
+
+            }
+            visited[i] = true;
         }
-    }
-
-    min = 0;
-    max = n-1;
-
-    while (min < max) {
-        if (index1[min] == min) {
-            min++;
-        } else {
-            int x = arr1[index1[min]];
-            int y = arr1[index1[index1[min]]];
-            swap(arr1[index1[min]], arr1[index1[index1[min]]]);
-            swap(index1[min], index1[y]);
-            int p1 = x + y + 2;
-            int p2 = (1 + (min + 1)) * 2 + y + 1 + 1;
-            P += Min(p1, p2);
-        }
-
-
-
     }
 
     ofstream out("output.txt");
