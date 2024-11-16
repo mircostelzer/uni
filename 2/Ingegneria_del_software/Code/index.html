@@ -1,11 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Ciao</h1>
-</body>
+<!-- HTML5 document -->
+<html>
+    <!-- Root element -->
+    <head>
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="style.css">
+    </head>
+    <!-- Meta information about the page -->
+    <body>
+        <!-- Visible content -->
+        <h1>EasyLib</h1>
+        
+        <!-- Heading -->
+        <div class="navbar bg-base-100">
+          <a class="btn btn-ghost text-xl">daisyUI Navbar</a>
+          <div class="dropdown-menu">
+            <div class="breadcrumbs text-sm">
+              <ul>
+                <li><a>Home</a></li>
+                <li><a>Documents</a></li>
+                <li>Add Document</li>
+              </ul>
+            </div>
+          </div>
+          </div>
+      <div class="borded underline p-3">
+          <h1 id="Ocio">OCIO</h1>
+      </div>
+        <p style="font-size: 2rem">Sottotitolo</p>
+        <details class="dropdown">
+          <summary class="btn m-1">open or close</summary>
+          <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+            <li><a>Item 1</a></li>
+            <li><a>Item 2</a></li>
+            <li>
+              <a>
+                <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                  <li><a>Item 1</a></li>
+                  <li><a>Item 2</a></li>
+                </ul>
+              </a>
+            </li>
+          </ul>
+        </details>
+        <div class="resp">
+          <div style="padding: 5rem">Item 1</div>
+          <div style="padding: 5rem">Item 2</div>
+          </div>
+        <p class="nome_significativo"><sub>Bold</sub>Here is the list of books.</p>
+        <!-- Paragraph -->
+        <ul id="books" class="list">
+            <!-- List -->
+            <li>
+                <!-- List element -->
+                <a href="./v1/books/1">Book 1</a>
+                <!-- Hyperlink, the `href` attribute -->
+            </li>
+        </ul>
+    </body>
 </html>
