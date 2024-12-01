@@ -2,18 +2,26 @@
 
 using namespace std;
 
-bool hasMajorityAux(int *a, int start, int end, int target, int first, int last) {
-    
+int hasMajorityAux(int *a, int index, int target) {
+    if (index >= 0) {
+        if (a[index] == target) {
+            return hasMajorityAux(a, index - 1, target);
+        }
+        return (index + 1);
+    }
+    return 0;
 }
 
 bool hasMajority(int *a, int n) {
-    return hasMajorityAux(a, 0, n - 1, a[n/2], n, -1);
+    int target = a[n/2];
+    int first = hasMajorityAux(a, n/2, target);
+    return (a[first] == a[(n/2) + first]);
 }
 
 int main()
 {
-    int a[] = {1, 2, 4, 4, 4, 4, 5, 7};
-    cout << hasMajority(a, 8) << endl;
+    int a[] = {3, 3, 3, 4, 4, 5};
+    cout << hasMajority(a, 6) << endl;
 
     return 0;
 }
