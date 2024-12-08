@@ -58,5 +58,29 @@
                 <!-- Hyperlink, the `href` attribute -->
             </li>
         </ul>
+          <div>
+            <div id="app">
+              <h1>{{ message }}</h1>
+              <button @click="count++"> Count is: {{ count }} </button>
+              </div>
+              <script type="module">
+              import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+              createApp({ // will later replace setup()
+              setup() { // with the <script setup> syntax
+              const message = ref('Hello Vue!');
+              const count = ref(0);
+              const awesome = ref(true);
+              function toggle() {
+                    awesome.value = ! awesome.value
+              }
+              return { message, count };
+              }
+              }).mount('#app')
+              </script><br>
+                <button @click="toggle">Toggle</button>
+                <h1 v-if="awesome">Vue is awesome!</h1>
+                <h1 v-else>Oh no 😢</h1>
+          </div>
+          
     </body>
 </html>

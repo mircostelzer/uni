@@ -19,9 +19,24 @@
 }
 
 .borded:hover {
-    background-color: red;
-    width: 300px;
+    
+    animation-name: example;
+    animation-timing-function: ease;
+    animation-duration: 2s;
 }
+
+@keyframes example {
+    from {
+        
+    }
+    to {
+        translate: 50px;
+        transform: rotate(135deg);
+        background-color: red;
+        width: 300px;
+    }
+}
+
 
 .resp {
     display: flex; flex-wrap: wrap;

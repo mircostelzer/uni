@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1618" dy="1013" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Componenti definiti dal primo documento -->
+    <mxCell id="cmp1" value="CMP1: Gestione Autenticazione" style="shape=component" vertex="1" parent="1">
+      <mxGeometry x="100" y="100" width="160" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="cmp2" value="CMP2: Gestione Pubblicazione Comunicazione" style="shape=component" vertex="1" parent="1">
+      <mxGeometry x="400" y="100" width="200" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="cmp3" value="CMP3: Gestione Invio Segnalazioni" style="shape=component" vertex="1" parent="1">
+      <mxGeometry x="700" y="100" width="200" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="cmp4" value="CMP4: Mappa Emergenze" style="shape=component" vertex="1" parent="1">
+      <mxGeometry x="100" y="300" width="200" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="cmp5" value="CMP5: Gestione Database" style="shape=component" vertex="1" parent="1">
+      <mxGeometry x="400" y="300" width="200" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="cmp6" value="CMP6: Gestione Utenti" style="shape=component" vertex="1" parent="1">
+      <mxGeometry x="700" y="300" width="200" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="cmp7" value="CMP7: Gestione Nuova Registrazione" style="shape=component" vertex="1" parent="1">
+      <mxGeometry x="100" y="500" width="200" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="cmp8" value="CMP8: Gestione Notifiche" style="shape=component" vertex="1" parent="1">
+      <mxGeometry x="400" y="500" width="200" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="cmp9" value="CMP9: Gestione Impostazioni" style="shape=component" vertex="1" parent="1">
+      <mxGeometry x="700" y="500" width="200" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="cmp10" value="CMP10: Revisione Segnalazioni" style="shape=component" vertex="1" parent="1">
+      <mxGeometry x="100" y="700" width="200" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="cmp11" value="CMP11: Sistema di Ricerca Emergenze" style="shape=component" vertex="1" parent="1">
+      <mxGeometry x="400" y="700" width="200" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="cmp12" value="CMP12: Gestione Invio Email" style="shape=component" vertex="1" parent="1">
+      <mxGeometry x="700" y="700" width="200" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="cmp13" value="CMP13: Filtraggio Comunicazioni" style="shape=component" vertex="1" parent="1">
+      <mxGeometry x="100" y="900" width="200" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Interfacce definite -->
+    <mxCell id="if1" value="Autenticazione" style="shape=ellipse;perimeter=ellipsePerimeter" vertex="1" parent="1">
+      <mxGeometry x="250" y="90" width="120" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="if2" value="Dati Utente" style="shape=ellipse;perimeter=ellipsePerimeter" vertex="1" parent="1">
+      <mxGeometry x="450" y="90" width="120" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="if3" value="Dati Segnalazione" style="shape=ellipse;perimeter=ellipsePerimeter" vertex="1" parent="1">
+      <mxGeometry x="750" y="90" width="120" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="if4" value="Lista Emergenze" style="shape=ellipse;perimeter=ellipsePerimeter" vertex="1" parent="1">
+      <mxGeometry x="450" y="290" width="120" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="if5" value="Lista Segnalazioni" style="shape=ellipse;perimeter=ellipsePerimeter" vertex="1" parent="1">
+      <mxGeometry x="250" y="290" width="120" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- Connessioni richieste e fornite -->
+    <mxCell id="conn1" style="edgeStyle=orthogonalEdgeStyle;endArrow=oval;" edge="1" source="if1" target="cmp1" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn2" style="edgeStyle=orthogonalEdgeStyle;startArrow=halfCircle;" edge="1" source="cmp1" target="if2" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn3" style="edgeStyle=orthogonalEdgeStyle;endArrow=oval;" edge="1" source="if3" target="cmp3" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn4" style="edgeStyle=orthogonalEdgeStyle;startArrow=halfCircle;" edge="1" source="cmp5" target="if4" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn5" style="edgeStyle=orthogonalEdgeStyle;endArrow=oval;" edge="1" source="if5" target="cmp5" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn6" style="edgeStyle=orthogonalEdgeStyle;startArrow=halfCircle;" edge="1" source="cmp3" target="if5" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
+

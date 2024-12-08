@@ -1,0 +1,4 @@
+ip a add 120.0.0.2/24 dev eth0
+ip a add 200.4.0.1/24 dev eth1
+
+/etc/init.d/zebra start
