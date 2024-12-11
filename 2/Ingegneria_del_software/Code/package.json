@@ -2,10 +2,14 @@
   "name": "code",
   "version": "1.0.0",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "start": "node prova2.js",
     "dev": "node -r dotenv/config prova2.js"
+  },
+  "jest": {
+    "transform": {}
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +19,10 @@
     "mongodb": "^6.10.0",
     "mongoose": "^8.7.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "node-fetch": "^3.3.2",
+    "supertest": "^7.0.0"
+  },
   "description": ""
 }

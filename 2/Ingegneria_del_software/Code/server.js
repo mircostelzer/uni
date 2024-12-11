@@ -13,24 +13,25 @@
 //   console.log(`Server running at http://${hostname}:${port}/`);
 // });
 
-var express = require('express');
+import express from 'express';
 var app = express();
 const port = 8080;
-const path = require('path');
 
 app.use( express.json() );
 app.use( express.urlencoded( { extended: true }))
 
 app.use(express.static('/'));
 
-app.get("/hello", (req, res) => {
-  res.json({message: "Hello World"});
+app.get("/", (req, res) => {
+  res.send({message: "Hello World"});
 })
 
 app.post(`api/v1/authentications`, (req, res) => {
   console.log(req.body)
 } )
 
-app.listen(port, () => {
-  console.log(`Example listening on port ${port}`);
-})
+// app.listen(port, () => {
+//   console.log(`Example listening on port ${port}`);
+// })
+
+export default app;
