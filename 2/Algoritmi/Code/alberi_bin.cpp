@@ -32,13 +32,13 @@ int main() {
 
 
 
-// int countNodes(const tree &t, int lvl=0) {
-//     int res = 0;
-//     if (t != nullptr) {
-//         res = countNodes(t->left, lvl + 1) + countNodes(t->right, lvl + 1);
-//         if (t->val == lvl) {
-//             res++;
-//         }
-//     }
-//     return res;
-// }
+int countNodes(btree<int> *&t, int lvl=0) {
+    int res = 0;
+    if (t != nullptr) {
+        res = countNodes(t->left, lvl + 1) + countNodes(t->right, lvl + 1);
+        if (t->val == lvl) {
+            res++;
+        }
+    }
+    return res;
+}
