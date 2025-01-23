@@ -125,6 +125,24 @@ template <typename Item> struct btree {
     
 };
 
+template <typename Item> void dfs(btree<Item> *t) {
+    if (t != nullptr) {
+
+        // uncomment to print in pre-order
+        // printf(t.read());
+
+        dfs(t->getLeft());
+
+        // uncomment to print in-order
+        cout << t->read() << ' ';
+    
+        dfs(t->getRight());
+
+        // uncomment to print post-order
+        // printf(t.read());
+
+    }
+}
 
 
 
@@ -135,6 +153,8 @@ int main() {
     t->insertNode(1);
     t->insertNode(7);
     t->insertNode(9);
+
+    dfs(t);
 }
 
 
