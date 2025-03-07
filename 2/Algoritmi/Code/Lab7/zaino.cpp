@@ -56,31 +56,29 @@ int main()
     //     in >> w[i] >> p[i];
     // }
 
-    int dp[N+1][C+1];
+    vector<vector<int>> dp(2, vector<int>(C+1, 0));
 
-    for (int i = 0; i <= N; i++) {
-        dp[i][0] = 0;
-    }
-
-    for (int i = 0; i <= C; i++) {
-        dp[0][i] = 0;
-    }
+    // for (int i = 0; i < N; i++) {
+    //     dp[i][0] = 0;
+    // }
 
     int w;
     int p;
+
     for (int i = 1; i <= N; i++) {
+        dp[0].swap(dp[1]);
         in >> w >> p;
         for (int c = 1; c <= C; c++) {
             if (w <= c) {
-                dp[i][c] = max(dp[i-1][c-w] + p, dp[i-1][c]);
+                dp[1][c] = max(dp[0][c-w] + p, dp[0][c]);
             } else {
-                dp[i][c] = dp[i-1][c];
+                dp[1][c] = dp[0][c];
             }
         }
     }
     
     ofstream out("output.txt");
-    out << dp[N][C];
+    out << dp[1][C];
 
     return 0;
 }

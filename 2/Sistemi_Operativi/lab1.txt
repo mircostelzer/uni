@@ -1,0 +1,5 @@
+(([[ -f $DATA ]] || [[ -d $DATA  ]]) && echo T) || echo F
+
+(([[ -f $DATA ]] && echo file) || ([[ -d $DATA  ]] && echo cartella)) || echo ?
+
+([[ ! -f $DATA  ]] && echo ?) || echo $(( $(cat $DATA) ))
