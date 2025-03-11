@@ -1,0 +1,19 @@
+.parent {
+    color: blue;
+    background-color: green;
+    width: 500px;
+    height: 500px;
+}
+.box4.box {
+    color: yellow;
+    font-size: 1em;
+}
+#b {
+    color: pink;
+}
+div > .box {
+    font-size: 3em;
+    background-color: aqua;
+    border: 2px solid black;
+    margin: 10px;
+}
