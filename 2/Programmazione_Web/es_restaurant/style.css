@@ -1,0 +1,35 @@
+.footer{
+    position: relative; 
+    bottom: 5px; 
+    margin-top: 2rem;
+}
+
+@font-face {
+    font-family: "GunsNRoses";
+    src: url(Corvinus\ Skyline\ ICG.ttf);
+}
+
+h1{
+    font-family: GunsNRoses, Arial, Tahoma, sans-serif;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 50px;
+}
+
+#head{
+    background-image: 
+    linear-gradient(to bottom, hsla(0, 0%, 0%, 0.597) 15%, rgba(20, 17, 17, 0.129) 60%, rgba(51, 51, 51, 0.294) 100%),
+    url(images/bellissima-la-sala-con.jpg);
+    background-size: cover;
+}
+
+label, input{
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+label{
+    width: 25%;
+    text-align: inline-block;
+}
+

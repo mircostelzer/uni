@@ -1,0 +1,10 @@
+img{
+    max-width: 50%;
+}
+
+.menu{
+    position: absolute; 
+    right: 25%; 
+    left: 75%; 
+    float: none;
+}

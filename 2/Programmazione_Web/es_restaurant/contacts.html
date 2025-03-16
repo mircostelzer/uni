@@ -5,9 +5,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Ristorante</title>
         <link rel="icon" type="image/png" href="images/restaurant.png" />
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div style="position: fixed; bottom: 5px">
+        <div id="head" class="container" >
+            <h1>Ristorante</h1>
+        </div>
+        <form action="">
+            <label for="fname">Nome:</label>
+            <input type="text" id="fname" name="fname"> <br>
+            <label for="fnsname">Cognome:</label>
+            <input type="text" id="fnsname" name="fnsname"> <br>
+            <label for="femail">Email:</label>
+            <input type="email" id="femail" name="femail"> <br>
+            <label for="fmsg" style="vertical-align: top;">Altro:</label>
+            <textarea name="fmsg" id="fmsg" cols="max-width" style="margin: 0.5rem; max-width: 100%;"></textarea> <br> <br>
+            <input type="submit" onclick="alert('Messaggio ricevuto. Riceverà una risposta al più presto')">
+        </form>
+
+
+        <div class="footer" style="position: absolute;">
             Indirizzo Ristorante <br />
             <a href="index.html">Home page</a>
         </div>
