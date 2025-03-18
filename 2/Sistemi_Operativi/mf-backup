@@ -1,0 +1,34 @@
+FOLDER=""
+BACKUP=$(FOLDER).bak
+
+# Regola di default
+.PHONY: help
+help:
+	@echo "Uso: make -f mf-backup FOLDER=nome_cartella [target]"
+	@echo ""
+	@echo "Target disponibili:"
+	@echo "  help     - Mostra questo messaggio"
+	@echo "  backup   - Crea un backup della cartella $(FOLDER) come $(BACKUP)"
+	@echo "  restore  - Ripristina il contenuto della cartella $(FOLDER) da $(BACKUP)"
+
+# Regola per creare il backup
+.PHONY: backup
+backup:
+	@if [ ! -d "$(FOLDER)" ]; then \
+		echo "Errore: La cartella $(FOLDER) non esiste."; exit 1; \
+	fi
+	@if [ -d "$(BACKUP)" ]; then \
+		echo "Errore: La cartella di backup $(BACKUP) esiste già."; exit 1; \
+	fi
+	cp -r "$(FOLDER)" "$(BACKUP)"
+	@echo "Backup completato: $(BACKUP)"
+
+# Regola per ripristinare la cartella originale
+.PHONY: restore
+restore:
+	@if [ ! -d "$(BACKUP)" ]; then \
+		echo "Errore: Il backup $(BACKUP) non esiste."; exit 1; \
+	fi
+	rm -rf "$(FOLDER)"
+	cp -r "$(BACKUP)" "$(FOLDER)"
+	@echo "Ripristino completato: $(FOLDER)"
