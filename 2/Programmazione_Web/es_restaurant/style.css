@@ -23,7 +23,7 @@ h1{
     background-size: cover;
 }
 
-label, input{
+label, input, textarea{
     display: inline-block;
     margin: 0.5rem;
 }
