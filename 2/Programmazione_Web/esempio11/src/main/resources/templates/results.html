@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Results page</title>
+</head>
+<body>
+<h1>Result of the computation</h1>
+<p th:if="${error}" th:text="${error}" ></p>
+<p th:unless="${error}">Operation: <span th:text="${operation}"></span></p>
+
+<p>Result: <span th:text="${result}"></span></p>
+
+<h2>Do you want to perform another operation?</h2>
+<form method = "post">
+    <input type="submit" formaction="/another" value="Yes">
+    <input type="submit" formaction="/end" value="No">
+</form>
+
+</body>
+</html>
+
+

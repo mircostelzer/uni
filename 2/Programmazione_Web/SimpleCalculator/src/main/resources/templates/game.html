@@ -17,9 +17,9 @@
     <h3>Enter some value:</h3>
     <form action="/result" method="POST">
         <label for="firstOp">First operand: </label>
-        <input type="text" id="firstOp" name="firstOp"> <br>
+        <input type="number" id="firstOp" name="firstOp" required> <br><br>
         <label for="secondOp">Second operand:</label>
-        <input type="text" id="secondOp" name="secondOp"> <br>
+        <input type="number" id="secondOp" name="secondOp" required> <br><br>
         <label for="op">Operator:</label>
         <label for="op"></label>
         <select id="op" name="op">
@@ -27,7 +27,7 @@
             <option value="-">-</option>
             <option value="*">*</option>
             <option value="/">/</option>
-        </select> <br> <br>
+        </select> <br><br>
         <input type="submit" value="Calculate">
         <input type="reset">
     </form>
