@@ -23,9 +23,6 @@ char *addr;
     printf("P2: address of the shared memory addr= %d\n", *addr);
     printf(" %s %d\n",  addr,shm); 
 
-/*
-    shmdt(addr(;
+    shmdt(addr);
     shmctl(shm, IPC_RMID,0);
-*/
-  
  }

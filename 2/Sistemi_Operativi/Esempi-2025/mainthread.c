@@ -30,18 +30,18 @@ int main(int argc, char **argv)
 
  int i;
  pthread_t mythread;
- pthread_attr_t *attr;
- int *result;
+//  pthread_attr_t *attr;
+ void *result;
 
  i=1;
  printf("T1: i=%d \n", i);
- int pthread_attr_init(pthread_attr_t *attr);
+//  int pthread_attr_init(pthread_attr_t *attr);
  printf("T1: sono il primo thread, ora ne creo un altro \n");
- pthread_create(&mythread, attr, tbody, (void *) &i);
+ pthread_create(&mythread, NULL, tbody, (void *) &i);
  printf("T1: ora aspetto la terminazione del thread che ho creato \n");
  pthread_join(mythread, &result);
  printf("T1: Il thread creato ha assegnato %d ad i\n",i);
- printf("T1: Il thread ha restituito %d \n", result);
+ printf("T1: Il thread ha restituito %d \n", *(int *)&result);
  
 
 }

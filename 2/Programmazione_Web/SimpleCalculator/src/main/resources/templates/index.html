@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -9,6 +9,8 @@
 </head>
 <body>
     <h1>Welcome to my Simple Calculator!</h1>
+    <p th:if="${name}">Welcome back <span th:text="${name}"></span></p>
+    <p th:unless="${name}">Welcome</p>
     <form action="/game" method="get">
         <input type="submit" value="Play">
     </form>

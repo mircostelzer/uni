@@ -23,9 +23,7 @@ char *addr;
    printf("P1: identifier of the shared memory shm1= %d\n", shm);
    printf("%s\n",  addr); 
 
-/*
+
     shmdt(addr);
-    shmctl(shm,IPC_RMID,0);
-*/
   
  }
