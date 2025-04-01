@@ -12,9 +12,9 @@
     <p th:if="${error}" th:text="${error}"></p>
     <p th:unless="${error}">Result: <span th:text="${result}"></span></p>
     <p>Do you want to play again?</p>
-    <form action="/game" method="GET">
+    <form th:action="@{/game}" method="GET">
         <input type="submit" value="Play again">
-        <input type="submit" formaction="/result/end" value="Stop">
+        <input type="submit" th:formaction="@{/result/end}" value="Stop">
     </form>
 </body>
 </html>

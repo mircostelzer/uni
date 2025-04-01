@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
 
-    @RequestMapping("/index")
+    @RequestMapping("/")
     public String index(HttpServletRequest request, HttpServletResponse response, Model model) {
         Cookie[] cookies = request.getCookies();
         boolean found = false;
@@ -24,7 +24,7 @@ public class MainController {
         }
 
         if (!found) {
-            Cookie newCookie = new Cookie("name", "1");
+            Cookie newCookie = new Cookie("name", "user");
             newCookie.setMaxAge(60 * 60 * 24);
             response.addCookie(newCookie);
         }
