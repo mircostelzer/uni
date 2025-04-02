@@ -19,9 +19,12 @@ public class LoginController {
         this.loggedUserManagement = loggedUserManagement;
     };
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String index()
-    {   loggedUserManagement.setUsername(null); //lo metto per far creare bean di sessione e cosi vedo cookies in home.
+    {   //loggedUserManagement.setUsername(null); //lo metto per far creare bean di sessione e cosi vedo cookies in home.
+        if (loggedUserManagement != null) {
+            System.out.println("Session Bean initialized");
+        }
         return "index";}
 
     @PostMapping("/validation")
