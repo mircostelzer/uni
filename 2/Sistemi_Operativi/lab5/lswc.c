@@ -8,6 +8,7 @@
 int main(int argc, char **argv)
 {
     int fd = open("/tmp/tmp.txt", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+    int dup1 = dup(1);
     dup2(fd, 1);
     int pid;
 
@@ -23,6 +24,7 @@ int main(int argc, char **argv)
         wait(NULL);
         lseek(fd, 0, SEEK_SET);
         dup2(fd, 0);
+        dup2(1, dup1);
         execlp(argv[2], NULL);
     }
 
