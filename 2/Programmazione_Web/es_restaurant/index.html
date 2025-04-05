@@ -9,6 +9,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" ></span>
+          </button>
+          <div class="collapse navbar-collapse collapse-horizontal" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="description.html">Descrizione</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="menu.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Menù
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/food/starters.html">Antipasti</a></li>
+                  <li><a class="dropdown-item" href="/food/first_courses.html">Primi piatti</a></li>
+                  <li><a class="dropdown-item" href="/food/second_courses.html">Secondi</a></li>
+                  <li><a class="dropdown-item" href="/food/desserts.html">Dessert</a></li>
+                  <li><a class="dropdown-item" href="/food/drinks.html">Bevande</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contacts.html">Contatti</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     <div id="head" class="container" >
         <h1>Ristorante</h1>
     </div>
@@ -24,7 +54,7 @@
             <a href="contacts.html">Contatti</a>
         </li>
     </ul>
-    <div class="container" style="position: absolute; bottom: 5px; margin-top: 2rem;">
+    <div class="container-fluid" style="position: absolute; bottom: 5px; margin-top: 2rem;">
         <p>Indirizzo Ristorante</p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
