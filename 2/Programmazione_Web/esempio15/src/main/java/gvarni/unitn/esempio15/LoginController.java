@@ -13,10 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 
     private final LoggedUserManagement loggedUserManagement;
+    private final ValidationService validationService;
+    private final LoginCounterService loginCounterService;
 
     @Autowired
-    LoginController(LoggedUserManagement loggedUserManagement){
+    LoginController(LoggedUserManagement loggedUserManagement, ValidationService validationService, LoginCounterService loginCounterService) {
         this.loggedUserManagement = loggedUserManagement;
+        this.validationService = validationService;
+        this.loginCounterService = loginCounterService;
     };
 
     @GetMapping("/")
@@ -32,7 +36,9 @@ public class LoginController {
                              @RequestParam String password, Model model){
 
 
-        if ("giovanna".equals(username) && "admin".equals(password)) {
+        if (validationService.isValid(username, password)) {
+            loginCounterService.increment();
+            System.out.println("Counter: " + loginCounterService.getCounter());
             loggedUserManagement.setUsername(username); //metto in sessione per poter passare dato ad altri controller
             model.addAttribute("name", username); // metto nel model per passarlo alla view
             return ("dashboard");
