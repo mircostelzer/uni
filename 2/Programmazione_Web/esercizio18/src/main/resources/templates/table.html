@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome page</title>
+</head>
+<body>
+
+<h1>Table</h1>
+
+<div>
+    <p>Here your table</p>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>SURNAME</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="u : ${utente}">
+            <td th:text="${u.id}"></td>
+            <td th:text="${u.nome}"></td>
+            <td th:text="${u.cognome}"></td>
+        </tr>
+        </tbody>
+    </table>
+        </div>
+</body>
+</html>

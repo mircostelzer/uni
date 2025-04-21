@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome page</title>
+</head>
+<body>
+
+<h1>Table</h1>
+
+<form action="/table" method="get">
+    <button type="submit">Click here to start to get the table!</button>
+</form>
+
+
+<form action="/storeuser" method="post">
+    <label for="name">First Name</label><br>
+    <input type="text" id="name" name="FirstName" value="" required><br><br>
+    <label for="lastname">Last Name</label><br>
+    <input type="text" id="lastname" name="LastName" value="" required><br><br>
+    <label for="uname">User name</label><br>
+    <input type="text" id="uname" name="username" value="" required><br><br>
+    <label for="pwd">Password</label><br>
+    <input type="password" id="pwd" name="password" value="" required><br><br>
+    <button type="submit">Click here to store a new user!</button>
+</form>
+
+</body>
+</html>
