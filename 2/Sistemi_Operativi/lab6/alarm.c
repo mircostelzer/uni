@@ -8,6 +8,7 @@ int main(){
 	alarm(0); //Clear any pending alarm
 	alarm(5); //Set alarm in 5 seconds
 	//Set new alarm (cancelling previous one)
+	sleep(1);
 	printf("Seconds remaining to previous alarm %d\n", alarm(2));
 	while(cnt<1);
 }
