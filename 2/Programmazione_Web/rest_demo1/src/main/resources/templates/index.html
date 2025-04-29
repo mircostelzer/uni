@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Date and Time</h1>
+    <p>Time Zone: <span th:if="${timezone}" th:text="${timezone}"></span></p>
+    <br>
+    <p>Date: <span th:if="${date}" th:text="${date}"></span></p>
+    <br>
+    <p>Time: <span th:if="${time}" th:text="${time}"></span></p>
+    <br>
+    <div>
+        <form th:action="@{/change}" method="get">
+            <label for="timezones">Available time zones: </label>
+            <select name="timezones" id="timezones">
+                <option th:each="tz : ${timezones}" th:text="${tz}"></option>
+            </select>
+            <input type="submit" value="Change time zone"> <br>
+            <input type="submit" value="Refresh date and time" th:formaction="@{/refresh}">
+        </form>
+    </div>
+</body>
+</html>
