@@ -3,20 +3,37 @@
 #include <signal.h>
 #include <bits/sigaction.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
 #define MAX_P 20
 
-int counter[MAX_P][2] = {0};
+struct Proc {
+    pid_t pid;
+    int count1;
+    int count2;
+};
+
+struct Proc counter[MAX_P] = {0};
+
+void add_signal(int signum, struct Proc counter[], int i) {
+    if (signum == SIGUSR1) {
+        counter[i].count1++;
+    } else {
+        counter[i].count2++;
+    }
+}
+
 
 __sighandler_t sigusr_handler(int signum, siginfo_t *info, void *empty) {
     int pid = info->si_pid;
+    printf("Signal %d received from [%d]\n", signum, pid);
     for(int i=0; i<MAX_P; i++) {
-        if (counter[i][0] == 0) {
-            counter[i][0] = pid;
-            counter[i][1]++;
+        if (counter[i].pid == 0) {
+            counter[i].pid = pid;
+            add_signal(signum, counter, i);
             break;
-        } else if (counter[i][0] == pid) {
-            counter[i][1]++;
+        } else if (counter[i].pid == pid) {
+            add_signal(signum, counter, i);
             break;
         }
     }
@@ -24,8 +41,10 @@ __sighandler_t sigusr_handler(int signum, siginfo_t *info, void *empty) {
 
 void term_handler(int signum) {
     int i = 0;
-    while((counter[i][0] != 0) && (i<MAX_P)) {
-        printf("PID: %d Signals emitted: %d\n", counter[i][0], counter[i][1]);
+    printf("\n");
+    while((counter[i].pid != 0) && (i<MAX_P)) {
+        printf("PID: %d SIGUSR1 emitted: %d\n", counter[i].pid, counter[i].count1);
+        printf("PID: %d SIGUSR2 emitted: %d\n", counter[i].pid, counter[i].count2);
         i++;
     }
     exit(0);
