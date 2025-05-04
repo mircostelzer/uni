@@ -9,7 +9,8 @@
 #define MAX_NODES 10
 
 int leaves_lvl = 0;
-struct sigaction sa;
+struct sigaction sa1;
+struct sigaction sa2;
 
 // structs
 struct Node {
@@ -18,8 +19,8 @@ struct Node {
 };
 
 struct Level {
+    pid_t leader;
     int lvl;
-    struct Node nodes[MAX_NODES];
 };
 
 struct Level tree[MAX_LVL] = {0};
@@ -29,21 +30,28 @@ void child_lvl(int level) {
     if (level > leaves_lvl+1) {
         printf("You can't add children at this level yet\n");
     } else {
+        union sigval value;
         if (level == leaves_lvl+1) {
             leaves_lvl++;
             tree[leaves_lvl].lvl = leaves_lvl;
+            int pid = fork();
+            if (pid == 0) {
+                setpgid(0, getpid());
+                return;
+            } else {
+                waitpid(pid, NULL, 0);
+                tree[level].leader = pid;
+            }
         }
-        for(int i=0; i<MAX_NODES && (tree[level-1].nodes[i].pid != 0); i++) {
-            kill(tree[level-1].nodes[i].pid, SIGUSR1);
-        }
+        value.sival_int = tree[level-1].leader;
+        sigqueue(tree[level-1].leader, SIGUSR1, value);
+        
     }
 }
 
 void kill_lvl(int level) {
     if (level == leaves_lvl) {
-        for(int i=0; i<MAX_NODES && (tree[level].nodes[i].pid != 0); i++) {
-            kill(tree[level-1].nodes[i].pid, SIGTERM);
-        }
+        kill(-tree[level].leader, SIGTERM);
         leaves_lvl--;
     } else {
         kill_lvl(level+1);
@@ -53,53 +61,48 @@ void kill_lvl(int level) {
 
 void print_tree() {
     for(int i=0; i<=leaves_lvl; i++) {
-        for(int j=0; j<MAX_NODES; j++) {
-            printf("Level: %d node: %d", tree[i].lvl, tree[i].nodes[j].pid);
-            struct Node node = tree[i].nodes[j];
-            if (node.pid != 0) {
-                for(int k=0; k<tree[i].lvl; k++) {
-                    printf("\t");
-                }
-                printf("[PID: %d - PPID: %d] depth: %d\n", node.pid, node.ppid, tree[i].lvl);
-            }
-        }
+        union sigval value;
+        value.sival_int = i;
+        sigqueue(tree[i].leader, SIGUSR2, value);
     }
 }
 
 //handlers
 __sighandler_t su1_handler(int signum, siginfo_t *info, void *empty) {
+    printf("received signal %d", getpid());
     int isChild = !fork();
-    int lvl = info->si_value.sival_int;
+    int leader = info->si_value.sival_int;
     if (isChild) {
-        for (int i=0; i<MAX_NODES; i++) {
-            struct Node node = tree[lvl].nodes[i];
-            if (node.pid == 0) {
-                printf("I'm child %d at level %d\n", getpid(), lvl);
-                break;
-            }
-        }
+        printf("I'm child %d with group %d\n", getpid(), leader);
+        setpgid(0, leader);
         while(1) {
             pause();
         }
     }
-    else {
-        printf("Tree1 [PID: %d] [PPID: %d]", tree[lvl].nodes[0].pid, tree[lvl].nodes[0].pid);
+}
+
+__sighandler_t su2_handler(int signum, siginfo_t *info, void *empty) {
+    int lvl = info->si_value.sival_int;
+    for(int i=0; i<lvl; i++) {
+        printf("\t");
     }
+    printf("[ID: %d - Parent: %d] depth: %d\n", getpid(), getppid(), lvl);
 }
 
 int main()
 {
-    tree[0].nodes[0].pid = getpid();
-    tree[0].nodes[0].ppid = getppid();
-    // for (int i=0; i<MAX_LVL; i++) {
-    //     tree[i].lvl = 0;
-    //     for (int j=0; j)
-    //     tree[i].nodes[] = {0};
-    // }
-	sa.sa_sigaction = su1_handler;
-	sigemptyset(&sa.sa_mask);
-	sa.sa_flags = SA_SIGINFO;
-    sigaction(SIGUSR1, &sa, NULL);
+    tree[0].lvl = 0;
+    tree[0].leader = getpgid(0);
+	sa1.sa_sigaction = su1_handler;
+	sigemptyset(&sa1.sa_mask);
+	sa1.sa_flags = SA_SIGINFO;
+    sigaction(SIGUSR1, &sa1, NULL);
+
+    sa2.sa_sigaction = su2_handler;
+	sigemptyset(&sa2.sa_mask);
+	sa2.sa_flags = SA_SIGINFO;
+    sigaction(SIGUSR2, &sa2, NULL);
+
 
     char buffer[256];
     printf("Next command:");
@@ -119,11 +122,9 @@ int main()
             printf("Terminating...\n");
             kill_lvl(0);
             sleep(2);
-
         } else {
             printf("Invalid parameter\n");
         }
-        printf("leaves: %d\n", leaves_lvl);
         printf("Next command:");
     }
 
