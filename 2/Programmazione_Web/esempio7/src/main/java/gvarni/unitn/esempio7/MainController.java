@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 @Controller
 public class MainController {
-    @RequestMapping("/home")
+    @RequestMapping("/")
     public String home(Model page){
         DateTimeFormatter day = DateTimeFormatter.ofPattern("dd/MM/yyy");
         DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -17,7 +17,7 @@ public class MainController {
 
         page.addAttribute("date",day.format(now));
         page.addAttribute("time",time.format(now));
-        return "home";
+        return "index";
 
     }
 }

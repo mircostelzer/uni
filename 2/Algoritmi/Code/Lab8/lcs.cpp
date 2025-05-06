@@ -14,12 +14,8 @@ int main()
     int d1 = s1.size();
     int d2 = s2.size();
 
-    vector<int> dp(d1+1);
-    vector<int> dp1(d2+1);
-
-    for (int i=0; i<=d1; i++) {
-        dp[i] = 0;
-    }
+    vector<int> dp(d2+1, 0);
+    vector<int> dp1(d2+1, 0);
 
     for (int i=1; i<=d1; i++) {
         swap(dp, dp1);
