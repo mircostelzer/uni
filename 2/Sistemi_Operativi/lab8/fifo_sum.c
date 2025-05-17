@@ -55,6 +55,7 @@ int main(int argc, char **argv)
         exit(1);
     }
 
+    // Wait for all children
     while(wait(NULL)>0);
 
     for (int i = 0; i < children; i++) {
@@ -66,9 +67,6 @@ int main(int argc, char **argv)
     }
 
     close(fd);
-
-    // Wait for all children
-    
 
     printf("Total sum: %d\n", sum);
 
