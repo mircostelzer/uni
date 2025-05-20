@@ -1,0 +1,35 @@
+<html>
+	<header>
+		<script>
+			function getJson() {
+				let promise = new Promise(function(resolve, reject) {
+					var xhttp = new XMLHttpRequest();
+					var url = "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+
+					xhttp.responseType = "json";
+					xhttp.onreadystatechange = function () {
+						var done = 4, ok = 200;
+				        if (xhttp.status === ok && xhttp.readystate===done) 
+							resolve(xhttp.response);
+						else 
+						   reject(new Error("Error"));	
+					};
+				    xhttp.open("GET", url, true);
+					xhttp.send();
+				});
+				promise.then(function(result) {
+					document.getElementById("myPar").innerHTML = result.squadName;
+				},
+				function(error) {
+					document.getElementById("myPar").innerHTML = error.message;
+				});
+			}	
+		</script>
+	</header>
+	<body>
+		<form>
+			<input type="BUTTON" onClick='getJson();' value="GET IT!">
+		</form>
+		<p id="myPar">here the json will appear</p>
+	</body>
+</html>

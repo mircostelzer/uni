@@ -1,0 +1,40 @@
+<html>
+  <header>
+    <script>
+      function getJson() {
+        let promise = new Promise(function(resolve, reject) {
+          var xhttp = new XMLHttpRequest();
+          var url = "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+
+          xhttp.responseType = "json";
+          xhttp.onreadystatechange = function () {
+            var done = 4, ok = 200;
+            // Controlla quando la richiesta è completata (readyState 4) e se la risposta è OK (status 200)
+            if (xhttp.readyState === done) {
+              if (xhttp.status === ok) {
+                resolve(xhttp.response);  // Risolvi con la risposta JSON
+              } else {
+                reject(new Error("Errore nella richiesta: " + xhttp.status));  // Rifiuta in caso di errore
+              }
+            }
+          };
+          xhttp.open("GET", url, true);
+          xhttp.send();
+        });
+
+        // Gestisci la risposta
+        promise.then(function(result) {
+          document.getElementById("myPar").innerHTML = result.squadName;  // Mostra il nome della squadra
+        },function(error) {
+          document.getElementById("myPar").innerHTML = error.message;  // Mostra il messaggio d'errore
+        });
+      }
+    </script>
+  </header>
+  <body>
+    <form>
+      <input type="BUTTON" onClick='getJson();' value="GET IT!">
+    </form>
+    <p id="myPar">here the json will appear</p>
+  </body>
+</html>
