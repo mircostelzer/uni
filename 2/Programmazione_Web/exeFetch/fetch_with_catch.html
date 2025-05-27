@@ -1,0 +1,22 @@
+<html>
+	<header>
+		<script>				
+			function getJson() {
+				fetch("https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json")
+				.then(function (response){ 
+				return response.json();
+				//document.write("pippo");
+				})
+				.then(function (json){document.getElementById("myPar").innerHTML = json.squadName;})
+				.catch(function(error){
+				document.getElementById("myPar").innerHTML = "error";})
+			  }	
+		</script>
+	</header>
+	<body>
+		<form>
+			<input type="BUTTON" onClick="getJson();" value="GET IT!">
+		</form>
+		<p id="myPar">here the json will appear</p>
+	</body>
+</html>
