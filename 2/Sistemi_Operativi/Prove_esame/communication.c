@@ -91,7 +91,7 @@ int main(int argc, char **argv)
                         printf("%sChild %d sending own pid...%s\n", GREEN, num + 1, DF);
                         write(parentWrite[num][WRITE_END], "i", sizeof(char));
                         pid_t pid;
-                        bytes = read(childrenWrite[num][READ_END], (void *)&pid, sizeof(pid_t));
+                        bytes = read(childrenWrite[num][READ_END], &pid, sizeof(pid_t));
                         printf("Received pid %d\n", pid);
                     }
                     break;
@@ -103,7 +103,7 @@ int main(int argc, char **argv)
                         printf("%sChild %d sending random number...%s\n", GREEN, num + 1, DF);
                         write(parentWrite[num][WRITE_END], "r", sizeof(char));
                         int r;
-                        bytes = read(childrenWrite[num][READ_END], (void *)&r, sizeof(int));
+                        bytes = read(childrenWrite[num][READ_END], &r, sizeof(int));
                         printf("Received number %d\n", r);
                     }
                     break;
@@ -126,11 +126,11 @@ int main(int argc, char **argv)
             switch(buffer[0]) {
                 case 'i':
                     pid_t pid = getpid();
-                    write(childrenWrite[selfIndex][WRITE_END], (void *)&pid, sizeof(pid_t));
+                    write(childrenWrite[selfIndex][WRITE_END], &pid, sizeof(pid_t));
                     break;
                 case 'r':
                     int r = rand();
-                    write(childrenWrite[selfIndex][WRITE_END], (void *)&r, sizeof(int));
+                    write(childrenWrite[selfIndex][WRITE_END], &r, sizeof(int));
                     break;
                 default:
                     break;
